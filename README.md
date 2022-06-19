@@ -1,2 +1,2 @@
 # pico-ice
-Raspberry Pi PICO board + Lattice iCE40 FPGA's
+Raspberry Pi PICO (RP2040) with a Lattice iCE40UP5K FPGA
