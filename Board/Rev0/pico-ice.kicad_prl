@@ -7,10 +7,10 @@
     "high_contrast_mode": 0,
     "net_color_mode": 1,
     "opacity": {
-      "pads": 0.4399999976158142,
-      "tracks": 0.3100000023841858,
-      "vias": 0.28999999165534973,
-      "zones": 0.41999998688697815
+      "pads": 1.0,
+      "tracks": 1.0,
+      "vias": 1.0,
+      "zones": 1.0
     },
     "ratsnest_display_mode": 0,
     "selection_filter": {
@@ -36,12 +36,12 @@
       8,
       9,
       10,
-      11,
       12,
       13,
       14,
       15,
       16,
+      17,
       18,
       19,
       20,
@@ -61,7 +61,7 @@
       35,
       36
     ],
-    "visible_layers": "00310fc_80000007",
+    "visible_layers": "0001020_00000001",
     "zone_display_mode": 0
   },
   "meta": {
