@@ -1,4 +1,4 @@
-20262653888597314
+20267636279279099
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -2436,6 +2436,13 @@ Switch
 6
 4
 CUSTOM
+Pb free logo
+
+
+0
+0
+0
+CUSTOM
 SW_JS102011JCQN
 
 
@@ -2449,6 +2456,20 @@ TP380X203
 0
 1
 1
+CUSTOM
+WEEE logo
+
+
+0
+0
+0
+CUSTOM
+tinyAI_logo
+
+
+0
+0
+0
 Calibration_Scale
 Gauge_10mm_Type1_CopperTop
 Gauge, Massstab, 10mm, CopperTop, Type 1,
