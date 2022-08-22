@@ -1,9 +1,3 @@
-.. this is a comment, it is not rendered
-   when adding new *.rst files, reference them here
-   in this index.rst for them to be rendered and added to the
-   table of contents
-
-
 ======================
 Pico-Ice Documentation
 ======================
@@ -12,3 +6,24 @@ Pico-Ice Documentation
    :hidden:
 
    self
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Hardware / PCB
+   :hidden:
+
+   hardware/getting-started
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Software / SDK
+   :hidden:
+
+   software/getting-started
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Gateware / FPGA
+   :hidden:
+
+   gateware/getting-started
