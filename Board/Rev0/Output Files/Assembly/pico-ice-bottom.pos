@@ -1,0 +1,34 @@
+### Module positions - created on Wed Aug 24 15:33:36 2022 ###
+### Printed by Pcbnew version (6.0.5)
+## Unit = mm, Angle = deg.
+## Side : bottom
+# Ref     Val               Package                          PosX       PosY       Rot  Side
+C3        4.7u              C_0402_1005Metric            -16.4338    21.4630  -90.0000  bottom
+C4        0.1u              C_0402_1005Metric            -11.8110    15.6464   90.0000  bottom
+C6        1u                C_0402_1005Metric             -9.6012    15.6464   90.0000  bottom
+C7        4.7u              C_0402_1005Metric             -8.1788    27.4066    0.0000  bottom
+C8        0.1u              C_0402_1005Metric            -11.0998    12.9286    0.0000  bottom
+C9        4.7u              C_0402_1005Metric            -17.1395    30.0228  -90.0000  bottom
+C11       1u                C_0402_1005Metric            -10.6680    15.6464   90.0000  bottom
+C13       4.7u              C_0402_1005Metric            -12.0904    29.9466  -90.0000  bottom
+C26       0.1u              C_0402_1005Metric             -5.5372    44.3992   90.0000  bottom
+C27       0.1u              C_0402_1005Metric             -9.6266    32.1818  -90.0000  bottom
+C40       0.1u              C_0402_1005Metric             -5.3340    38.2778   90.0000  bottom
+C41       0.1u              C_0402_1005Metric             -6.2230    38.2778   90.0000  bottom
+C42       0.1u              C_0402_1005Metric            -12.1666    43.1800  180.0000  bottom
+FID2      Fiducial          Fiducial_0.75mm_Mask1.5mm    -20.3200    52.0700  180.0000  bottom
+FID4      Fiducial          Fiducial_0.75mm_Mask1.5mm    -17.7800     2.5400  180.0000  bottom
+FID6      Fiducial          Fiducial_0.75mm_Mask1.5mm     -5.0800     2.5400  180.0000  bottom
+R2        1k                R_0402_1005Metric            -17.3990    11.8364   90.0000  bottom
+R3        DNP               R_0402_1005Metric            -16.4846    11.8384  -90.0000  bottom
+R8        10K               R_0402_1005Metric             -5.1308    52.2732  -90.0000  bottom
+R9        10K               R_0402_1005Metric             -3.0988    52.2732  -90.0000  bottom
+R12       10K               R_0402_1005Metric            -12.5476    52.1716  -90.0000  bottom
+R13       10K               R_0402_1005Metric             -4.1148    52.2732  -90.0000  bottom
+R14       2.2K              R_0402_1005Metric             -2.0828    52.2732  -90.0000  bottom
+U1        NCP1117ST33T3G    SOT-223-3_TabPin2            -11.5570    24.4094  180.0000  bottom
+U2        W25Q32JVSSIQ      SOIC-8_5.23x5.23mm_P1.27mm   -11.0998     9.4234  180.0000  bottom
+U4        CL9293A12L5M      SOT-23-5                     -14.5796    29.4894  180.0000  bottom
+U5        APS6404L-3SQN-SN  SOIC-8_3.9x4.9mm_P1.27mm     -14.4780    47.2850  -90.0000  bottom
+U8        W25Q32JVSSIQ      SOIC-8_5.23x5.23mm_P1.27mm    -8.7630    48.0060  -90.0000  bottom
+## End
