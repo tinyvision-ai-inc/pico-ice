@@ -6,10 +6,10 @@
 
   (paper "A4")
   (title_block
-    (title "RP2040 Minimal Design Example")
-    (date "2020-07-13")
+    (title "pico-ice")
+    (date "2022-08-24")
     (rev "REV1")
-    (company "Raspberry Pi (Trading) Ltd")
+    (company "tinyVision.ai Inc.")
   )
 
   (layers
