@@ -90,3 +90,9 @@ Troubleshooting
       $ cmake ..
       $ sed -i '/new_delete.cpp/ d' _deps/pico-sdk-src/src/rp2_common/pico_standard_link/CMakeLists.txt
       $ cmake ..
+
+The GPIO LEDs do not turn on
+   Unlike the Raspberry Pi Pico board, which has a green LED attached to the GPIO pin 25,
+   the pico-ice has three LEDs attached to the GPIO pin 22 (red), pin 23 (green), pin 24 (blue)
+   Moreover, the leds are "active-low", so you would need to turn their pin down for them to
+   be turned on.
