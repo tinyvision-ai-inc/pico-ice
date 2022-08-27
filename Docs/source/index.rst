@@ -13,6 +13,7 @@ Pico-Ice Documentation
    :hidden:
 
    hardware/getting-started
+   hardware/pinout
 
 .. toctree::
    :maxdepth: 2
