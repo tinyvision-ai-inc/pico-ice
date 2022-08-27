@@ -8,6 +8,12 @@ The `pico-ice-sdk <https://github.com/tinyvision-ai-inc/pico-ice-sdk/>`_ provide
 CMake setup
 -----------
 
+``pico_ice_sdk_import.cmake`` `download`_
+
+   It clones both the pico-sdk and pico-ice-sdk, replacing Raspberry Pi's ``pico_sdk_import.cmake``.
+
+.. _download: https://raw.githubusercontent.com/tinyvision-ai-inc/pico-ice-sdk/main/cmake/pico_ice_sdk_import.cmake
+
 ``CMakeLists.txt``
 
     .. code-block:: cmake
@@ -24,16 +30,9 @@ CMake setup
        target_link_libraries(firmware pico_ice_sdk pico_stdlib)
        pico_add_extra_outputs(firmware)
 
-    It will produce a ``firmware.uf2`` out of ``firmware.c``.
     Other names than ``pico_ice_firmware`` and ``firmware`` may be chosen.
 
-``pico_ice_sdk_import.cmake`` `download`_
-
-   It clones both the pico-sdk and pico-ice-sdk, replacing Raspberry Pi's ``pico_sdk_import.cmake``.
-
-.. _download: https://raw.githubusercontent.com/tinyvision-ai-inc/pico-ice-sdk/main/cmake/pico_ice_sdk_import.cmake
-
-A normal CMake compilation procedure can then be followed:
+It will produce a ``firmware.uf2`` out of ``firmware.c``:
 
 .. code-block::
 
