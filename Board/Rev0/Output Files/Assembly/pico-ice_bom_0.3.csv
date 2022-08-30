@@ -1,0 +1,43 @@
+Component,Description,Part,References,Value,Footprint,Quantity Per PCB,Datasheet,MPN,Manufacturer,Supplier,Digi-Key Part Number,Comment
+1,Unpolarized capacitor,C,C1 C2,27p,C_0402_1005Metric,2,~,GCM1555C1H270JA16D,Murata Electronics,LCSC,,
+2,,Device_C,C4 C5 C8 C10 C12 C14 C15 C16 C17 C18 C19 C20 C21 C23 C24 C26 C27 C28 C29 C33 C35 C38 C39 C40 C41 C42,0.1u,C_0402_1005Metric,26,,GRM155R71C104KA88J,Murata Electronics,Mouser,,
+3,,Device_C,C3 C6 C7 C9 C11 C13 C22 C25 C30 C31 C32 C34 C43,4.7u,C_0402_1005Metric,13,,GRM155R60J475ME87D,Murata Electronics,LCSC,,
+4,,Diode_1N4148W,D1,1N4148WT-7,D_SOD-523,1,https://www.vishay.com/docs/85748/1n4148w.pdf,1N4148WT-7,Micro Commercial Co,LCSC,,
+5,,Device_LED_ALT,D3,LTST-C191KGKT,LED_0603_1608Metric,1,,LTST-C191KGKT,Lite-On,LCSC,,
+6,,Device_LED_ARGB,D2 D4,MHPA1010RGBDT,LED_Cree-PLCC4_1x1mm_CW,2,,MHPA1010RGBDT,MEIHUA,LCSC,LCSC,
+7,,2x3_2.54mm_Female,J10 J11,2x3_2.54mm_Female,PinSocket_2x03_P2.54mm_Horizontal,2,,DW254W-22-06-85,DEALON,LCSC,,
+8,"Generic connector, double row, 02x06, row letter first pin numbering scheme (pin number consists of a letter for the row and a number for the pin index in this row. a1, ..., aN; b1, ..., bN), script generated (kicad-library-utils/schlib/autogen/connector/)",Conn_02x06_Row_Letter_First,J3 J4 J6 J7 J8,6X2 Female Header,PMOD_2x06_P2.54mm_Horizontal,5,~,DW254W-22-12-85,DEALON,LCSC,,PMOD_PICO Dual PMOD A Single PMOD SPARES Dual PMOD B
+9,"Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)",Conn_01x02,J2 J9,SWD,PinHeader_1x02_P2.54mm_Vertical,2,~,PZ254V-11-02P,XFCN,LCSC,,
+10,USB 2.0-only Type-C Receptacle connector,USB_C_Receptacle_USB2.0,J1,USB_C_Receptacle_USB2.0,USB_C_Receptacle_HRO_TYPE-C-31-M-12,1,https://www.usb.org/sites/default/files/documents/usb_type-c.zip,USB4105-GF-A,GCT,Mouser,,
+11,,Device_R,PTC1,MF-FSMF035X-2,R_0603_1608Metric,1,https://www.bourns.com/docs/Product-Datasheets/mffsmf.pdf,MF-FSMF035X-2,Bourns Inc.,LCSC,,
+12,Resistor,R,R4 R5 R6 R22 R23 R25,27,R_0402_1005Metric,6,~,RC0402FR-0727RL,YAGEO,LCSC,,
+13,,Device_R,R11,100,R_0402_1005Metric,1,,RC0402FR-07100RL,YAGEO,LCSC,,
+14,Resistor,R,R1 R2,1k,R_0402_1005Metric,2,~,RC0402FR-071KL,YAGEO,LCSC,,
+15,,Device_R,R14 R18 R19 R20,2.2K,R_0402_1005Metric,4,,RC0402FR-072K2L,YAGEO,LCSC,,
+16,,Device_R,R10 R24,5.1K,R_0402_1005Metric,2,,RC0402FR-075K1L,YAGEO,LCSC,,
+17,,Device_R,R7 R8 R9 R12 R13 R15 R16 R17 R21,10K,R_0402_1005Metric,9,,RC0402FR-0710KL,YAGEO,LCSC,,
+18,"Push button switch, generic, two pins",SW_Push,SW1,PTS820 J25K SMTR LFS,PTS820J25KSMTRLFS,1,~,PTS820 J25K SMTR LFS,C&K,Mouser,,~RESET
+19,"Push button switch, generic, two pins",SW_Push_1,SW2,PTS820 J25K SMTR LFS,PTS820J25KSMTRLFS,1,~,PTS820 J25K SMTR LFS,C&K,Mouser,,SW_Push
+20,,W25Q32JVSS-Memory_Flash,U5,APS6404L-3SQN-SN,SOIC-8_3.9x4.9mm_P1.27mm,1,http://www.winbond.com/resource-files/w25q32jv%20revg%2003272018%20plus.pdf,APS6404L-3SQN-SN,AP Memory,Mouser,,
+21,,AP2127K-1.2,U4,CL9293A12L5M,SOT-23-5,1,https://www.diodes.com/assets/Datasheets/AP2127.pdf,CL9293A12L5M,ChipLink Tech,LCSC,,
+22,,ICE40UP5K-SG48ITR-FPGA_Lattice,U6,ICE40UP5K-SG48ITR,QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm,1,http://www.latticesemi.com/Products/FPGAandCPLD/iCE40Ultra,ICE40UP5K-SG48I,Lattice,Mouser,,
+23,"1A Low drop-out regulator, Fixed Output 3.3V, SOT-223",NCP1117-3.3_SOT223,U1,NCP1117ST33T3G,SOT-223-3_TabPin2,1,http://www.onsemi.com/pub_link/Collateral/NCP1117-D.PDF,NCP1117ST33T3G,onsemi,LCSC,,
+24,,MCU_RaspberryPi_RP2040_RP2040,U3,RP2040,RP2040-QFN-56,1,,RP2040,Raspberry Pi,LCSC,,
+25,,W25Q32JVSS-Memory_Flash,U2 U8,W25Q32JVSSIQ,SOIC-8_5.23x5.23mm_P1.27mm,2,http://www.winbond.com/resource-files/w25q32jv%20revg%2003272018%20plus.pdf,W25Q32JVSSIQ,Winbond Elec,LCSC,,
+26,"Four pin crystal, GND on pins 2 and 4",Crystal_GND24,Y1,12 MHz,Crystal_SMD_2520-4Pin_2.5x2.0mm,1,~,ABM10-166-12.000MHZ-T3,Abracon LLC,Mouser,,
+
+
+
+
+
+Component Groups:,26
+Component Count:,90
+Fitted Components:,90
+Number of PCBs:,1
+Total components:,90
+Schematic Version:,0.3
+Schematic Date:,2020-08-10
+PCB Variant:,default
+BoM Date:,8/24/2022 4:19:43 PM
+Schematic Source:,pico-ice.kicad_sch
+KiCad Version:,Eeschema (6.0.5)
