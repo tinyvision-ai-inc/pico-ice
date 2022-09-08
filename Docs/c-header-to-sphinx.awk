@@ -2,7 +2,7 @@
 
 FNR == 1 {
 	name = FILENAME
-	sub("^[^/]*/", "", name)
+	sub("^.*/include/", "API ", name)
 	ruler = name
 	gsub(/./, "-", ruler)
 	print ""

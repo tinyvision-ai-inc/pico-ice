@@ -21,6 +21,7 @@ Pico-Ice Documentation
    :hidden:
 
    software/getting-started
+   software/sdk-c-api
 
 .. toctree::
    :maxdepth: 2
