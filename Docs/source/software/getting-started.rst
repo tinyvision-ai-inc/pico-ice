@@ -8,7 +8,9 @@ The `pico-ice-sdk <https://github.com/tinyvision-ai-inc/pico-ice-sdk/>`_ provide
 CMake setup
 -----------
 
-``pico_ice_sdk_import.cmake`` `download`_
+``pico_ice_sdk_import.cmake``
+
+   `download`_
 
    It clones both the pico-sdk and pico-ice-sdk, replacing Raspberry Pi's ``pico_sdk_import.cmake``.
 
@@ -16,21 +18,22 @@ CMake setup
 
 ``CMakeLists.txt``
 
-    .. code-block:: cmake
+   .. code-block:: cmake
     
-       cmake_minimum_required(VERSION 3.13)
-       
-       ## CMake configuration of pico-sdk and pico-ice-sdk
-       include(pico_ice_sdk_import.cmake)
-       project(pico_ice_firmware)
-       pico_sdk_init()
-       
-       # CMake configuration of the application
-       add_executable(firmware firmware.c)
-       target_link_libraries(firmware pico_ice_sdk pico_stdlib)
-       pico_add_extra_outputs(firmware)
+      cmake_minimum_required(VERSION 3.13)
+      
+      ## CMake configuration of pico-sdk and pico-ice-sdk
+      include(pico_ice_sdk_import.cmake)
+      project(pico_ice_firmware)
+      pico_sdk_init()
+      
+      # CMake configuration of the application
+      add_executable(firmware firmware.c)
+      target_link_libraries(firmware pico_ice_sdk pico_stdlib)
+      pico_add_extra_outputs(firmware)
 
-Other names than ``pico_ice_firmware`` and ``firmware`` may be chosen.
+   Other names than ``pico_ice_firmware`` and ``firmware`` may be chosen.
+
 It will produce a ``firmware.uf2`` out of ``firmware.c``:
 
 .. code-block::
@@ -85,9 +88,9 @@ Troubleshooting
    .. code-block:: shell
 
       $ cd build
-      $ cmake ..
+      $ cmake .. # download the SDK if not yet done
       $ sed -i '/new_delete.cpp/ d' _deps/pico-sdk-src/src/rp2_common/pico_standard_link/CMakeLists.txt
-      $ cmake ..
+      $ cmake .. # rebuild the Makefile with the fix
 
 The GPIO LEDs do not turn on
    Unlike the Raspberry Pi Pico board, which has a green LED attached to the GPIO pin 25,
