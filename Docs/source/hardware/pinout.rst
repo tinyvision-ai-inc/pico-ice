@@ -107,6 +107,9 @@ RP2040 pinout
    QSPI_SD2   QSPI_SD2             │
    QSPI_SD3   QSPI_SD3             │
 
+   USB_DP     USB_P                │ USB
+   USB_DM     USB_N                │
+
 
 iCE40 pinout
 ------------
@@ -161,9 +164,9 @@ iCE40 pinout
    IOT_50b    ICE_PMOD_B_A2        │
    IOT_51a    ICE_PMOD_B_B1        │
 
-   RGB2       ICE_LED_R             │ ICE LEDs
-   RGB0       ICE_LED_G             │
-   RGB1       ICE_LED_B             │
+   RGB2       ICE_LED_R            │ ICE LEDs
+   RGB0       ICE_LED_G            │
+   RGB1       ICE_LED_B            │
 
 
 SRAM and flash pinout
@@ -198,11 +201,10 @@ LEDs pinout
 
 .. code-block::
 
-   GPIO22     PICO_LED_R            │ Pico LEDs
-   GPIO23     PICO_LED_G            │
-   GPIO24     PICO_LED_B            │
+   GPIO22     PICO_LED_R           │ Pico LEDs
+   GPIO23     PICO_LED_G           │
+   GPIO24     PICO_LED_B           │
 
-   RGB2       ICE_LED_R             │ ICE LEDs
-   RGB0       ICE_LED_G             │
-   RGB1       ICE_LED_B             │
-
+   RGB2       ICE_LED_R            │ ICE LEDs
+   RGB0       ICE_LED_G            │
+   RGB1       ICE_LED_B            │
