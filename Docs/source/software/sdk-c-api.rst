@@ -1,6 +1,133 @@
 
+---------------------
+API boards/pico_ice.h
+---------------------
+
+.. c:macro:: _BOARDS_ICE_H
+
+Specific to pico-ice
+
+.. c:macro:: ICE_LED_RED_PIN
+
+   Red LED control pin of the RGB led.
+
+.. c:macro:: ICE_LED_GREEN_PIN
+
+   Green LED control pin of the RGB led.
+
+.. c:macro:: ICE_LED_BLUE_PIN
+
+   Blue LED control pin of the RGB led.
+
+   Pinout between the RP2040 and the FPGA's flash chip.
+   These pins must be set at high-impedance/floating whenever not in use to program the flash chip,
+   to not distrub the FPGA operation, in particular when the FPGA is under initialisation.
+
+.. c:macro:: ICE_FLASH_SPI_SCK_PIN
+
+   Configured as SPI FUNCSEL by ``ice_init_flash()``.
+
+.. c:macro:: ICE_FLASH_SPI_TX_PIN
+
+   Configured as SPI FUNCSEL by ``ice_init_flash()``.
+
+.. c:macro:: ICE_FLASH_SPI_RX_PIN
+
+   Configured as SPI FUNCSEL by ``ice_init_flash()``.
+
+.. c:macro:: ICE_FLASH_SPI_CSN_PIN
+
+   It is configured as GPIO FUNCSEL by ``ice_init_flash()``,
+   and controlled by the flash library.
+
+.. c:macro:: ICE_FPGA_CLOCK_PIN
+
+   The RP2040 pin at which a clock signal is sent, as a source for the ICE40 system clock.
+
+.. c:macro:: TINYVISION_AI_INC_PICO_ICE
+
+   To use for board-detection.
+
+   UART
+   ~~~~
+
+.. c:macro:: PICO_DEFAULT_UART
+
+   Same as the pico-sdk: stdio_init_all() will enable this UART0.
+
+.. c:macro:: PICO_DEFAULT_UART_TX_PIN
+
+   Different than boards/pico.h: same physical location, different GPIO pin.
+
+.. c:macro:: PICO_DEFAULT_UART_RX_PIN
+
+   Different than boards/pico.h: same physical location, different GPIO pin.
+
+   LED
+   ~~~
+
+.. c:macro:: PICO_DEFAULT_LED_PIN
+
+   The GPIO25 used by pico-sdk is used for sending the clock over to the FPGA.
+   There are three LED pins (RGB): GPIO22 (red), GPIO23 (green), GPIO24 (blue).
+
+   I2C
+   ~~~
+
+.. c:macro:: PICO_DEFAULT_I2C
+
+.. c:macro:: PICO_DEFAULT_I2C_SDA_PIN
+
+.. c:macro:: PICO_DEFAULT_I2C_SCL_PIN
+
+   SPI
+   ~~~
+
+.. c:macro:: PICO_DEFAULT_SPI
+
+   The communication with the flash is done via SPI1,
+   letting SPI0 for the user like in the pico-sdk.
+   The pinout is unchanged.
+
+.. c:macro:: PICO_DEFAULT_SPI_SCK_PIN
+
+.. c:macro:: PICO_DEFAULT_SPI_TX_PIN
+
+.. c:macro:: PICO_DEFAULT_SPI_RX_PIN
+
+.. c:macro:: PICO_DEFAULT_SPI_CSN_PIN
+
+   FLASH
+   ~~~~~
+   
+   This is the internal flash used by the RP2040 chip,
+   not the flash used by the ICE40 FPGA.
+
+.. c:macro:: PICO_BOOT_STAGE2_CHOOSE_W25Q080
+
+   The pico-ice uses the same chip except with a larger size, and it also supports QSPI:
+   https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/boot_stage2/boot2_w25q080.S
+
+.. c:macro:: PICO_FLASH_SPI_CLKDIV
+
+   The pico-ice has the same flash chip family as the pico with the same clock speed.
+
+.. c:macro:: PICO_FLASH_SIZE_BYTES
+
+   The flash chip is W25Q32JVSSIQ: twice larger than the pico.
+
+.. c:macro:: PICO_SMPS_MODE_PIN
+
+   Changed from the default pico-board to not enable it at all time (due to the RGB LED driving it up).
+   Drive high to force power supply into PWM mode (lower ripple on 3V3 at light loads)
+   It is the PICO_PMOD_A4 pin.
+
+.. c:macro:: PICO_RP2040_B0_SUPPORTED
+
+   Nearly all RP2040 chips sold on 2022 are B0 or B1 iterations, so B0 features are guaranteed to be supported.
+
 --------------------
-API pico-ice/flash.h
+API pico_ice/flash.h
 --------------------
 
 API for communicating with flash chips: reading and writing.
@@ -10,21 +137,6 @@ API for communicating with flash chips: reading and writing.
 .. c:macro:: spi_fpga_flash
 
    The flash peripheral instance that is connected to the FGPA's flash chip.
-
-.. c:macro:: ICE_FPGA_FLASH_SPI_SCK_PIN
-
-.. c:macro:: ICE_FPGA_FLASH_SPI_TX_PIN
-
-.. c:macro:: ICE_FPGA_FLASH_SPI_RX_PIN
-
-.. c:macro:: ICE_FPGA_FLASH_SPI_CSN_PIN
-
-   Pinout between the RP2040 and the FPGA's flash chip.
-   These pins must be set at high-impedance/floating whenever not in use to program the flash chip,
-   to not distrub the FPGA operation, in particular when the FPGA is under initialisation.
-   This is handled by ``ice_flash_program()``.
-   
-   Each pin must be configured as SPI, except the CSN pin, to be set as a GPIO pin.
 
 .. c:function:: void flash_read(spi_inst_t *spi, uint8_t pin, uint32_t addr, uint8_t *buf, size_t sz);
 
@@ -53,15 +165,11 @@ API for communicating with flash chips: reading and writing.
    :param pin: The CS GPIO pin of the RP2040 to use.
 
 ------------------
-API pico-ice/ice.h
+API pico_ice/ice.h
 ------------------
 
 High-level API for driving the board.
 It is under heavy development and subject to change at any time!
-
-.. c:macro:: ICE_FPGA_CLOCK_PIN
-
-   The RP2040 pin at which a clock signal is sent, as a source for the ICE40 system clock.
 
 .. c:function:: void ice_init_flash(void);
 
