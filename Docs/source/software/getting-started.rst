@@ -63,7 +63,7 @@ For example, reading from flash:
 .. code-block:: C
 
    #include "pico/stdlib.h"
-   #include "pico-ice/flash.h"
+   #include "pico_ice/ice.h"
    
    int
    main(void)
@@ -97,3 +97,9 @@ The GPIO LEDs do not turn on
    the pico-ice has three LEDs attached to the GPIO pin 22 (red), pin 23 (green), pin 24 (blue)
    Moreover, the leds are "active-low", so you would need to turn their pin down for them to
    be turned on.
+
+Using some RP2040 peripheral cause various bugs.
+   In order to power the FPGA, some peripherals and GPIO pins are in use by the pico-ice-sdk.
+   In case both the firmware and SDK use the same peripheral, it is possible to use another free peripheral, or if none left, disable the feature of the SDK
+   The ``ice_init_all()`` is responsible for setting-up all peripherals used by the SDK.
+   Instead, calling manually each ``ice_init_<feature>()`` of interest permits to select what to enable or not in the board, and therefore keeping some more peripherals for the user.
