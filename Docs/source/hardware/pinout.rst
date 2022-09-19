@@ -65,8 +65,8 @@ RP2040 pinout
    GPIO2     ICE_SCK               │
    GPIO3     ICE_SI                │
 
-   GPIO4     IOT_38b               │ Pico-FPGA bus
-   GPIO5     IOT_36b               │
+   GPIO4 TX  IOT_38b RX  (UART)    │ Pico-FPGA bus
+   GPIO5 RX  IOT_36b TX  (UART)    │
    GPIO6     IOB_23b               │
    GPIO7     IOB_29b               │
    GPIO8     IOT_39a               │
