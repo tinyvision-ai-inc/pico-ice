@@ -103,3 +103,11 @@ Using some RP2040 peripheral cause various bugs.
    In case both the firmware and SDK use the same peripheral, it is possible to use another free peripheral, or if none left, disable the feature of the SDK
    The ``ice_init_all()`` is responsible for setting-up all peripherals used by the SDK.
    Instead, calling manually each ``ice_init_<feature>()`` of interest permits to select what to enable or not in the board, and therefore keeping some more peripherals for the user.
+
+Flashing an UF2 file does not change the memory neither restart the board
+   The UF2 file format contains the destination addresses of each block.
+   In case you used other tools than those provided,
+   it is possible that that the addresses were outside the valid range of the flash chip.
+   Try to copy the CURRENT.UF2 to NEW.UF2 upon that same directory, and unmount the device.
+   This should trigger a restart of the device.
+   This restart device should appear from the debug UART: ``board_dfu_complete: rebooting``.
