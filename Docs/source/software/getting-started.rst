@@ -63,12 +63,20 @@ For example, reading from flash:
 .. code-block:: C
 
    #include "pico/stdlib.h"
+   #include "pico/stdio.h"
    #include "pico_ice/ice.h"
    
    int
    main(void)
    {
-       // TODO: once the API gets ready, implement an example
+       stdio_init_all();
+       ice_init_defaults();
+   
+       for (;;) {
+           // Application code here
+
+           ice_usb_task();
+       }
    
        return 0;
    }
