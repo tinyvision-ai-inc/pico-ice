@@ -19,6 +19,12 @@ Specific to pico-ice
 
    Blue LED control pin of the RGB led.
 
+   Pinout between the RP2040 and the FPGA's UART port.
+
+.. c:macro:: ICE_FPGA_UART_TX_PIN
+
+.. c:macro:: ICE_FPGA_UART_RX_PIN
+
    Pinout between the RP2040 and the FPGA's flash chip.
    These pins must be set at high-impedance/floating whenever not in use to program the flash chip,
    to not distrub the FPGA operation, in particular when the FPGA is under initialisation.
@@ -44,12 +50,20 @@ Specific to pico-ice
 
    The RP2040 pin at which a clock signal is sent, as a source for the ICE40 system clock.
 
+.. c:macro:: ICE_FPGA_FLASH_SIZE_BYTES
+
+   The size of the W25Q32JVSSIQ flash chip also connected to the FPGA.
+
 .. c:macro:: TINYVISION_AI_INC_PICO_ICE
 
    To use for board-detection.
 
    UART
    ~~~~
+
+.. c:macro:: uart_fpga
+
+   UART interface transferring everything received over an USB UART interface (USB CDC ACM).
 
 .. c:macro:: PICO_DEFAULT_UART
 
@@ -103,6 +117,10 @@ Specific to pico-ice
    This is the internal flash used by the RP2040 chip,
    not the flash used by the ICE40 FPGA.
 
+.. c:macro:: spi_fpga_flash
+
+   The flash peripheral instance that is connected to the FGPA's flash chip.
+
 .. c:macro:: PICO_BOOT_STAGE2_CHOOSE_W25Q080
 
    The pico-ice uses the same chip except with a larger size, and it also supports QSPI:
@@ -130,13 +148,9 @@ Specific to pico-ice
 API pico_ice/flash.h
 --------------------
 
-API for communicating with flash chips: reading and writing.
+Low-level API for communicating with flash chips: reading and writing.
 
 .. c:macro:: FLASH_PAGE_SIZE
-
-.. c:macro:: spi_fpga_flash
-
-   The flash peripheral instance that is connected to the FGPA's flash chip.
 
 .. c:function:: void flash_read(spi_inst_t *spi, uint8_t pin, uint32_t addr, uint8_t *buf, size_t sz);
 
@@ -164,6 +178,24 @@ API for communicating with flash chips: reading and writing.
    :param spi: The SPI interface of the RP2040 to use.
    :param pin: The CS GPIO pin of the RP2040 to use.
 
+-------------------
+API pico_ice/fpga.h
+-------------------
+
+Low-level API for interacting with the FPGA chip.
+
+.. c:function:: void fpga_init_clock(uint8_t mhz);
+
+   Initialise the FPGA clock at the given frequency.
+   
+   :param mhz: The clock speed in MHz. Valid values: 48MHz, 24MHz, 16MHz 12MHz, 8MHz, 6MHz, 4MHz, 3MHz, 2MHz, 1MHz.
+
+.. c:function:: void fpga_init_uart(uint32_t mhz);
+
+   Initialise the UART peripheral for communication with the FPGA, at the given baudrate.
+   
+   :param mhz: The baud rate speed in MHz. Can be any value supported by the pico-sdk.
+
 ------------------
 API pico_ice/ice.h
 ------------------
@@ -171,12 +203,36 @@ API pico_ice/ice.h
 High-level API for driving the board.
 It is under heavy development and subject to change at any time!
 
+.. c:function:: void ice_init_defaults(void);
+
+   Call all functions below with default values:
+   no need to call any other initialization function when this is called.
+
 .. c:function:: void ice_init_flash(void);
 
    Initialise the SPI1 peripheral, dedicated to flashing the FPGA.
 
-.. c:function:: void ice_init_fpga_clock(uint8_t mhz);
+.. c:function:: void ice_init_usb(void);
 
-   Initialise the FPGA clock at the given frequency.
-   
-   :param mhz: the clock speed in MHz. Valid values: 48MHz, 24MHz, 16MHz 12MHz, 8MHz, 6MHz, 4MHz, 3MHz, 2MHz, 1MHz.
+   Initialise the TinyUSB library, enabling the UART (CDC) and
+   drag-and-drop (MSC) interfaces.
+
+.. c:function:: void ice_init_fpga(void);
+
+   Initialise the FPGA chip and communication with it.
+   This will start the FPGA.
+
+.. c:function:: void ice_usb_task(void);
+
+   Run all code related to USB in a non-blocking way.
+   It is typically to be placed at the end of the main application loop.
+
+-------------------
+API pico_ice/priv.h
+-------------------
+
+All functions defined for internal use, not useful for using the SDK.
+
+.. c:function:: void tud_task_cdc(void);
+
+.. c:function:: void uf2_init(void);
