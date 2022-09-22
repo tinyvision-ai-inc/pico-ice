@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name "pico-ice")(type "Legacy")(uri "E:/Data/local_github/pico-ice/Board/Rev0/pico-ice.lib")(options "")(descr ""))
+  (lib (name "pico-ice_minimal")(type "Legacy")(uri "E:/Data/local_github/pico-ice/Board/Rev0/pico-ice_minimal.lib")(options "")(descr ""))
+  (lib (name "UPduino_v3.0")(type "Legacy")(uri "E:/Data/local_github/UPduino-v3.0/Board/v3.01/UPduino_v3.0.lib")(options "")(descr ""))
+)
