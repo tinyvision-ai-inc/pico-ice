@@ -5764,6 +5764,10 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 72007f63-001a-4bd7-8ea9-cdc712588ffb)
   )
+  (label "+3V3_STDBY" (at 167.64 271.78 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 73c6e315-6498-47a5-ac9a-8fad933ec739)
+  )
   (label "ICE_10|PB" (at 143.51 246.38 180)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 75fbbe63-2ea2-4f1a-bb00-4e3aadbc273f)
@@ -9017,22 +9021,6 @@
     (pin "1" (uuid ad88df92-7c88-4ed6-8084-38c4c489ff7a))
   )
 
-  (symbol (lib_id "UPduino_v3.0:power_+1V2") (at 167.64 271.78 270) (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid 46b497eb-ea98-4810-9fd7-255f276a25ef)
-    (property "Reference" "#PWR04" (id 0) (at 163.83 271.78 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+1V2" (id 1) (at 173.355 271.78 90))
-    (property "Footprint" "" (id 2) (at 167.64 271.78 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (id 3) (at 167.64 271.78 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid ead296d6-cce2-480b-a515-ea67cfa5618e))
-  )
-
   (symbol (lib_id "UPduino_v3.0:Device_C") (at 192.405 83.82 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 4c8794db-640b-42a7-9d72-7d010a7a757a)
@@ -10754,9 +10742,6 @@
     )
     (path "/00000000-0000-0000-0000-00005f069fc0"
       (reference "#PWR03") (unit 1) (value "VBUS") (footprint "")
-    )
-    (path "/46b497eb-ea98-4810-9fd7-255f276a25ef"
-      (reference "#PWR04") (unit 1) (value "+1V2") (footprint "")
     )
     (path "/00000000-0000-0000-0000-00005f093d45"
       (reference "#PWR05") (unit 1) (value "GND") (footprint "")
