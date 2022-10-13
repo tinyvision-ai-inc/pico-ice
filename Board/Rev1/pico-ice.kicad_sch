@@ -8500,13 +8500,13 @@
     (pin "1" (uuid 2c9e1488-f194-4b7a-9266-7ebe2ffd8138))
   )
 
-  (symbol (lib_id "Device:R_Pack04_Split") (at 389.255 108.585 0) (unit 3)
+  (symbol (lib_id "Device:R_Pack04_Split") (at 389.255 108.585 0) (unit 4)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 060a66bf-91fa-4967-9051-4826e33cd62d)
-    (property "Reference" "RN4" (id 0) (at 391.795 107.3149 0)
+    (property "Reference" "RN1" (id 0) (at 391.16 107.3149 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "10K" (id 1) (at 391.795 109.8549 0)
+    (property "Value" "10K" (id 1) (at 391.16 109.8549 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "" (id 2) (at 387.223 108.585 90)
@@ -8679,10 +8679,10 @@
   (symbol (lib_id "Device:R_Pack04_Split") (at 380.365 108.585 0) (unit 3)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 1f9f333c-cd98-4d5e-b6a6-761e3b059cdb)
-    (property "Reference" "RN3" (id 0) (at 382.905 107.3149 0)
+    (property "Reference" "RN1" (id 0) (at 382.27 107.3149 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "10K" (id 1) (at 382.905 109.8549 0)
+    (property "Value" "10K" (id 1) (at 382.27 109.8549 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "" (id 2) (at 378.333 108.585 90)
@@ -10012,7 +10012,7 @@
     (pin "2" (uuid 3bd64fac-3afb-45b0-9473-25a581cbeb62))
   )
 
-  (symbol (lib_id "Device:R_Pack04_Split") (at 334.01 106.68 0) (unit 3)
+  (symbol (lib_id "Device:R_Pack04_Split") (at 334.01 106.68 0) (unit 2)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid b536f62d-42ab-4d68-9bf3-5fe588f1fb8b)
     (property "Reference" "RN1" (id 0) (at 336.55 105.4099 0)
@@ -10037,10 +10037,10 @@
     (pin "5" (uuid fae93a48-44f0-4f7f-98ef-318253ed28ac))
   )
 
-  (symbol (lib_id "Device:R_Pack04_Split") (at 373.38 108.585 0) (unit 3)
+  (symbol (lib_id "Device:R_Pack04_Split") (at 373.38 108.585 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid b7b0d805-8186-46c8-a166-f78752d26d44)
-    (property "Reference" "RN2" (id 0) (at 375.92 107.3149 0)
+    (property "Reference" "RN1" (id 0) (at 375.92 107.3149 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10K" (id 1) (at 375.92 109.8549 0)
@@ -11226,17 +11226,17 @@
     (path "/6f5f81a4-aa60-4d97-9149-949052c9aac6"
       (reference "R25") (unit 1) (value "27") (footprint "Resistor_SMD:R_0402_1005Metric")
     )
-    (path "/b536f62d-42ab-4d68-9bf3-5fe588f1fb8b"
-      (reference "RN1") (unit 3) (value "10K") (footprint "")
-    )
     (path "/b7b0d805-8186-46c8-a166-f78752d26d44"
-      (reference "RN2") (unit 3) (value "10K") (footprint "")
+      (reference "RN1") (unit 1) (value "10K") (footprint "")
+    )
+    (path "/b536f62d-42ab-4d68-9bf3-5fe588f1fb8b"
+      (reference "RN1") (unit 2) (value "10K") (footprint "")
     )
     (path "/1f9f333c-cd98-4d5e-b6a6-761e3b059cdb"
-      (reference "RN3") (unit 3) (value "10K") (footprint "")
+      (reference "RN1") (unit 3) (value "10K") (footprint "")
     )
     (path "/060a66bf-91fa-4967-9051-4826e33cd62d"
-      (reference "RN4") (unit 3) (value "10K") (footprint "")
+      (reference "RN1") (unit 4) (value "10K") (footprint "")
     )
     (path "/00000000-0000-0000-0000-00005e374072"
       (reference "SJ1") (unit 1) (value "SHORT") (footprint "Jumper:SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm")
