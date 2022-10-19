@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 0,
+    "active_layer": 36,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_nets": [],
@@ -8,7 +8,7 @@
     "net_color_mode": 1,
     "opacity": {
       "pads": 1.0,
-      "tracks": 1.0,
+      "tracks": 0.5,
       "vias": 1.0,
       "zones": 1.0
     },
@@ -32,18 +32,14 @@
       2,
       3,
       4,
-      5,
       8,
       9,
       10,
-      11,
       12,
       13,
       14,
       15,
       16,
-      17,
-      18,
       19,
       20,
       21,
@@ -62,8 +58,8 @@
       35,
       36
     ],
-    "visible_layers": "0001000_00000001",
-    "zone_display_mode": 0
+    "visible_layers": "0001010_80000001",
+    "zone_display_mode": 1
   },
   "meta": {
     "filename": "pico-ice.kicad_prl",
