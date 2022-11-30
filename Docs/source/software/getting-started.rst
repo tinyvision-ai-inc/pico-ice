@@ -4,82 +4,9 @@ This is a guide for how to build application running on the RP2040 microcontroll
 
 The `pico-ice-sdk <https://github.com/tinyvision-ai-inc/pico-ice-sdk/>`_ provides an API for communicating with the pico-ice hardware, also allowing to use the Raspberry Pi `pico-sdk <https://github.com/raspberrypi/pico-sdk/>`_ directly.
 
+The pico-ice-sdk is organised as a normal pico-sdk project with `pico_ice` custom board.
 
-CMake setup
------------
-
-``pico_ice_sdk_import.cmake``
-
-   `download`_
-
-   It clones both the pico-sdk and pico-ice-sdk, replacing Raspberry Pi's ``pico_sdk_import.cmake``.
-
-.. _download: https://raw.githubusercontent.com/tinyvision-ai-inc/pico-ice-sdk/main/cmake/pico_ice_sdk_import.cmake
-
-``CMakeLists.txt``
-
-   .. code-block:: cmake
-    
-      cmake_minimum_required(VERSION 3.13)
-      
-      ## CMake configuration of pico-sdk and pico-ice-sdk
-      include(pico_ice_sdk_import.cmake)
-      project(pico_ice_firmware)
-      pico_sdk_init()
-      
-      # CMake configuration of the application
-      add_executable(firmware firmware.c)
-      target_link_libraries(firmware pico_ice_sdk pico_stdlib)
-      pico_add_extra_outputs(firmware)
-
-   Other names than ``pico_ice_firmware`` and ``firmware`` may be chosen.
-
-It will produce a ``firmware.uf2`` out of ``firmware.c``:
-
-.. code-block::
-
-   $ ls
-   CMakeLists.txt  pico_ice_sdk_import.cmake  firmware.c
-   $ mkdir -p build
-   $ cd build
-   $ cmake ..
-   [...]
-   $ make
-   [...]
-
-This should produce a ``firmware.uf2``, that can be loaded onto the pico-ice RP2040 flash.
-
-
-Using the SDK
--------------
-
-The source files, as listed in ``add_executable()``, can use the pico-ice-sdk API documented here to communicate with the hardware of the pico-ice boad.
-Or it can use the `pico-sdk API <https://raspberrypi.github.io/pico-sdk-doxygen/>`_ for using use the RP2040 features, as long as it does not clash with the pice-ice-sdk.
-
-The headers in the ``pico-ice`` directory can be included to access the functions described in the C API.
-
-For example, reading from flash:
-
-.. code-block:: C
-
-   #include "pico/stdlib.h"
-   #include "pico/stdio.h"
-   #include "pico_ice/ice.h"
-   
-   int
-   main(void)
-   {
-       stdio_init_all();
-       ice_init_defaults();
-   
-       for (;;) {
-           // Application code here
-
-           ice_usb_task();
-       }
-   
-       return 0;
-   }
+A `template <https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/example/pico-template/>`_ shows how everything can be to get started.
 
 
 Troubleshooting
@@ -108,8 +35,8 @@ The GPIO LEDs do not turn on
 
 Using some RP2040 peripheral cause various bugs.
    In order to power the FPGA, some peripherals and GPIO pins are in use by the pico-ice-sdk.
-   In case both the firmware and SDK use the same peripheral, it is possible to use another free peripheral, or if none left, disable the feature of the SDK
-   The ``ice_init_all()`` is responsible for setting-up all peripherals used by the SDK.
+   In case both the firmware and SDK use the same peripheral, it is possible to use another free peripheral instance, or if none left, disable the feature of the SDK
+   The ``ice_init()`` is responsible for setting-up all peripherals used by the SDK.
    Instead, calling manually each ``ice_init_<feature>()`` of interest permits to select what to enable or not in the board, and therefore keeping some more peripherals for the user.
 
 Flashing an UF2 file does not change the memory neither restart the board
