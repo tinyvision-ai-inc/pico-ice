@@ -34,5 +34,6 @@ Here are some resources for you:
 * [AssemblyDrawing](./Board/Rev1/bom/ibom.html)
 * [Pico Blinking LED]()
 * [FPGA Blinking LED]()
+* [pico-ice SDK](https://github.com/tinyvision-ai-inc/pico-ice-sdk)
 
 ## Useful links
