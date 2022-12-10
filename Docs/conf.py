@@ -17,10 +17,8 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
-import sys
-sys.path.insert(0, os.path.abspath('../source'))
-
+import subprocess
+subprocess.call("doxygen", shell=True)
 
 # -- General configuration ------------------------------------------------
 
@@ -31,7 +29,7 @@ sys.path.insert(0, os.path.abspath('../source'))
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.todo', 'breathe']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -64,7 +62,7 @@ release = '0.1'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -109,7 +107,7 @@ html_sidebars = {
 }
 
 
-html_favicon = 'favicon_itg_icon.ico'
+html_favicon = 'images/favicon_itg_icon.ico'
 
 # -- Options for HTMLHelp output ------------------------------------------
 
@@ -167,5 +165,11 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
-#def setup (app):
-#    app.add_stylesheet('css/custom.css')
+def setup (app):
+    app.add_css_file('css/custom.css')
+
+
+# -- Options for Breathe extension ----------------------------------------
+
+breathe_projects = { "pico-ice": "xml" }
+breathe_default_project = "pico-ice"
