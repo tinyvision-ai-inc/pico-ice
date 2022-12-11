@@ -5,7 +5,10 @@ PROJECT_NAME           = pico-ice-sdk
 PROJECT_BRIEF          = C-based SDK for the Pico-ice board
 
 # Driver code from this repository
-INPUT                  = ../pico-ice-sdk
+INPUT                  = \
+    ../pico-ice-sdk/src \
+    ../pico-ice-sdk/include/boards/ \
+    ../pico-ice-sdk/include/ice/
 
 # Output within the Sphinx source directory for DoxySphinx integration.
 OUTPUT_DIRECTORY       = .
@@ -31,4 +34,4 @@ FILE_PATTERNS          = *.c *.h
 EXTRACT_ALL            = YES
 
 # Dive down subdirectories if needed.
-RECURSIVE              = YES
+RECURSIVE              = NO
