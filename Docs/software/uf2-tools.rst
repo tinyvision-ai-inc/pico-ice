@@ -14,9 +14,16 @@ an USB disk named ``pico-ice`` provides a file named ``CURRENT.UF2`` with the co
 and permits to load new UF2 files that will program the flash chip.
 
 
-.. program:: bin2uf2
+bin2uf2
+-------
 
-   Produce an UF2 formatted file as a result of one or multiple binary input files.
+.. code::
+
+   usage: bin2uf2 [-f familyID] [-o file.uf2] [0x01230000 file.uf2]...
+
+Produce an UF2 formatted file as a result of one or multiple binary input files.
+
+.. program:: bin2uf2
 
 .. option:: -f familyID
 
@@ -27,18 +34,27 @@ and permits to load new UF2 files that will program the flash chip.
    Output file to which UF2 data is written.
    If ommited, stdout is used.
 
-.. option:: [ 0x01230000 file.bin ]...
+.. option:: [0x01230000 file.bin]...
 
-   Input files are specified as pairs of arguments:
+   Input files are specified as pairs of arguments.
+   Multiple pairs can be specified to aggregate multiple inputs.
+   The pair is made of:
 
    * the address at which to write the data, i.e. here ``0x01230000``,
    * the path to the file which contains the data, i.e. here ``file.bin``, use ``-`` for stdin.
 
 
-.. program:: uf22bin
+uf22bin
+-------
 
-   Decode a single UF2 input file and write the output as a plain binary.
-   An optional offset permits to avoid large files composed of only NUL bytes (0x00).
+.. code::
+
+   usage: uf22bin [-a 0x01230000] [-o file.bin] [file.uf2]
+
+Decode a single UF2 input file and write the output as a plain binary.
+An optional offset permits to avoid large files composed of only NUL bytes (0x00).
+
+.. program:: uf22bin
 
 .. option:: -o file.bin
 
@@ -58,9 +74,16 @@ and permits to load new UF2 files that will program the flash chip.
     Input file from which the data is read.
 
 
-.. program:: uf2dump
+uf2dump
+-------
 
-   Dump the content of an UF2 file as human-readable text for inspection and debugging purposes.
+.. code::
+
+   usage: uf2dump [file.uf2]
+
+Dump the content of an UF2 file as human-readable text for inspection and debugging purposes.
+
+.. program:: uf2dump
 
 .. option:: file.uf2
 
