@@ -21,7 +21,12 @@ Pico-Ice Documentation
    :hidden:
 
    software/getting-started
-   software/sdk-c-api
+   software/uf2-tools
+   software/pico_ice_flash
+   software/pico_ice_fpga
+   software/pico_ice_sdk
+   software/pico_ice_smem
+   software/pico_ice_usb
 
 .. toctree::
    :maxdepth: 2
