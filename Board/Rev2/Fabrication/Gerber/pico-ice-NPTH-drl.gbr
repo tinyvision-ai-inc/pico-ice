@@ -1,0 +1,34 @@
+%TF.GenerationSoftware,KiCad,Pcbnew,(6.0.5)*%
+%TF.CreationDate,2022-12-13T18:03:39-08:00*%
+%TF.ProjectId,pico-ice,7069636f-2d69-4636-952e-6b696361645f,REV1*%
+%TF.SameCoordinates,Original*%
+%TF.FileFunction,NonPlated,1,4,NPTH,Drill*%
+%TF.FilePolarity,Positive*%
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW (6.0.5)) date 2022-12-13 18:03:39*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%TA.AperFunction,ComponentDrill*%
+%ADD10C,0.650000*%
+%TD*%
+%TA.AperFunction,ComponentDrill*%
+%ADD11C,2.700000*%
+%TD*%
+G04 APERTURE END LIST*
+D10*
+%TO.C,J1*%
+X69500000Y-128337000D03*
+X75280000Y-128337000D03*
+D11*
+%TO.C,H1*%
+X63500000Y-76200000D03*
+%TO.C,H4*%
+X63500000Y-132080000D03*
+%TO.C,H2*%
+X81280000Y-76200000D03*
+%TO.C,H3*%
+X81280000Y-132080000D03*
+M02*
