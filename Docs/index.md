@@ -34,7 +34,7 @@ Board and Firmware features:
 
 Here are some resources for you:
 
-* [Documentation](https://docs.tinyvision.ai/pico-ice/)
+* [Documentation](https://tinyvision-ai-inc.github.io/pico-ice/)
 * [Git Repository](https://github.com/tinyvision-ai-inc/pico-ice) (hardware)
 * [Git Repository](https://github.com/tinyvision-ai-inc/pico-ice-sdk) (SDK)
 * [Discord channel](https://discord.gg/3qbXujE)
