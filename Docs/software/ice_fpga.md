@@ -12,7 +12,7 @@ This function is called by `ice_fpga_init()`.
 
 ### `void ice_fpga_init_uart(uint baudrate_hz)`
 
-`baudrate_hz` - The baud rate speed in MHz.
+`baudrate_hz` - The baud rate speed in Hz.
 Can be any value supported by the
 [pico-sdk](https://raspberrypi.github.io/pico-sdk-doxygen/group__hardware__uart.html).
 
