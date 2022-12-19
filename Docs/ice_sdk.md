@@ -1,14 +1,22 @@
-`ice_sdk.h`
------------
+---
+title: ice_sdk.h
+layout: default
+parent: pico-ice-sdk
+---
+
+# `ice_sdk.h`
+
 High-level API for controlling everything supported by the SDK in one shot.
 
-### `init_rgb_led(void)`
+
+## `init_rgb_led(void)`
 
 Initialise the GPIO pins for use 
 
 This function is called by `ice_sdk_init()`.
 
-### `void ice_sdk_init(void)`
+
+## `void ice_sdk_init(void)`
 
 Initialise the SDK with preset default.
 

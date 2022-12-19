@@ -1,6 +1,13 @@
+---
+title: Pinout
+layout: default
+parent: pico-ice
+---
+
 Pinout
 ======
 
+{: .lh-0 }
 ```
                                 ,────────────────────────────.
                                /.───.           ┌'────'┐ .───.\
@@ -56,6 +63,7 @@ GPOUT3│              │        │ CK  BT  │            │  Vb  G  │    
 RP2040 pinout
 -------------
 
+{: .lh-0 }
 ```
 GPIO0 TX  IOT_38b RX  (UART)    │ Pico-FPGA bus
 GPIO1 RX  IOT_36b TX  (UART)    │
@@ -111,6 +119,7 @@ USB_DM     USB_N                │
 iCE40 pinout
 ------------
 
+{: .lh-0 }
 ```
 IOB_0a     ICE_46               │ iCE PMOD
 IOB_2a     ICE_47               │
@@ -168,6 +177,7 @@ RGB1       LED_B                │
 SRAM and flash pinout
 ---------------------
 
+{: .lh-0 }
 ```
 IOB_34a    ICE_SCK              │ iCE Flash
 IOB_35b    ICE_SSN              │

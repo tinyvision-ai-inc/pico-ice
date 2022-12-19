@@ -1,8 +1,16 @@
+---
+title: UF2 tools
+layout: default
+parent: pico-ice
+---
+
 UF2 tools
 =========
 
-A toolbox for working with the UF2 format.
-This can be used for:
+A toolbox for working with the UF2 format,
+part of the [`pico-ice-sdk`](pico_ice_sdk.html).
+
+They can be used for:
 
 - converting the binary file with the bitstream to send to the FPGA flash,
 - loading custom data at a chosen address in the flash,
