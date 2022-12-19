@@ -1,6 +1,7 @@
 # pico-ice
 
-<img src="./Docs/images/pico-ice_v2_front.jpg" alt="pico-ice v2.0 Front" width="400"/>
+![](Docs/images/pico_ice_v2_front.jpg)
+![](Docs/images/pico_ice_v2_back.jpg)
 
 ## pico-ice: PCB Design Files, Designs, Documentation
 

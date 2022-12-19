@@ -1,5 +1,11 @@
-pico_ice_usb
-------------
+---
+title: ice_usb.h
+layout: default
+parent: pico-ice-sdk
+---
+
+# `ice_usb.h`
+
 Library implementing support for the
 [TinyUSB](https://github.com/hathach/tinyusb/) as well as
 [TinyUF2](https://github.com/adafruit/tinyuf2/) stacks.
@@ -10,7 +16,7 @@ Together, they provide the following **USB services**:
 
 * An USB storage interface with a fake FAT filesystem,
   permitting one to upload FPGA code
-  (see the [gateware](../gateware/getting_started.html) doc).
+  (see the [gateware](../gateware/) doc).
   This is MSC0.
 
 * An USB UART interface bound to the pico-sdk stdin/stdout,
@@ -24,7 +30,7 @@ Together, they provide the following **USB services**:
   This is ACM1.
 
 
-### `void tud_task(void)`
+## `void tud_task(void)`
 
 Function from the TinyUSB library that must be called frequently so that the USB features remain available.
 
@@ -34,7 +40,7 @@ program loop, as well as within every blocking function looping over a rare even
 For instance, reading user input with a timeout, calling `tud_task()` before trying to read user input again.
 
 
-### `void ice_usb_init(void)`
+## `void ice_usb_init(void)`
 
 Initialize the TinyUSB library, enabling the UART (CDC) and drag-and-drop (MSC) interfaces.
 
