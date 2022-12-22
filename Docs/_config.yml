@@ -1,7 +1,7 @@
 title: pico-ice
 description: An devboard featuring both an RP2040 and an iCE40
 theme: just-the-docs
-source: Docs
+source: .
 
 url: https://tinyvision-ai-inc.github.io/pico-ice/
 
