@@ -26,7 +26,8 @@ and permits to load new UF2 files that will program the flash chip.
 ---------
 
 ```
-usage: bin2uf2 [-f familyID] [-o file.uf2] [0x01230000 file.uf2]...
+usage: bin2uf2 [-f familyID] [-o file.uf2] file.bin
+usage: bin2uf2 [-f familyID] [-o file.uf2] [0x01230000 file.bin]...
 ```
 
 Produce an UF2 formatted file as a result of one or multiple binary input files.
@@ -40,14 +41,18 @@ Set the ``familyID`` field of UF2 to something else than the default ``0x792e726
 Output file to which UF2 data is written.
 If ommited, stdout is used.
 
+### `file.bin`
+
+When there is a single argument after the flags, it is interpreted as
+the path toward a binary file that will be converted into an UF2 file,
+mapped at address 0x00000000.
+
 ### `[0x01230000 file.bin]...`
 
-Input files are specified as pairs of arguments.
-Multiple pairs can be specified to aggregate multiple inputs.
-The pair is made of:
+When there are more than 1 argument after the flags, they must be grouped by pairs, with:
 
-* the address at which to write the data, i.e. here ``0x01230000``,
-* the path to the file which contains the data, i.e. here ``file.bin``, use ``-`` for stdin.
+* first, the address at which to write the data, i.e. here ``0x01230000``,
+* after, the path to the file which contains the data, i.e. here ``file.bin``, use ``-`` for stdin.
 
 
 `uf22bin`
