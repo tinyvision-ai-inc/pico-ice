@@ -8,6 +8,7 @@ parent: pico-ice-sdk
 
 High-level API for controlling everything supported by the SDK in one shot.
 
+---
 
 ## `init_rgb_led(void)`
 
@@ -15,6 +16,7 @@ Initialise the GPIO pins for use
 
 This function is called by `ice_sdk_init()`.
 
+---
 
 ## `void ice_sdk_init(void)`
 

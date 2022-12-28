@@ -8,6 +8,7 @@ parent: pico-ice-sdk
 
 Low-level API for interacting with the FPGA chip.
 
+---
 
 ## `void ice_fpga_init_clock(uint8_t frequency_mhz)`
 
@@ -17,6 +18,7 @@ The RP2040 exorts its own crystal-based clock to the iCE40, through the dedicate
 
 This function is called by `ice_fpga_init()`.
 
+---
 
 ## `void ice_fpga_init_uart(uint baudrate_hz)`
 
@@ -28,6 +30,7 @@ Initialise the UART peripheral for communication with the FPGA ([pinout](../hard
 
 This function is called by `ice_fpga_init()`.
 
+---
 
 ## `void ice_fpga_init(void)`
 
@@ -36,6 +39,7 @@ This will start the FPGA clock and take it out of reset.
 
 This function is called by [`ice_sdk_init()`](ice_sdk.html).
 
+---
 
 ## `bool ice_fpga_reset(void)`
 
@@ -44,6 +48,7 @@ It must be called before ice_flash_init();
 
 It will wait that the configuration is finished, once the FPGA sets CDONE high.
 
+---
 
 ## `void ice_fpga_halt(void)`
 

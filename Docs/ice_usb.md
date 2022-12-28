@@ -29,6 +29,7 @@ Together, they provide the following **USB services**:
   (see the [pinout](../hardware/pinout.html) doc).
   This is ACM1.
 
+---
 
 ## `void tud_task(void)`
 
@@ -39,6 +40,7 @@ program loop, as well as within every blocking function looping over a rare even
 
 For instance, reading user input with a timeout, calling `tud_task()` before trying to read user input again.
 
+---
 
 ## `void ice_usb_init(void)`
 
