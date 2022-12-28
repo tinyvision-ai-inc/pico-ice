@@ -18,6 +18,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      BUNDLE_GEMFILE: ${{ github.workspace }}/Docs/Gemfile
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -39,6 +41,8 @@ jobs:
           JEKYLL_ENV: production
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
+        with:
+          path: "Docs/_site"
 
   deploy:
     environment:
