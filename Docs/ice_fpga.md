@@ -12,7 +12,7 @@ Low-level API for interacting with the FPGA chip.
 
 ## `void ice_fpga_init_clock(uint8_t frequency_mhz)`
 
-`frequency_mhz` - Exported clock frequency in MHz. Valid values: 48MHz, 24MHz, 16MHz 12MHz, 8MHz, 6MHz, 4MHz, 3MHz, 2MHz, 1MHz.
+* `frequency_mhz` - Exported clock frequency in MHz. Valid values: 48MHz, 24MHz, 16MHz 12MHz, 8MHz, 6MHz, 4MHz, 3MHz, 2MHz, 1MHz.
 
 The RP2040 exorts its own crystal-based clock to the iCE40, through the dedicated [`CLOCK GPOUT0`](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf) feature.
 
@@ -22,7 +22,7 @@ This function is called by `ice_fpga_init()`.
 
 ## `void ice_fpga_init_uart(uint baudrate_hz)`
 
-`baudrate_hz` - The baud rate speed in Hz.
+* `baudrate_hz` - The baud rate speed in Hz.
 Can be any value supported by the
 [pico-sdk](https://raspberrypi.github.io/pico-sdk-doxygen/group__hardware__uart.html).
 
