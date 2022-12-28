@@ -4,8 +4,7 @@ layout: default
 parent: pico-ice
 ---
 
-UF2 tools
-=========
+# UF2 tools
 
 A toolbox for working with the UF2 format,
 part of the [`pico-ice-sdk`](pico_ice_sdk.html).
@@ -21,9 +20,9 @@ In firmware using the pico-ice-sdk,
 an USB disk named ``pico-ice`` provides a file named ``CURRENT.UF2`` with the content of the flash,
 and permits to load new UF2 files that will program the flash chip.
 
+---
 
-`bin2uf2`
----------
+## `bin2uf2`
 
 ```
 usage: bin2uf2 [-f familyID] [-o file.uf2] file.bin
@@ -54,9 +53,9 @@ When there are more than 1 argument after the flags, they must be grouped by pai
 * first, the address at which to write the data, i.e. here ``0x01230000``,
 * after, the path to the file which contains the data, i.e. here ``file.bin``, use ``-`` for stdin.
 
+---
 
-`uf22bin`
----------
+## `uf22bin`
 
 ```
 usage: uf22bin [-a 0x01230000] [-o file.bin] [file.uf2]
@@ -82,9 +81,9 @@ and the first byte of the output file will contain the data at that specified ad
 
 Input file from which the data is read.
 
+---
 
-`uf2dump`
----------
+## `uf2dump`
 
 ```
 usage: uf2dump [file.uf2]

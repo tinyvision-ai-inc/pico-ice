@@ -4,8 +4,7 @@ layout: default
 parent: pico-ice
 ---
 
-Pinout
-======
+# Pinout
 
 This diagram represents the board, with its buttons, jumpers and LEDs.
 On each side are four rows of double PMODs, along with extra signals.
@@ -67,8 +66,7 @@ GPOUT3│              │        │ CK  BT  │            │  Vb  G  │    
                               └─────────┴────────────┴─────────┘
 ```
 
-RP2040 pinout
--------------
+## RP2040 pinout
 
 {: .lh-0 }
 ```
@@ -123,8 +121,7 @@ USB_DM     USB_N                │
 ```
 
 
-iCE40 pinout
-------------
+## iCE40 pinout
 
 {: .lh-0 }
 ```
@@ -181,8 +178,7 @@ RGB0       LED_G                │
 RGB1       LED_B                │
 ```
 
-SRAM and flash pinout
----------------------
+## SRAM and flash pinout
 
 {: .lh-0 }
 ```
