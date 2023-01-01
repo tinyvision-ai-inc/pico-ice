@@ -1,0 +1,10 @@
+title: pico-ice
+description: An devboard featuring both an RP2040 and an iCE40
+theme: just-the-docs
+source: .
+
+url: https://tinyvision-ai-inc.github.io/pico-ice/
+
+aux_links:
+  pico-ice repo: https://github.com/tinyvision-ai-inc/pico-ice
+  pico-ice-sdk repo: https://github.com/tinyvision-ai-inc/pico-ice-sdk

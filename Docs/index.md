@@ -1,9 +1,14 @@
+---
+title: pico-ice
+layout: home
+nav_order: 1
+has_children: true
+---
+
+![](images/pico_ice_v2_front.jpg)
+![](images/pico_ice_v2_back.jpg)
+
 # pico-ice
-
-![](Docs/images/pico_ice_v2_front.jpg)
-![](Docs/images/pico_ice_v2_back.jpg)
-
-## PCB Design Files, Designs, Documentation
 
 The pico-ice is a small, low cost board with the Raspberry Pi Pico processor (RP2040) and a Lattice Semiconductor iCE40UP5K FPGA. The board features independent flash for the FPGA and RP2040, low power SSRAM, a couple of pushbuttons and a 3 color LED with _all_ FPGA and RP2040 pins brought out to easy to use 0.1" header pins (arranged as PMOD's) for fast prototyping.
 
@@ -29,7 +34,7 @@ Board and Firmware features:
 
 Here are some resources for you:
 
-* [Documentation](https://docs.tinyvision.ai/pico-ice/)
+* [Documentation](https://tinyvision-ai-inc.github.io/pico-ice/)
 * [Git Repository](https://github.com/tinyvision-ai-inc/pico-ice) (hardware)
 * [Git Repository](https://github.com/tinyvision-ai-inc/pico-ice-sdk) (SDK)
 * [Discord channel](https://discord.gg/3qbXujE)
@@ -37,5 +42,3 @@ Here are some resources for you:
 * [Assembly Drawing](#)
 * [Pico Blinking LED](#)
 * [FPGA Blinking LED](#)
-
-## Useful links
