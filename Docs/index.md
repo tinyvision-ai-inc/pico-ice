@@ -41,3 +41,4 @@ Here are some resources for you:
 * [Schematic](https://raw.githubusercontent.com/tinyvision-ai-inc/pico-ice/main/Board/Rev2/pico-ice.pdf)
 * [Assembly Drawing](https://htmlpreview.github.io/?https://github.com/tinyvision-ai-inc/pico-ice/blob/main/Board/Rev2/bom/ibom.html)
 
+[OSHW] US002140 | Certified open source hardware | oshwa.org/cert
