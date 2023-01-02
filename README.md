@@ -34,11 +34,11 @@ Firmware features:
 Here are some resources for you:
 
 * [Documentation](https://pico-ice.tinyvision.ai)
-* [Git Repository](https://github.com/tinyvision-ai-inc/pico-ice) (hardware)
+* [Git Repository](https://github.com/tinyvision-ai-inc/pico-ice) (Hardware)
 * [Git Repository](https://github.com/tinyvision-ai-inc/pico-ice-sdk) (SDK)
 * [Discord channel](https://discord.gg/3qbXujE)
 * [Schematic](https://raw.githubusercontent.com/tinyvision-ai-inc/pico-ice/main/Board/Rev2/pico-ice.pdf)
 * [Assembly Drawing](https://htmlpreview.github.io/?https://github.com/tinyvision-ai-inc/pico-ice/blob/main/Board/Rev2/bom/ibom.html)
 
 
-## Useful links
+[OSHW US002140](https://certification.oshwa.org/us002140.html) |  Certified open source hardware | oshwa.org/cert
