@@ -14,7 +14,7 @@ Low-level API for interacting with the FPGA chip.
 
 * `frequency_mhz` - Exported clock frequency in MHz. Valid values: 48MHz, 24MHz, 16MHz 12MHz, 8MHz, 6MHz, 4MHz, 3MHz, 2MHz, 1MHz.
 
-The RP2040 exorts its own crystal-based clock to the iCE40, through the dedicated [`CLOCK GPOUT0`](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf) feature.
+The RP2040 exports its own crystal-based clock to the iCE40, through the dedicated [`CLOCK GPOUT0`](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf) feature.
 
 This function is called by `ice_fpga_init()`.
 
