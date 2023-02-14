@@ -1,27 +1,32 @@
 ---
-title: ice_sdk.h
+title: ice_led.h
 layout: default
 parent: pico-ice-sdk
 ---
 
-# `ice_sdk.h`
+# `ice_led.h`
 
-High-level API for controlling everything supported by the SDK in one shot.
+Control the on-board RGB LED
+They are active-low and shared with the iCE40:
+
+* A LED will be bright if either the iCE40 or RP2040 are pulling its line low.
+* A LED will be dark if none of the iCE40 or RP2040 are pulling its line low.
+
+A line pulled high does not give consitent result, they are controlled with
+high-impedance or pulled-down.
 
 ---
 
-## `init_rgb_led(void)`
+## `ice_led_init(void)`
 
-Initialise the GPIO pins for use 
-
-This function is called by `ice_sdk_init()`.
+Initialise the GPIO pins for use with open-drain LED control, shared with the iCE40.
 
 ---
 
-## `void ice_sdk_init(void)`
+## `void ice_led_red(bool on)`
+## `void ice_led_green(bool on)`
+## `void ice_led_blue(bool on)`
 
-Initialise the SDK with preset default.
+* `on` - sets the LED bright if true, dark if false.
 
-No need to call the initialization function of each module when this is called.
-
-You may instead call the individual functions to use alternative settings instead of the defaults.
+Control for the individual red, green, blue LED.

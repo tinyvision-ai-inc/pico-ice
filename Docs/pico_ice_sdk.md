@@ -15,9 +15,11 @@ The [pico-ice-sdk](https://github.com/tinyvision-ai-inc/pico-ice-sdk/) provides 
 
 The pico-ice-sdk is organised as a normal pico-sdk project with `pico_ice` custom board.
 
-A [template](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/example/pico-template/) shows how everything can be to get started.
+A [template](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/template/) shows how everything can be to get started.
 
 ## Troubleshooting
+
+Feel free to join the [chat server](https://discord.gg/sb2kwc66) to ask for help.
 
 ### The GPIO LEDs do not turn on
 

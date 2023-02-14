@@ -24,12 +24,6 @@ Initialise the SPI1 peripheral, dedicated to flashing the FPGA.
 
 ---
 
-## `void ice_flash_deinit(void)`
-
-Release the GPIO used for the FPGA flash so the FPGA can use them
-
----
-
 ## `void ice_flash_read(uint32_t addr, uint8_t *data, size_t data_size)`
 
 * `addr` - The address at which the data is read.

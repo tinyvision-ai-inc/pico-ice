@@ -6,44 +6,52 @@ parent: pico-ice-sdk
 
 # `ice_usb.h`
 
-Library implementing support for the
-[TinyUSB](https://github.com/hathach/tinyusb/) as well as
-[TinyUF2](https://github.com/adafruit/tinyuf2/) stacks.
+The [pico-ice-sdk](https://github.com/tinyvision-ai-inc/pico-ice-sdk/) makes use of
+the [pico-sdk](https://github.com/raspberrypi/pico-sdk/) which uses
+the [TinyUSB](https://github.com/hathach/tinyusb) library.
 
-There is usually no need to interact with it directly.
+The pico-ice-sdk has a separate library for usb: `pico_ice_usb`, which only implements selected TinyUSB callbacks,
+The library user needs to implement `tusb_config.h` and `usb_descriptors.c`.
 
-Together, they provide the following **USB services**:
+* Callbacks for general USB configuration provide default behavior expected by most users
+  (pull requests welcome for adjusting that behavior).
+* Callbacks for DFU permit to program the FPGA through the CRAM (alt0) or flash (alt1) with i.e
+[dfu-util](https://dfu-util.sourceforge.net/).
+* Callbacks for CDC are small wrapper for dispatching individual CDC channels to individual functions.
+* Callbacks for other devices classes are unoccupied.
 
-* An USB storage interface with a fake FAT filesystem,
-  permitting one to upload FPGA code
-  (see the [gateware](../gateware/) doc).
-  This is MSC0.
-
-* An USB UART interface bound to the pico-sdk stdin/stdout,
-  handled by the native library
-  [`pico_stdio_usb`](https://raspberrypi.github.io/pico-sdk-doxygen/group__pico__stdio__usb.html).
-  This is ACM0.
-
-* An USB UART interface bound to two pins of the FPGA,
-  permitting to implement an UART FPGA core accessible over USB
-  (see the [pinout](../hardware/pinout.html) doc).
-  This is ACM1.
+Normal TinyUSB functions such as`tusb_init()` or `tud_task()` are to be called directly.
 
 ---
 
-## `void tud_task(void)`
+## `void (*tud_cdc_rx_cb_table[CFG_TUD_CDC])(uint8_t cdc_num)`
 
-Function from the TinyUSB library that must be called frequently so that the USB features remain available.
+* `cdc_num` - this will be filled with the CDC interface receiving the message.
 
-One common way to do it is by placing a call on the top of the main
-program loop, as well as within every blocking function looping over a rare event.
+Table of CDC interface callbacks, that can be filled freely as long as tud_task() is not being executed.
 
-For instance, reading user input with a timeout, calling `tud_task()` before trying to read user input again.
+The function would be called whenever tud_cdc_rx_cb() is executed,
+and the position in the table indicates the CDC number at which that table entry would be called.
 
 ---
 
-## `void ice_usb_init(void)`
+## `void ice_usb_uart0_to_cdc0(void)`
+## `void ice_usb_uart0_to_cdc1(void)`
+## `void ice_usb_uart1_to_cdc0(void)`
+## `void ice_usb_uart1_to_cdc1(void)`
 
-Initialize the TinyUSB library, enabling the UART (CDC) and drag-and-drop (MSC) interfaces.
+Read one byte from the indicated UART interface and write it to the indicated CDC interface.
 
-This function is called by [`ice_sdk_init()`](ice_sdk.html).
+These can be used in combination with
+[`irq_set_exclusive_handler()`](https://raspberrypi.github.io/pico-sdk-doxygen/group__hardware__irq.html#gafffd448ba2d2eef5b355b88180aefe7f)
+to pipe all data coming from an USB CDC interface to a physical UART interface.
+
+---
+
+## `void ice_usb_cdc_to_uart0(uint8_t cdc_num)`
+## `void ice_usb_cdc_to_uart0(uint8_t cdc_num)`
+
+Read one byte from the indicated CDC interface and write it to the indicated UART interface.
+
+These can be used in combination with `tud_cdc_rx_cb_table[]`
+to pipe all data coming from an USB CDC interface to a physical UART interface.
