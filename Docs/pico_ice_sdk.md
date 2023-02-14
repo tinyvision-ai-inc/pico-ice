@@ -62,3 +62,15 @@ $ cmake .. # download the SDK if not yet done
 $ sed -i '/new_delete.cpp/ d' _deps/pico-sdk-src/src/rp2_common/pico_standard_link/CMakeLists.txt
 $ cmake .. # rebuild the Makefile with the fix
 ```
+
+### Error: undefined reference to `tud_msc_read10_cb'
+
+If the linker complains that TinyUSB library callbacks are missing, it is possible that
+you still have USB devcie classes turned on in `tusb_config.h` that you do not use in
+`usb_descriptors.c` (inside `tud_desc_configuration[]`).
+
+You may check the configuration constants such as `CFG_TUD_MSC` and set them to 0 if
+you do not use that feature.
+
+If you do plan to use that feature, you might lack either the `ice_sdk_usb` or `tinyuf2`
+who both implement TinyUSB callbacks.
