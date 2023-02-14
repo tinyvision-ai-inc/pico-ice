@@ -35,6 +35,18 @@ and the position in the table indicates the CDC number at which that table entry
 
 ---
 
+## `void ice_usb_cdc_to_uart0(uint8_t cdc_num)`
+## `void ice_usb_cdc_to_uart1(uint8_t cdc_num)`
+
+* `cdc_num` - The CDC interface number that the data was received from.
+
+Read one byte from the indicated CDC interface and write it to the indicated UART interface.
+
+These can be used in combination with `tud_cdc_rx_cb_table[]`
+to pipe all data coming from an USB CDC interface to a physical UART interface.
+
+---
+
 ## `void ice_usb_uart0_to_cdc0(void)`
 ## `void ice_usb_uart0_to_cdc1(void)`
 ## `void ice_usb_uart1_to_cdc0(void)`
@@ -44,14 +56,4 @@ Read one byte from the indicated UART interface and write it to the indicated CD
 
 These can be used in combination with
 [`irq_set_exclusive_handler()`](https://raspberrypi.github.io/pico-sdk-doxygen/group__hardware__irq.html#gafffd448ba2d2eef5b355b88180aefe7f)
-to pipe all data coming from an USB CDC interface to a physical UART interface.
-
----
-
-## `void ice_usb_cdc_to_uart0(uint8_t cdc_num)`
-## `void ice_usb_cdc_to_uart0(uint8_t cdc_num)`
-
-Read one byte from the indicated CDC interface and write it to the indicated UART interface.
-
-These can be used in combination with `tud_cdc_rx_cb_table[]`
 to pipe all data coming from an USB CDC interface to a physical UART interface.
