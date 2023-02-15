@@ -18,11 +18,9 @@ such as the iCE40 during initial configuration.
 
 ---
 
-## `void ice_spi_chip_select(uint8_t csn_pin, bool tx_rx_swapped)`
+## `void ice_spi_chip_select(uint8_t csn_pin)`
 
 * `csn_pin` - user-selectable GPIO pin to assert (set to LOW voltage level)
-* `tx_rx_swapped` - `true` to swap the TX and RX SPI pins,
-  `false` to keep them to default (as in `boards/pico_ice.h`).
 
 Also set the SPI TX and SCK pins to output/drive mode, and keeps the RX pin to input/high-z mode.
 

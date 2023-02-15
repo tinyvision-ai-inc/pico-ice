@@ -1,10 +1,10 @@
 ---
-title: ice_fpga_flash.h
+title: ice_flash.h
 layout: default
 parent: pico-ice-sdk
 ---
 
-# `ice_fpga_flash.h`
+# `ice_flash.h`
 
 High-level interface for flash I/O.
 All these functions act on the on-board flash chip.
