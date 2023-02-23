@@ -57,3 +57,19 @@ Read one byte from the indicated UART interface and write it to the indicated CD
 These can be used in combination with
 [`irq_set_exclusive_handler()`](https://raspberrypi.github.io/pico-sdk-doxygen/group__hardware__irq.html#gafffd448ba2d2eef5b355b88180aefe7f)
 to pipe all data coming from an USB CDC interface to a physical UART interface.
+
+---
+
+## Troubleshooting
+
+### Error: undefined reference to `tud_msc_read10_cb'
+
+If the linker complains that TinyUSB library callbacks are missing, it is possible that
+you still have USB devcie classes turned on in `tusb_config.h` that you do not use in
+`usb_descriptors.c` (inside `tud_desc_configuration[]`).
+
+You may check the configuration constants such as `CFG_TUD_MSC` and set them to 0 if
+you do not use that feature.
+
+If you do plan to use that feature, you might lack either the `ice_sdk_usb` or `tinyuf2`
+who both implement TinyUSB callbacks.

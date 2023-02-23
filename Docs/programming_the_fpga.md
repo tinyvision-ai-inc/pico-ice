@@ -83,10 +83,47 @@ This Flash can be programmed by the Pico processor which exposes the Flash to th
     A valid DFU suffix will be required in a future dfu-util release
     ```
 
-Notes:
+## Troubleshooting
 
-1. Once the FPGA bitfile transfers over using the DFU protocol, the Pico will check for whether the DONE pin goes high indicating a successful boot. If this doesnt happen for whatever reason, the DFU utility will throw an error indicating that this did not succeed.
+### Checking the CDONE pin
 
-    ```
-    DFU state(10) = dfuERROR, status(10) = Device's firmware is corrupt. It cannot return to run-time (non-DFU) operations
-    ```
+Once the FPGA bitfile transfers over using the DFU protocol,
+the Pico will check for whether the DONE pin goes high indicating a successful boot.
+If this doesnt happen for whatever reason,
+the DFU utility will throw an error indicating that this did not succeed.
+
+```
+DFU state(10) = dfuERROR, status(10) = Device's firmware is corrupt. It cannot return to run-time (non-DFU) operations
+```
+
+### Booting the FPGA with custom firmware
+
+The user writing a custom firmware with the pico-ice-sdk should take care of starting the FPGA from the MCU.
+Review the [pico_fpga](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_fpga) example
+for how this can be done, as well as the [`ice_fpga.h`](ice_fpga.html) library documentation.
+
+The USB DFU provided as part of the pico-ice-sdk must also be enabled for the DFU interface to show-up.
+The [template](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/template) project have it enabled by default.
+
+### Cannot open DFU device 1209:b1c0 found on devnum 61 (LIBUSB_ERROR_NOT_FOUND)
+
+This error might occur when a communication error occurs.
+
+- On Windows operating system, the device needs to be declared with [Zadig](https://zadig.akeo.ie/).
+- On Linux operating system, it might need to be allowed with an udev rule,
+  or `dfu-util` might need to be run as super user.
+
+### dfu-util is stuck while uploading before anything could be sent
+
+This could be due that there was no response from the flash chip, and the RP2040 is endlessy waiting the write confirmation.
+
+If you had an earlier board, it could be due to the fact the TX and RX pins were swapped, and do not work for the old board anymore.
+
+### Flashing an UF2 file does not change the memory neither restart the board
+
+The UF2 file format contains the destination addresses of each block.
+In case you used other tools than those provided,
+it is possible that that the addresses were outside the valid range of the flash chip.
+Try to copy the CURRENT.UF2 to NEW.UF2 upon that same directory, and unmount the device.
+This should trigger a restart of the device.
+This restart device should appear from the debug UART: `board_dfu_complete: rebooting`.
