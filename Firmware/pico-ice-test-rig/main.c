@@ -5,12 +5,10 @@
 
 int main(void) {
     stdio_init_all();
-    // [...] more setup code here
+    ice_fpga_init(48);
 
     for (;;) {
         tud_task();
-
-        // [...] more application code here
     }
     return 0;
 }
