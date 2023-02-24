@@ -42,7 +42,7 @@ RAM_SS│G1      GPOUT2│G0      │ SS  35 │SJ5│            ~0  B  │   A
       │              │        │ 11   6                  ~2  R  │   ADC2│         LED_R│
       █IOB_18a       █IOB_16a │(█) (█)                  (█) (█)│ GPIO29█        GPIO12█RGB0
       │PB            │        ├─10───9┐                ┌~3──G──┤   ADC3│         LED_G│
-    VCCIO_2        VCCIO_2    │(█) (█)│                │(█) (█)│ GPIO16█        GPIO20█
+VCCIO2█VCCIO2  VCCIO2█VCCIO2  │(█) (█)│                │(█) (█)│ GPIO16█        GPIO20█
       │              │        │ Vio   │  ┌──────────┐  │A1  B1 │       │              │
    GND█GND        GND█GND     │(█) (█)│  │          │  │(█) (█)│ GPIO17█        GPIO21█
       │              │        │  G   G│  │          │  │A2  B2 │       │        GPOUT0│
