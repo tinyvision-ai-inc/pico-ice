@@ -89,12 +89,10 @@ This Flash can be programmed by the Pico processor which exposes the Flash to th
 
 Once the FPGA bitfile transfers over using the DFU protocol,
 the Pico will check for whether the DONE pin goes high indicating a successful boot.
+This would make the CDONE green LED bright.
+
 If this doesnt happen for whatever reason,
 the DFU utility will throw an error indicating that this did not succeed.
-
-```
-DFU state(10) = dfuERROR, status(10) = Device's firmware is corrupt. It cannot return to run-time (non-DFU) operations
-```
 
 ### Booting the FPGA with custom firmware
 
@@ -127,3 +125,9 @@ it is possible that that the addresses were outside the valid range of the flash
 Try to copy the CURRENT.UF2 to NEW.UF2 upon that same directory, and unmount the device.
 This should trigger a restart of the device.
 This restart device should appear from the debug UART: `board_dfu_complete: rebooting`.
+
+### Device's firmware is corrupt. It cannot return to run-time (non-DFU) operations.
+
+This message comes from `dfu-util` when the `-R` flag is not used.
+With the `-R` flag, the pico-ice will reboot at the end of the transfer,
+and DFU-util should not complain anymore.
