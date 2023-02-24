@@ -1,16 +1,28 @@
 # Automated Testing of the pico-ice
 
-This firmware is meant for testing all connections of the board with a rig as described below:
+This firmware is meant for testing all connections of the board with a rig as described below.
+
+## Test process
+
+1. load the firmware.uf2 onto the RP2040 (drag-and-drop)
+2. load the bitstream.bin onto the iCE40 (dfu-util)
+3. reset the board (SW1)
+4. press the button to start the test outside of the jig (SW2), it should turn blue
+5. put the board onto the jig
+5. press the button to start the test inside of the jig (SW2), it should turn green
+
+## Color code
+
+- GREEN boards passed the test, can be loaded with a blinky.
+- RED boards need troubleshooting, and USB UART has the full log detail
+- BLINKING boards are ready to be packaged and shipped.
+
+## Test jig
 
 - There are horizontal (`─`) physical connections made with wires, except around `IOB_22a` and `IOB_24a` that are instead connected with each other vertically (`│`).
-
 - The vertical connections (`:`) and long connections (`:...`) are made internally by the FPGA.
 
-Together, these connecitons are building a test chain on the FPGA, whose input is controlled by the RP2040 which performs tests and report with the LED color:
-
-- RED - something went wrong, check the USB serial console to see which test did fail.
-- GREEN - everything fine, possible to proceed to the next step
-- BLUE - activated by an user action (i.e. button)
+Together, these connecitons are building a test chain on the FPGA, whose input is controlled by the RP2040 which performs tests and report with the LED color.
 
 ```
       ┌────────────────────────────────┐
