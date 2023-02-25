@@ -10,6 +10,8 @@ The [pico-ice-sdk](https://github.com/tinyvision-ai-inc/pico-ice-sdk/) makes use
 the [pico-sdk](https://github.com/raspberrypi/pico-sdk/) which uses
 the [TinyUSB](https://github.com/hathach/tinyusb) library.
 
+It comes as a separate library to link against the target: `pico_ice_usb`.
+
 The library user needs to implement short `tusb_config.h` and `usb_descriptors.c` himself,
 for which examples and a template are provided.
 
