@@ -10,15 +10,22 @@ The [pico-ice-sdk](https://github.com/tinyvision-ai-inc/pico-ice-sdk/) makes use
 the [pico-sdk](https://github.com/raspberrypi/pico-sdk/) which uses
 the [TinyUSB](https://github.com/hathach/tinyusb) library.
 
-The pico-ice-sdk has a separate library for usb: `pico_ice_usb`, which only implements selected TinyUSB callbacks,
-The library user needs to implement `tusb_config.h` and `usb_descriptors.c`.
+The library user needs to implement short `tusb_config.h` and `usb_descriptors.c` himself,
+for which examples and a template are provided.
 
-* Callbacks for general USB configuration provide default behavior expected by most users
+The pico-ice-sdk is split in one section per device class, can be turned off for controlling the
+equivalent TinyUSB callbacks directly:
+
+- `ICE_USB_USE_DEFAULT_DESCRIPTOR` -
+   Callbacks for general USB configuration provide default behavior expected by most users
   (pull requests welcome for adjusting that behavior).
-* Callbacks for DFU permit to program the FPGA through the CRAM (alt0) or flash (alt1) with i.e
-[dfu-util](https://dfu-util.sourceforge.net/).
-* Callbacks for CDC are small wrapper for dispatching individual CDC channels to individual functions.
-* Callbacks for other devices classes are unoccupied.
+
+- `ICE_USB_USE_DEFAULT_CDC` -
+  Callbacks for DFU permit to program the FPGA through the CRAM (alt0) or flash (alt1) with i.e
+  [dfu-util](https://dfu-util.sourceforge.net/).
+
+- `ICE_USB_USE_DEFAULT_DFU` -
+  Callbacks for CDC are small wrapper for dispatching individual CDC channels to individual functions.
 
 Normal TinyUSB functions such as`tusb_init()` or `tud_task()` are to be called directly.
 
