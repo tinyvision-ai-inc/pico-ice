@@ -6,7 +6,7 @@ DFU-UTIL = dfu-util -R -a 0
 DFU-SUFFIX = dfu-suffix -v $(VID) -p $(PID)
 
 PROJECT = pico_ice_bitstream
-RTL = top.v
+RTL = top.sv
 
 all: $(PROJECT).bit
 

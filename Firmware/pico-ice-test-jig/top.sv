@@ -30,14 +30,16 @@ module top (
   input ICE_48,
   input ICE_FLASH_IO2,
   input ICE_FLASH_IO3,
-  input ICE_PB,
   input ICE_SO,
   input ICE_SI,
   input ICE_SCK,
   input ICE_SSN,
   input SRAM_SS,
-  input LED_G,
-  input LED_B,
-  input LED_R
+  output LED_G,
+  output LED_B,
+  output LED_R
 );
+  assign LED_R = ICE_10;
+  assign LED_G = ICE_SI;
+  assign LED_B = ICE_SO;
 endmodule
