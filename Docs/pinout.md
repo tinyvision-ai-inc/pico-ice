@@ -68,7 +68,7 @@ GPOUT3│              │        │ CK  BT  │            │  Vb  G  │    
                               └─────────┴────────────┴─────────┘
 ```
 
-### PMOD pinout
+## PMOD pinout
 
 {: .lh-0 }
 ```
