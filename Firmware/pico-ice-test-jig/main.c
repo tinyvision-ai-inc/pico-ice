@@ -227,7 +227,7 @@ static void check_fpga_pin_consistent(int pin) {
     }
 }
 
-void run_rp2040_tests(void) {
+static void run_rp2040_tests(void) {
 
     // RP2040 tests
 
@@ -282,7 +282,7 @@ void run_rp2040_tests(void) {
     test_end();
 }
 
-void run_ice40_tests(void) {
+static void run_ice40_tests(void) {
     ice_fpga_init(48);
     ice_fpga_start();
 

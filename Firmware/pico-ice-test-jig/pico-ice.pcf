@@ -1,0 +1,52 @@
+# Signals definition (as in the circuit diagram)
+set_io -nowarn ICE_2            IOB_6a
+set_io -nowarn ICE_3            IOB_9b
+set_io -nowarn ICE_4            IOB_8a
+set_io -nowarn ICE_6            IOB_13b
+set_io -nowarn ICE_9            IOB_16a
+set_io -nowarn ICE_10           IOB_18a
+set_io -nowarn ICE_11           IOB_20a
+set_io -nowarn ICE_18           IOB_31b
+set_io -nowarn ICE_19           IOB_29b
+set_io -nowarn ICE_20_G3        IOB_25b_G3
+set_io -nowarn ICE_21           IOT_23b
+set_io -nowarn ICE_23           IOT_37a
+set_io -nowarn ICE_25           IOT_36b
+set_io -nowarn ICE_26           IOT_39a
+set_io -nowarn ICE_27           IOT_38b
+set_io -nowarn ICE_28           IOT_41a
+set_io -nowarn ICE_31           IOT_42b
+set_io -nowarn ICE_32           IOT_43a
+set_io -nowarn ICE_34           IOT_44b
+set_io -nowarn ICE_35_G0        IOT_46b_G0
+set_io -nowarn ICE_36           IOT_48b
+set_io -nowarn ICE_38           IOT_50b
+set_io -nowarn ICE_42           IOT_51a
+set_io -nowarn ICE_43           IOT_49a
+set_io -nowarn ICE_44_G6        IOB_3b_G6
+set_io -nowarn ICE_45           IOB_5b
+set_io -nowarn ICE_46           IOB_0a
+set_io -nowarn ICE_47           IOB_2b
+set_io -nowarn ICE_48           IOB_4a
+set_io -nowarn ICE_FLASH_IO2    IOB_22a
+set_io -nowarn ICE_FLASH_IO3    IOB_24a
+set_io -nowarn ICE_PB           IOB_18a #again
+set_io -nowarn ICE_SO           IOB_32a_SPI_SO
+set_io -nowarn ICE_SI           IOB_33b_SPI_SI
+set_io -nowarn ICE_SCK          IOB_34a_SPI_SCK
+set_io -nowarn ICE_SSN          IOB_35b_SPI_SS
+set_io -nowarn SRAM_SS          IOT_45a_G1
+set_io -nowarn LED_G            RGB0
+set_io -nowarn LED_B            RGB1
+set_io -nowarn LED_R            RGB2
+
+# PMOD definition
+# https://digilent.com/reference/pmod/start
+
+# ICE40 PMOD0 (near USB and RP2040)
+
+# ICE40 PMOD0 top row (A) - GPIO
+#set_io -nowarn ICE_PMOD_0A_IO1 
+#set_io -nowarn ICE_PMOD_0A_IO2
+#set_io -nowarn ICE_PMOD_0A_IO3
+#set_io -nowarn ICE_PMOD_0A_IO4
