@@ -19,59 +19,59 @@ This firmware is meant for testing all connections of the board with a rig as de
 
 ## Test jig
 
-- There are horizontal (`─`) physical connections made with wires, except around `IOB_22a` and `IOB_24a` that are instead connected with each other vertically (`│`).
+- There are horizontal (`─`) physical connections made with wires, except around `ICE_12` and `ICE_13` that are instead connected with each other vertically (`│`).
 - The vertical connections (`:`) and long connections (`:...`) are made internally by the FPGA.
 
 Together, these connecitons are building a test chain on the FPGA, whose input is controlled by the RP2040 which performs tests and report with the LED color.
 
 ```
-      ┌────────────────────────────────┐
-      │                                │
-      │                                │
-    ..│............................... │
-    : │                              : │
- IOB_22a█ X █             IOB_35B█───█IOB_32A
-      │ │                        :     │
- IOB_24a█ X █             IOB_33b█───█IOB_34a
-    : ├───────┐                ┌─────:─┤
-    : │ █ X █ │           IOT_38b█───█IOT_39a
-    : │       │                │ :     │     
-    : │ █ X █ │           IOT_36b█───█IOT_37a
-    : │       │                │     : │     
- IOT_41a█───█IOT_42b      IOB_23b█───█IOB_25b <── TEST_CHAIN_IN
-      │     : │                │ :     │      
- IOT_43a█───█IOT_44b      IOB_29b█───█IOB_31b ──> TEST_CHAIN_OUT
-      │ :     │                │       │ :   
- IOT_48b█───█IOT_50b           │ █ X █ │ :   
-      │     : │                │       │ :   
- IOT_51a█───█IOT_49a           │ █ X █ │ :   
-      ├─:─────┘                └───────┤ :   
- IOT_45a█───█IOT_46b       GPIO26█───█GPIO15
-      │     :                    :     │
- IOB_20a█───█IOB_13b       GPIO28█───█GPIO13
-      │ :                            : │
- IOB_18a█───█IOB_16a       GPIO29█───█GPIO12
-      ├───────┐ :              ┌─:─────┤
-      │ █ X █ │ :          GPIO16█───█GPIO20
-      │       │ :              │     : │
-      │ █ X █ │ :          GPIO17█───█GPIO21
-      │       │ :              │ :     │
-  IOB_3b█───█IOB_5b        GPIO18█───█GPIO22
-      │ :     │                │     : │
-  IOB_0a█───█IOB_2a        GPIO19█───█GPIO23
-      │     : │              : │       │
-  IOB_4a█───█IOB_6a          : │ █ X █ │
-      │ :     │              : │       │
-  IOB_9b█───█IOB_8a..........: │ █ X █ │
-      ├───────┘                └───────┤
-   SWDIO█ X █                    █ X █ │
-      │                                │
-   SWCLK█ X █                    █ X █ │
-      │          ││||||||||││          │
-  GPIO25█ X █   O            O   █ X █ │
-      │         │            │         │
-      │         │            │         │
-      │         o            o         │
-      │         │            │         │
-      └─────────┴────────────┴─────────┘
+    ┌────────────────────────────────┐
+    │                                │
+    │                                │
+  ..│............................... │
+  : │                              : │
+ICE_12█ X █              ICE_16█───█ICE_14
+    │ │                        :     │
+ICE_13█ X █              ICE_17█───█ICE_15
+  : ├───────┐                ┌─────:─┤
+  : │ █ X █ │            ICE_27█───█ICE_26
+  : │       │                │ :     │     
+  : │ █ X █ │            ICE_25█───█ICE_23
+  : │       │                │     : │     
+ICE_28█───█ICE_31        ICE_21█───█ICE_20 <── TEST_CHAIN_IN
+    │     : │                │ :     │      
+ICE_32█───█ICE_34        ICE_19█───█ICE_18 ──> TEST_CHAIN_OUT
+    │ :     │                │       │ :   
+ICE_36█───█ICE_38            │ █ X █ │ :   
+    │     : │                │       │ :   
+ICE_42█───█ICE_43            │ █ X █ │ :   
+    ├─:─────┘                └───────┤ :   
+ICE_37█───█ICE_35        GPIO26█───█GPIO15
+    │     :                    :     │
+ICE_11█───█ICE_6         GPIO28█───█GPIO13
+    │ :                            : │
+ICE_10█───█ICE_9         GPIO29█───█GPIO12
+    ├───────┐ :              ┌─:─────┤
+    │ █ X █ │ :          GPIO16█───█GPIO20
+    │       │ :              │     : │
+    │ █ X █ │ :          GPIO17█───█GPIO21
+    │       │ :              │ :     │
+ICE_44█───█ICE_45        GPIO18█───█GPIO22
+    │ :     │                │     : │
+ICE_46█───█ICE_47        GPIO19█───█GPIO23
+    │     : │              : │       │
+ICE_48█───█ICE_2           : │ █ X █ │
+    │ :     │              : │       │
+ ICE_3█───█ICE_4...........: │ █ X █ │
+    ├───────┘                └───────┤
+ SWDIO█ X █                    █ X █ │
+    │                                │
+ SWCLK█ X █                    █ X █ │
+    │          ││||||||||││          │
+GPIO25█ X █   O            O   █ X █ │
+    │         │            │         │
+    │         │            │         │
+    │         o            o         │
+    │         │            │         │
+    └─────────┴────────────┴─────────┘
 ```
