@@ -2,8 +2,8 @@ ICEPACK = icepack
 NEXTPNR = nextpnr-ice40 --randomize-seed --up5k --package sg48
 YOSYS = yosys
 BIN2UF2 = bin2uf2
-DFU-UTIL = dfu-util -R -a 0
-DFU-SUFFIX = dfu-suffix -v $(VID) -p $(PID)
+DFU-UTIL = dfu-util -R -a 1
+DFU-SUFFIX = dfu-suffix -v 1209 -p b1c0
 
 PROJECT = pico_ice_bitstream
 RTL = top.sv
@@ -23,6 +23,7 @@ pico_ice_bitstream.json: ${RTL}
 
 $(PROJECT).json: $(RTL)
 	${YOSYS} -p "read_verilog -sv ${RTL}; synth_ice40 -top top -json $@" >$*.yosys.log
+	-@grep -i -e err -e warn $*.yosys.log
 
 .json.asc:
 	${NEXTPNR} -q -l $*.nextpnr.log --pcf pico_ice.pcf --top top --json $< --asc $@

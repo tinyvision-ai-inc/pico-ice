@@ -39,7 +39,23 @@ module top (
   output LED_B,
   output LED_R
 );
-  assign LED_R = ICE_10;
-  assign LED_G = ICE_SI;
-  assign LED_B = ICE_SO;
+  logic led_r = 1, led_g = 0, led_b = 0;
+
+  SB_RGBA_DRV #(
+    .CURRENT_MODE ("0b1"),   /* half current */
+    .RGB0_CURRENT ("0b000001"),  /* 4 mA */
+    .RGB1_CURRENT ("0b000001"),  /* 4 mA */
+    .RGB2_CURRENT ("0b000001") /* 4 mA */
+  ) rgba_drv (
+    .CURREN(1'b1),
+    .RGBLEDEN(1'b1),
+    .RGB0PWM(led_g),
+    .RGB0(LED_G),
+    .RGB1PWM(led_b),
+    .RGB1(LED_B),
+    .RGB2PWM(led_r),
+    .RGB2(LED_R)
+  );
+
+
 endmodule

@@ -10,8 +10,8 @@ pico_sdk_init()
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../pico-ice-sdk pico-ice-sdk)
 
 add_executable(pico_ice_test_jig
-    main.c
-    usb_descriptors.c
+    src/main.c
+    src/usb_descriptors.c
 )
 target_link_libraries(pico_ice_test_jig
     pico_ice_sdk
@@ -20,7 +20,7 @@ target_link_libraries(pico_ice_test_jig
     tinyuf2
 )
 target_include_directories(pico_ice_test_jig PUBLIC
-    ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_LIST_DIR}/include
 )
 pico_enable_stdio_usb(pico_ice_test_jig 1)
 pico_add_extra_outputs(pico_ice_test_jig)
