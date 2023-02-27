@@ -13,7 +13,10 @@ Their pinout is listed on each side on four vertical lines,
 each representing one serie of pins of the board,
 with their RP2040 and iCE40 mapping.
 
+
 ## Complete pinout
+
+The wafer names `IOB_6a`, `IOT_8b`... as well as the pin number `ICE_2`, `ICE_3`, `ICE_4`... can be used in RTL projects, as they are defined in the `pico_ice.pcf` file.
 
 {: .lh-0 }
 ```
@@ -68,7 +71,13 @@ GPOUT3│              │        │ CK  BT  │            │  Vb  G  │    
                               └─────────┴────────────┴─────────┘
 ```
 
+
 ## PMOD pinout
+
+These PMOD names can be used from the RTL by using the provided `pico_ice.pcf` files on Yosys.
+
+Using `A` for the top row and `B` for the bottom row:
+`ICE_PMOD1A_SDA`, `ICE_PMOD2B_IO3`, `ICE_PMOD0A_MISO`...
 
 {: .lh-0 }
 ```
@@ -79,11 +88,11 @@ GPOUT3│              │        │ CK  BT  │            │  Vb  G  │    
                               │                ┌─┬─┐           │
                               │[█] (█)         │SJ1│    [█] (█)│
                               │ F2  RST        └─┴─┘    Ss  So │
-ICE_PMOD_1                    │(█) (█)                  (█) (█)│ ICE_PICO_PMOD                  
-┌───┬───┬────┬────┬────┬────┐ ├─F3───G┐                ┌Si──Ck─┤ ┌───┬───┬────┬────┬────┬────┐  
-│3V3│GND│ 31 │ 34 │ 38 │ 43 │ │(█) (█)│                │(█) (█)│ │3V3│GND│ 19 │ 21 │ 25 │ 27 │  
-├───┼───┼────┼────┼────┼────┤ │  3.3  │                │27  26 │ ├───┼───┼────┼────┼────┼────┤  
-│3V3│GND│ 28 │ 32 │ 36 │ 42 │ │(█) (█)│                │(█) (█)│ │3V3│GND│ 18 │ 20 │ 23 │ 26 │  
+ICE_PMOD1                     │(█) (█)                  (█) (█)│ ICE_PMOD2 (ICE_PICO_PMOD)
+┌───┬───┬────┬────┬────┬────┐ ├─F3───G┐                ┌Si──Ck─┤ ┌───┬───┬────┬────┬────┬────┐
+│3V3│GND│ 31 │ 34 │ 38 │ 43 │ │(█) (█)│                │(█) (█)│ │3V3│GND│ 19 │ 21 │ 25 │ 27 │
+├───┼───┼────┼────┼────┼────┤ │  3.3  │                │27  26 │ ├───┼───┼────┼────┼────┼────┤
+│3V3│GND│ 28 │ 32 │ 36 │ 42 │ │(█) (█)│                │(█) (█)│ │3V3│GND│ 18 │ 20 │ 23 │ 26 │
 └───┴───┼────┼────┼────┼────┤ │   G   │                │25  23 │ └───┴───┼────┼────┼────┼────┤
    GPIO │IO4 │IO3 │IO2 │IO1 │ │(█) (█)│ ┌───────────┐  │(█) (█)│    GPIO │IO4 │IO3 │IO2 │IO1 │
     I2C │SDA │SCL │RST │INT │ │ 28  31│ │           │  │21  20 │     I2C │SDA │SCL │RST │INT │
@@ -97,12 +106,12 @@ HBridge │SB  │SA  │EN  │DIR │ │ 36  38│ │           │  │   G
                               │ SS  35 │SJ5│            ~0  B  │
                               │(█) (█) └─┴─┘            (█) (█)│
                               │ 11   6                  ~2  R  │
-ICE_PMOD_0                    │(█) (█)                  (█) (█)│ PICO_PMOD
-┌───┬───┬────┬────┬────┬────┐ ├─10───9┐                ┌~3──G──┤ ┌───┬───┬────┬────┬────┬────┐ 
-│Vio│GND│ 45 │ 47 │  2 │  4 │ │(█) (█)│                │(█) (█)│ │3V3│GND│ A4 │ A3 │ A2 │ A1 │ 
-├───┼───┼────┼────┼────┼────┤ │ Vio   │  ┌──────────┐  │A1  B1 │ ├───┼───┼────┼────┼────┼────┤ 
-│Vio│GND│ 44 │ 46 │ 48 │  3 │ │(█) (█)│  │          │  │(█) (█)│ │3V3│GND│ B4 │ B3 │ B2 │ B1 │ 
-└───┴───┼────┼────┼────┼────┤ │  G   G│  │          │  │A2  B2 │ └───┴───┼────┼────┼────┼────┤ 
+ICE_PMOD0                     │(█) (█)                  (█) (█)│ PICO_PMOD
+┌───┬───┬────┬────┬────┬────┐ ├─10───9┐                ┌~3──G──┤ ┌───┬───┬────┬────┬────┬────┐
+│Vio│GND│ 45 │ 47 │  2 │  4 │ │(█) (█)│                │(█) (█)│ │3V3│GND│GP19│GP18│GP17│GP16│
+├───┼───┼────┼────┼────┼────┤ │ Vio   │  ┌──────────┐  │A1  B1 │ ├───┼───┼────┼────┼────┼────┤
+│Vio│GND│ 44 │ 46 │ 48 │  3 │ │(█) (█)│  │          │  │(█) (█)│ │3V3│GND│GP23│GP22│GP21│GP20│
+└───┴───┼────┼────┼────┼────┤ │  G   G│  │          │  │A2  B2 │ └───┴───┼────┼────┼────┼────┤
    GPIO │IO4 │IO3 │IO2 │IO1 │ │(█) (█)│  │  RP2040  │  │(█) (█)│    GPIO │IO4 │IO3 │IO2 │IO1 │
     I2C │SDA │SCL │RST │INT │ │ 44  45│  │          │  │A3  B3 │     I2C │SDA │SCL │RST │INT │
     I2S │BCLK│ADC │DAC │LRCLK │(█) (█)│  │          │  │(█) (█)│     I2S │BCLK│ADC │DAC │LRCLK
@@ -121,143 +130,4 @@ HBridge │SB  │SA  │EN  │DIR │ │ 48   2│                │   G   �
                               │ │   │   o            o   │   │ │
                               │ '───'   │            │   '───' │
                               └─────────┴────────────┴─────────┘
-```
-
-
-## RP2040 pinout
-
-{: .lh-0 }
-```
-GPIO0 TX  IOT_38b RX  (UART)    │ Pico-FPGA bus
-GPIO1 RX  IOT_36b TX  (UART)    │
-GPIO2     IOB_23b               │
-GPIO3     IOB_29b               │
-GPIO4     IOT_39a               │
-GPIO5     IOT_37b               │
-GPIO6     IOB_25b_G3            │
-GPIO7     IOB_31b               │
-
-GPIO8     IOT_32a SPI_SO        │ FPGA Programming Interface
-GPIO9     IOT_35b SPI_SSN       │
-GPIO10    IOB_34a SPI_SCK       │
-GPIO11    IOB_33b SPI_SI        │
-
-GPIO12    LED_G                 │ LED / I²C
-GPIO13    LED_R                 │
-
-GPIO14    SRAM_SSN              │ FPGA SRAM CS
-
-GPIO15    LED_B                 │ LED
-
-GPIO16    PICO_PMOD_A1          │ PICO_PMOD
-GPIO17    PICO_PMOD_A2          │
-GPIO18    PICO_PMOD_A3          │
-GPIO19    PICO_PMOD_A4          │
-GPIO20    PICO_PMOD_B1          │
-GPIO21    PICO_PMOD_B2          │
-GPIO22    PICO_PMOD_B3          │
-GPIO23    PICO_PMOD_B4          │
-
-GPIO24    ICE_CLK               │ FPGA Clock
-
-GPIO25    PICO_CLKOUT           │ Clock to Header
-
-GPIO26    ADC0 CDONE            │ ADC / FPGA System
-GPIO27    ADC1 CRESET           │
-GPIO28    ADC2 PB               │
-GPIO29    ADC3                  │
-
-QSPI_SS    QSPI_SS              │ PICO flash
-QSPI_SCLK  QSPI_SCLK            │
-QSPI_SD0   QSPI_SD0             │
-QSPI_SD1   QSPI_SD1             │
-QSPI_SD2   QSPI_SD2             │
-QSPI_SD3   QSPI_SD3             │
-
-USB_DP     USB_P                │ USB
-USB_DM     USB_N                │
-```
-
-
-## iCE40 pinout
-
-{: .lh-0 }
-```
-IOB_0a     ICE_46               │ iCE PMOD
-IOB_2a     ICE_47               │
-IOB_3b_G6  ICE_44               │
-IOB_4a     ICE_48               │
-IOB_5b     ICE_45               │
-IOB_6a     ICE_2                │
-IOB_8a     ICE_4                │
-IOB_9b     ICE_3                │
-
-IOB_13b    ICE_6                │ iCE Misc
-IOB_16a    ICE_9                │
-IOB_18a    ICE_10 PB            │
-IOB_20a    ICE_11               │
-
-IOB_22a    ICE_FLASH_IO2        │ iCE Flash
-
-IOB_23b    ICE_21 GPIO2         │ iCE-Pico PMOD
-
-IOB_24a    ICE_FLASH_IO3        │ iCE Flash
-
-IOB_25b_G3 ICE_20 GPIO6         │ iCE-Pico PMOD
-IOB_29b    ICE_19 GPIO3         │
-IOB_31b    ICE_18 GPIO7         │
-
-IOB_32a    ICE_SO               │ FPGA Programming Interface
-IOB_33b    ICE_SI               │
-IOB_34a    ICE_SCK              │
-IOB_35b    ICE_SSN              │
-
-IOT_36b    ICE_25 GPIO1         │ iCE-Pico PMOD
-IOT_37a    ICE_23 GPIO5         │
-IOT_38b    ICE_27 GPIO0         │
-IOT_39a    ICE_26 GPIO4         │
-
-IOT_41a    ICE_28               │ iCE PMOD
-IOT_42b    ICE_31               │
-IOT_43a    ICE_32               │
-IOT_44b    ICE_34               │
-
-IOT_45a_G1 SRAM_SSN             │ FPGA SRAM CS
-
-IOT_46a_G0 ICE_35_G0            │ iCE Misc
-
-IOT_48b    ICE_36               │ iCE PMOD
-IOT_49a    ICE_43               │
-IOT_50b    ICE_38               │
-IOT_51a    ICE_42               │
-
-RGB2       LED_R                │ iCE LEDs
-RGB0       LED_G                │
-RGB1       LED_B                │
-```
-
-## SRAM and flash pinout
-
-{: .lh-0 }
-```
-IOB_34a    ICE_SCK              │ iCE Flash
-IOB_35b    ICE_SSN              │
-IOB_32a    ICE_SO               │
-IOB_33b    ICE_SI               │
-IOB_22a    ICE_FLASH_IO2        │
-IOB_24a    ICE_FLASH_IO3        │
-
-IOB_34a    ICE_SCK              │ iCE SRAM
-IOT_45a_G1 SRAM_SSN             │
-IOB_32a    ICE_SO               │
-IOB_33b    ICE_SI               │
-IOB_22a    ICE_FLASH_IO2        │
-IOB_24a    ICE_FLASH_IO3        │
-
-QSPI_SS                         │ Pico Flash
-QSPI_SCLK                       │
-QSPI_SD0                        │
-QSPI_SD1                        │
-QSPI_SD2                        │
-QSPI_SD3                        │
 ```
