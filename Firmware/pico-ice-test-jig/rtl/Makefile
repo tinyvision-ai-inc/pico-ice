@@ -1,3 +1,5 @@
+PROJECT = pico_ice_bitstream
+
 ICEPACK = icepack
 NEXTPNR = nextpnr-ice40 --randomize-seed --up5k --package sg48
 YOSYS = yosys
@@ -5,7 +7,8 @@ BIN2UF2 = bin2uf2
 DFU-UTIL = dfu-util -R -a 1
 DFU-SUFFIX = dfu-suffix -v 1209 -p b1c0
 
-PROJECT = pico_ice_bitstream
+PICO_ICE_SDK = ../../pico-ice-sdk/
+PCF_FILE = $(PICO_ICE_SDK)/rtl/pico_ice.pcf
 RTL = top.sv
 
 all: $(PROJECT).bit
@@ -26,7 +29,7 @@ $(PROJECT).json: $(RTL)
 	-@grep -i -e err -e warn $*.yosys.log
 
 .json.asc:
-	${NEXTPNR} -q -l $*.nextpnr.log --pcf pico_ice.pcf --top top --json $< --asc $@
+	${NEXTPNR} -q -l $*.nextpnr.log --pcf $(PCF_FILE) --top top --json $< --asc $@
 
 .asc.bit:
 	${ICEPACK} $< $@
