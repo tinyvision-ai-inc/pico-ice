@@ -133,7 +133,7 @@ HBridge │SB  │SA  │EN  │DIR │ │ 48   2│                │   G   �
 ```
 
 
-## Yosys/NextPNR pinou file
+## Yosys/NextPNR pinout
 
 NextPNR only implements a name per pin, no aliases.
 
@@ -245,7 +245,11 @@ set_io -nowarn RGB2             41
 
 <https://digilent.com/reference/pmod/start>
 
-You will have to keep only one set of signal for each block, for instance, GPIO, or I2C, or SPI, or I2S...
+You will have to keep only one set of signals for each block.
+For instance for the PMOD0A, only GPIO or only I2C or only SPI or only UART...
+
+
+#### PMOD0 (iCE40 only)
 
 ```
 # ICE_PMOD0A (near USB) top row
@@ -311,7 +315,12 @@ set_io -nowarn ICE_PMOD0B_SB    44
 set_io -nowarn ICE_PMOD0B_SA    46
 set_io -nowarn ICE_PMOD0B_EN    48
 set_io -nowarn ICE_PMOD0B_DIR   3
+```
 
+
+#### PMOD1 (iCE40 only)
+
+```
 # ICE_PMOD1A (near LED) top row
 # GPIO
 set_io -nowarn ICE_PMOD1A_IO4   31
@@ -375,7 +384,12 @@ set_io -nowarn ICE_PMOD1B_SB    28
 set_io -nowarn ICE_PMOD1B_SA    32
 set_io -nowarn ICE_PMOD1B_EN    36
 set_io -nowarn ICE_PMOD1B_DIR   42
+```
 
+
+#### PMOD2 (shared)
+
+```
 # ICE_PMOD2A (near LED, shared with RP2040) top row
 # GPIO
 set_io -nowarn ICE_PMOD2A_IO4   19
