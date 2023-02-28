@@ -39,7 +39,7 @@ module top (
   output LED_B,
   output LED_R
 );
-  logic led_r = 1, led_g = 0, led_b = 0;
+  logic led_r = ICE_10;
 
   SB_RGBA_DRV #(
     .CURRENT_MODE ("0b1"),   /* half current */
