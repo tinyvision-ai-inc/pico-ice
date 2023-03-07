@@ -1,3 +1,6 @@
 (fp_lib_table
-  (lib (name RP2040_minimal)(type KiCad)(uri ${KIPRJMOD}/RP2040_minimal.pretty)(options "")(descr ""))
+  (version 7)
+  (lib (name "RP2040_minimal")(type "KiCad")(uri "${KIPRJMOD}/RP2040_minimal.pretty")(options "")(descr ""))
+  (lib (name "Onsemi_XDFN-1EP_1X1MM")(type "KiCad")(uri "${KIPRJMOD}/RP2040_minimal.pretty/Onsemi_XDFN-1EP_1X1MM.pretty")(options "")(descr ""))
+  (lib (name "CUSTOM")(type "KiCad")(uri "${KIPRJMOD}/CUSTOM.pretty")(options "")(descr ""))
 )
