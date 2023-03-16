@@ -33,6 +33,17 @@ Normal TinyUSB functions such as`tusb_init()` or `tud_task()` are to be called d
 
 ---
 
+## `void ice_usb_sleep_ms(uint32_t ms)`
+
+* `ms` to sleep in milliseconds, while calling `tud_task()` every millisecond.
+
+This is a replacement for `sleep_ms()`, making USB stuck.
+Shorter delays can use `sleep_us()` which does not get the appication stuck long enough to become a problem.
+
+<https://forums.raspberrypi.com/viewtopic.php?t=333027>
+
+---
+
 ## `void (*tud_cdc_rx_cb_table[CFG_TUD_CDC])(uint8_t cdc_num)`
 
 * `cdc_num` - this will be filled with the CDC interface receiving the message.
