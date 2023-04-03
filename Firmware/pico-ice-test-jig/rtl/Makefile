@@ -8,7 +8,7 @@ DFU-UTIL = dfu-util -R -a 1
 DFU-SUFFIX = dfu-suffix -v 1209 -p b1c0
 
 PICO_ICE_SDK = ../../pico-ice-sdk/
-PCF_FILE = $(PICO_ICE_SDK)/rtl/pico_ice.pcf
+PCF_FILE = pico_ice.pcf
 RTL = top.sv
 
 all: $(PROJECT).bit
@@ -26,7 +26,7 @@ pico_ice_bitstream.json: ${RTL}
 
 $(PROJECT).json: $(RTL)
 	${YOSYS} -p "read_verilog -sv ${RTL}; synth_ice40 -top top -json $@" >$*.yosys.log
-	-@grep -i -e err -e warn $*.yosys.log
+	-grep -i -e err -e warn $*.yosys.log
 
 .json.asc:
 	${NEXTPNR} -q -l $*.nextpnr.log --pcf $(PCF_FILE) --top top --json $< --asc $@

@@ -1,61 +1,41 @@
 module top (
-  input ICE_2,
-  input ICE_3,
-  input ICE_4,
-  input ICE_6,
-  input ICE_9,
-  input ICE_10,
-  input ICE_11,
-  input ICE_18,
-  input ICE_19,
-  input ICE_20_G3,
-  input ICE_21,
-  input ICE_23,
-  input ICE_25,
-  input ICE_26,
-  input ICE_27,
-  input ICE_28,
-  input ICE_31,
-  input ICE_32,
-  input ICE_34,
-  input ICE_35_G0,
-  input ICE_36,
-  input ICE_38,
-  input ICE_42,
-  input ICE_43,
-  input ICE_44_G6,
-  input ICE_45,
-  input ICE_46,
-  input ICE_47,
-  input ICE_48,
-  input ICE_FLASH_IO2,
-  input ICE_FLASH_IO3,
-  input ICE_SO,
-  input ICE_SI,
-  input ICE_SCK,
-  input ICE_SSN,
-  input SRAM_SS,
-  output LED_G,
-  output LED_B,
-  output LED_R
+  output  ICE_2,
+  output  ICE_3,
+  input   ICE_4,
+  input   ICE_6,
+  output  ICE_9,
+  input   ICE_10,
+  output  ICE_11,
+  output  ICE_12,
+  input   ICE_13,
+  input   ICE_14,
+  output  ICE_15,
+  output  ICE_16,
+  input   ICE_17,
+  input   ICE_18,
+  output  ICE_19,
+  input   ICE_20,
+  input   ICE_21,
+  input   ICE_23,
+  output  ICE_25,
+  input   ICE_26,
+  output  ICE_27,
+  input   ICE_28,
+  output  ICE_31,
+  output  ICE_32,
+  input   ICE_34,
+  output  ICE_35,
+  input   ICE_36,
+  input   ICE_37,
+  output  ICE_38,
+  output  ICE_42,
+  input   ICE_43,
+  input   ICE_44,
+  output  ICE_45,
+  output  ICE_46,
+  input   ICE_47,
+  input   ICE_48
 );
-  logic led_r = ICE_10;
-
-  SB_RGBA_DRV #(
-    .CURRENT_MODE ("0i1"),      // half current
-    .RGB0_CURRENT ("0i000001"), // 4 mA
-    .RGB1_CURRENT ("0i000001"), // 4 mA
-    .RGB2_CURRENT ("0i000001")  // 4 mA
-  ) rgba_drv (
-    .CURREN(1'b1),
-    .RGBLEDEN(1'b1),
-    .RGB0PWM(led_g),
-    .RGB0(LED_G),
-    .RGB1PWM(led_b),
-    .RGB1(LED_B),
-    .RGB2PWM(led_r),
-    .RGB2(LED_R)
-  );
 
   //     │(0i)
   // ICE_12█   █
@@ -80,13 +60,13 @@ module top (
   //     │     :
   // ICE_10█───█ICE_9
   //  PB │(0o)     
-  logic ICE_31 = ICE_13;
-  logic ICE_32 = ICE_28;
-  logic ICE_38 = ICE_32;
-  logic ICE_42 = ICE_36;
-  logic ICE_35 = ICE_43;
-  logic ICE_11 = ICE_37;
-  logic ICE_9  = ICE_6;
+  assign ICE_31 = ICE_13;
+  assign ICE_32 = ICE_28;
+  assign ICE_38 = ICE_32;
+  assign ICE_42 = ICE_36;
+  assign ICE_35 = ICE_43;
+  assign ICE_11 = ICE_37;
+  assign ICE_9  = ICE_6;
 
   //     │       │
   // ICE_44█───█ICE_45 (1i)
@@ -97,16 +77,16 @@ module top (
   //     │ :     │
   //  ICE_3█───█ICE_4 (1o)
   //     ├───────┘
-  logic ICE_46 = ICE_44;
-  logic ICE_2  = ICE_47;
-  logic ICE_3  = ICE_48;
+  assign ICE_46 = ICE_44;
+  assign ICE_2  = ICE_47;
+  assign ICE_3  = ICE_48;
 
   //                   │
   //  (3i) ICE_16█───█ICE_14
   //                 : │
   //  (3o) ICE_17█───█ICE_15
   //           ┌───────┤
-  logic ICE_15 = ICE_14;
+  assign ICE_15 = ICE_14;
 
   //           ┌───────┤
   //  (0o) ICE_27█   █ICE_26 (0i)
@@ -117,9 +97,9 @@ module top (
   //           │       │
   //  (3o) ICE_19█   █ICE_18 (3i)
   //           │       │
-  logic ICE_27 = ICE_10, ICE_12 = ICE_26;
-  logic ICE_25 = ICE_4,  ICE_45 = ICE_23;
+  assign ICE_27 = ICE_10, ICE_12 = ICE_26;
+  assign ICE_25 = ICE_4,  ICE_45 = ICE_23;
   // Driven by the RP2040
-  logic ICE_19 = ICE_17, ICE_16 = ICE_18;
+  assign ICE_19 = ICE_17, ICE_16 = ICE_18;
 
 endmodule
