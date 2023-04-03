@@ -15,9 +15,9 @@ add_executable(pico_ice_test_jig
 )
 target_link_libraries(pico_ice_test_jig
     pico_ice_sdk
+    pico_ice_usb
     pico_stdio_usb
     tinyusb_device
-    tinyuf2
 )
 target_include_directories(pico_ice_test_jig PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/include

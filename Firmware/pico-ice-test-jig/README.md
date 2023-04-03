@@ -20,7 +20,7 @@ This firmware is meant for testing all connections of the board with a rig as de
 ## Test jig
 
 - There are horizontal (`─`) physical connections made with wires, except around `ICE_12` and `ICE_13` that are instead connected with each other vertically (`│`).
-- The vertical connections (`:`) and long connections (`:...`) are made internally by the FPGA.
+- The vertical connections (`:`) and long connections (`....`) are made internally by the FPGA.
 
 Together, these connecitons are building a test chain on the FPGA, whose input is controlled by the RP2040 which performs tests and report with the LED color.
 
@@ -28,47 +28,47 @@ Together, these connecitons are building a test chain on the FPGA, whose input i
     ┌────────────────────────────────┐
     │                                │
     │                                │
-  ..│............................... │
-  : │                              : │
-ICE_12█ X █              ICE_16█───█ICE_14
-    │ │                        :     │
-ICE_13█ X █              ICE_17█───█ICE_15
-  : ├───────┐                ┌─────:─┤
-  : │ █ X █ │            ICE_27█───█ICE_26
-  : │       │                │ :     │     
-  : │ █ X █ │            ICE_25█───█ICE_23
-  : │       │                │     : │     
-ICE_28█───█ICE_31        ICE_21█───█ICE_20 <── TEST_CHAIN_IN
-    │     : │                │ :     │      
-ICE_32█───█ICE_34        ICE_19█───█ICE_18 ──> TEST_CHAIN_OUT
-    │ :     │                │       │ :   
-ICE_36█───█ICE_38            │ █ X █ │ :   
-    │     : │                │       │ :   
-ICE_42█───█ICE_43            │ █ X █ │ :   
-    ├─:─────┘                └───────┤ :   
-ICE_37█───█ICE_35        GPIO26█───█GPIO15
-    │     :                    :     │
-ICE_11█───█ICE_6         GPIO28█───█GPIO13
-    │ :                            : │
-ICE_10█───█ICE_9         GPIO29█───█GPIO12
-    ├───────┐ :              ┌─:─────┤
-    │ █ X █ │ :          GPIO16█───█GPIO20
-    │       │ :              │     : │
-    │ █ X █ │ :          GPIO17█───█GPIO21
-    │       │ :              │ :     │
-ICE_44█───█ICE_45        GPIO18█───█GPIO22
-    │ :     │                │     : │
-ICE_46█───█ICE_47        GPIO19█───█GPIO23
-    │     : │              : │       │
-ICE_48█───█ICE_2           : │ █ X █ │
-    │ :     │              : │       │
- ICE_3█───█ICE_4...........: │ █ X █ │
-    ├───────┘                └───────┤
- SWDIO█ X █                    █ X █ │
     │                                │
- SWCLK█ X █                    █ X █ │
+    │(0i)                            │
+ICE_12█   █         (3i) ICE_16█───█ICE_14
+    │ │ .......                    : │
+ICE_13█'  █   :     (3o) ICE_17█───█ICE_15
+    ├───────┐ :              ┌───────┤
+    │ █   █ │ :     (0o) ICE_27█   █ICE_26 (0i)
+    │       │ :              │       │
+    │ █   █ │ :     (1o) ICE_25█   █ICE_23 (1i)
+    │       │ :              │       │
+ICE_28█───█ICE_31   (2o) ICE_21█   █ICE_20 (2i)
+    │ :     │                │       │
+ICE_32█───█ICE_34   (3o) ICE_19█   █ICE_18 (3i)
+    │     : │                │       │
+ICE_36█───█ICE_38            │ █   █ │
+    │ :     │                │       │
+ICE_42█───█ICE_43            │ █   █ │
+    ├─────:─┤                └───────┤
+ICE_37█───█ICE_35        GPIO26█───█GPIO15 (2i)
+    │ :                        :     │
+ICE_11█───█ICE_6         GPIO28█───█GPIO13
+    │     :                        : │
+ICE_10█───█ICE_9         GPIO29█───█GPIO12
+ PB ├(0o)───┐                ┌─:─────┤
+    │ █   █ │            GPIO16█───█GPIO20
+    │       │                │     : │
+    │ █   █ │            GPIO17█───█GPIO21
+    │       │                │ :     │
+ICE_44█───█ICE_45 (1i)   GPIO18█───█GPIO22
+    │ :     │                │     : │
+ICE_46█───█ICE_47   (2o) GPIO19█───█GPIO23
+    │     : │                │       │
+ICE_48█───█ICE_2             │ █   █ │
+    │ :     │                │       │
+ ICE_3█───█ICE_4 (1o)        │ █   █ │
+    ├───────┘                └───────┤
+ SWDIO█   █                    █   █ │
+    │                                │
+ SWCLK█   █                    █   █ │
     │          ││||||||||││          │
-GPIO25█ X █   O            O   █ X █ │
+GPIO25█   █   O            O   █   █ │
     │         │            │         │
     │         │            │         │
     │         o            o         │

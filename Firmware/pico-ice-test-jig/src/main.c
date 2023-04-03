@@ -29,8 +29,7 @@
 #include "ice_fpga.h"
 #include "ice_led.h"
 
-#define FIRST_GPIO 0
-#define LAST_GPIO 29
+#define MIRRORED_BUTTON_PIN ICE_FPGA_27_PIN
 
 static bool g_step_failed;
 static bool g_test_failed;
@@ -73,6 +72,50 @@ enum {
     [28] = TYPE_FREE_PIN,
     [29] = TYPE_FREE_PIN,
 };
+
+/*
+ *      GPIO26█───█GPIO15 (2i)
+ *            :     │
+ *      GPIO28█───█GPIO13
+ *                : │
+ *      GPIO29█───█GPIO12
+ *          ┌─:─────┤
+ *      GPIO16█───█GPIO20
+ *          │     : │
+ *      GPIO17█───█GPIO21
+ *          │ :     │
+ *      GPIO18█───█GPIO22
+ *          │     : │
+ * (2o) GPIO19█───█GPIO23
+ *          │       │
+ */
+struct { uint8_t from, to; } pin_mirror[] = {
+    { 21, 19 }, // 2o (in)
+    { 23, 22 },
+    { 18, 21 },
+    { 16, 29 },
+    { 12, 13 },
+    { 28, 26 },
+    { 15, 20 }, // 2i (out)
+};
+
+/*
+ *          ┌───────┤
+ * (0o) ICE_27█   █ICE_26 (0i)
+ *          │       │
+ * (1o) ICE_25█   █ICE_23 (1i)
+ *          │       │
+ * (2o) ICE_21█   █ICE_20 (2i)
+ *          │       │
+ * (3o) ICE_19█   █ICE_18 (3i)
+ *          │       │
+ */
+const struct { uint8_t a, b; } pin_chain_ctl[] {
+    [0] = { ICE_FPGA_27_PIN, ICE_FPGA_26_PIN },
+    [1] = { ICE_FPGA_25_PIN, ICE_FPGA_23_PIN },
+    [2] = { ICE_FPGA_21_PIN, ICE_FPGA_20_PIN },
+    [3] = { ICE_FPGA_19_PIN, ICE_FPGA_18_PIN },
+} ;
 
 static void test_sleep_ms(uint32_t delay_ms) {
     for (uint32_t i = 0; i < delay_ms; i += 1) {
@@ -292,7 +335,7 @@ static void run_ice40_tests(void) {
 
 static bool button_pressed(void) {
     test_sleep_ms(1);
-    return false;
+    return gpio_get(ICE_BUTTON_PIN);
 }
 
 int main(void) {
@@ -300,9 +343,12 @@ int main(void) {
     tusb_init();
     ice_led_init();
 
+    gpio_init(ICE_BUTTON_PIN);
+
     // wait that the button gets pressed a first time
     while (!button_pressed()) {
         tud_task();
+        printf("button still not pressed... ");
     }
 
     // expected to run tests outside of the test jig

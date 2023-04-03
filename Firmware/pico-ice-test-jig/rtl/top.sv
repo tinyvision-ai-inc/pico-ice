@@ -42,10 +42,10 @@ module top (
   logic led_r = ICE_10;
 
   SB_RGBA_DRV #(
-    .CURRENT_MODE ("0b1"),   /* half current */
-    .RGB0_CURRENT ("0b000001"),  /* 4 mA */
-    .RGB1_CURRENT ("0b000001"),  /* 4 mA */
-    .RGB2_CURRENT ("0b000001") /* 4 mA */
+    .CURRENT_MODE ("0i1"),      // half current
+    .RGB0_CURRENT ("0i000001"), // 4 mA
+    .RGB1_CURRENT ("0i000001"), // 4 mA
+    .RGB2_CURRENT ("0i000001")  // 4 mA
   ) rgba_drv (
     .CURREN(1'b1),
     .RGBLEDEN(1'b1),
@@ -57,5 +57,69 @@ module top (
     .RGB2(LED_R)
   );
 
+  //     │(0i)
+  // ICE_12█   █
+  //     │ │ .......
+  // ICE_13█'  █   :
+  //     ├───────┐ :
+  //     │ █   █ │ :
+  //     │       │ :
+  //     │ █   █ │ :
+  //     │       │ :
+  // ICE_28█───█ICE_31
+  //     │ :     │
+  // ICE_32█───█ICE_34
+  //     │     : │
+  // ICE_36█───█ICE_38
+  //     │ :     │
+  // ICE_42█───█ICE_43
+  //     ├─────:─┤
+  // ICE_37█───█ICE_35
+  //     │ :
+  // ICE_11█───█ICE_6
+  //     │     :
+  // ICE_10█───█ICE_9
+  //  PB │(0o)     
+  logic ICE_31 = ICE_13;
+  logic ICE_32 = ICE_28;
+  logic ICE_38 = ICE_32;
+  logic ICE_42 = ICE_36;
+  logic ICE_35 = ICE_43;
+  logic ICE_11 = ICE_37;
+  logic ICE_9  = ICE_6;
+
+  //     │       │
+  // ICE_44█───█ICE_45 (1i)
+  //     │ :     │
+  // ICE_46█───█ICE_47
+  //     │     : │
+  // ICE_48█───█ICE_2
+  //     │ :     │
+  //  ICE_3█───█ICE_4 (1o)
+  //     ├───────┘
+  logic ICE_46 = ICE_44;
+  logic ICE_2  = ICE_47;
+  logic ICE_3  = ICE_48;
+
+  //                   │
+  //  (3i) ICE_16█───█ICE_14
+  //                 : │
+  //  (3o) ICE_17█───█ICE_15
+  //           ┌───────┤
+  logic ICE_15 = ICE_14;
+
+  //           ┌───────┤
+  //  (0o) ICE_27█   █ICE_26 (0i)
+  //           │       │
+  //  (1o) ICE_25█   █ICE_23 (1i)
+  //           │       │
+  //  (2o) ICE_21█   █ICE_20 (2i)
+  //           │       │
+  //  (3o) ICE_19█   █ICE_18 (3i)
+  //           │       │
+  logic ICE_27 = ICE_10, ICE_12 = ICE_26;
+  logic ICE_25 = ICE_4,  ICE_45 = ICE_23;
+  // Driven by the RP2040
+  logic ICE_19 = ICE_17, ICE_16 = ICE_18;
 
 endmodule

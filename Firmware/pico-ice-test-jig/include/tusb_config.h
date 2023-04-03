@@ -42,7 +42,7 @@
 
 // Device classes
 #define CFG_TUD_CDC                 1
-#define CFG_TUD_MSC                 1
+#define CFG_TUD_MSC                 0
 #define CFG_TUD_DFU                 1
 #define CFG_TUD_DFU_ALT             2
 #define CFG_TUD_HID                 0
@@ -58,9 +58,6 @@
 #define CFG_TUD_CDC_RX_BUFSIZE      512
 #define CFG_TUD_CDC_TX_BUFSIZE      512
 #define CFG_TUD_CDC_EP_BUFSIZE      512
-
-// MSC Buffer size of Device Mass storage
-#define CFG_TUD_MSC_BUFSIZE         FLASH_SECTOR_SIZE
 
 // Must be a multiple of flash page size
 #define CFG_TUD_DFU_XFER_BUFSIZE    256
