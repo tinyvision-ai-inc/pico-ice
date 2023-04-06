@@ -24,3 +24,5 @@ target_include_directories(pico_ice_test_jig PUBLIC
 )
 pico_enable_stdio_usb(pico_ice_test_jig 1)
 pico_add_extra_outputs(pico_ice_test_jig)
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g")

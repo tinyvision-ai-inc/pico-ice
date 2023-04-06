@@ -30,35 +30,35 @@ Together, these connecitons are building a test chain on the FPGA, whose input i
     │                                │
     │                                │
     │(0i)                            │
-ICE_12█   █         (3i) ICE_16█───█ICE_14
+ICE_12█   █         (2i) ICE_16█───█ICE_14
     │ │ .......                    : │
-ICE_13█'  █   :     (3o) ICE_17█───█ICE_15
+ICE_13█'  █   :     (2o) ICE_17█───█ICE_15
     ├───────┐ :              ┌───────┤
-    │ █   █ │ :     (0o) ICE_27█   █ICE_26 (0i)
+    │ █   █ │ :     (0o) ICE_25█   █ICE_23 (0i)
     │       │ :              │       │
-    │ █   █ │ :     (1o) ICE_25█   █ICE_23 (1i)
+    │ █   █ │ :     (1o) ICE_19█   █ICE_18 (1i)
     │       │ :              │       │
-ICE_28█───█ICE_31   (2o) ICE_21█   █ICE_20 (2i)
+ICE_28█───█ICE_31   (2o) ICE_27█   █ICE_26 (2i)
     │ :     │                │       │
-ICE_32█───█ICE_34   (3o) ICE_19█   █ICE_18 (3i)
+ICE_32█───█ICE_34  (rst) ICE_21█   █ICE_20 (button)
     │     : │                │       │
 ICE_36█───█ICE_38            │ █   █ │
     │ :     │                │       │
 ICE_42█───█ICE_43            │ █   █ │
     ├─────:─┤                └───────┤
-ICE_37█───█ICE_35        GPIO26█───█GPIO15 (2i)
-    │ :                        :     │
+ICE_37█───█ICE_35        GPIO26█───█GPIO15
+    │ :                              │
 ICE_11█───█ICE_6         GPIO28█───█GPIO13
-    │     :                        : │
+    │     :                          │
 ICE_10█───█ICE_9         GPIO29█───█GPIO12
- PB ├(0o)───┐                ┌─:─────┤
+ PB ├(0o)───┐                ┌───────┤
     │ █   █ │            GPIO16█───█GPIO20
-    │       │                │     : │
+    │       │                │       │
     │ █   █ │            GPIO17█───█GPIO21
-    │       │                │ :     │
+    │       │                │       │
 ICE_44█───█ICE_45 (1i)   GPIO18█───█GPIO22
-    │ :     │                │     : │
-ICE_46█───█ICE_47   (2o) GPIO19█───█GPIO23
+    │ :     │                │       │
+ICE_46█───█ICE_47        GPIO19█───█GPIO23
     │     : │                │       │
 ICE_48█───█ICE_2             │ █   █ │
     │ :     │                │       │

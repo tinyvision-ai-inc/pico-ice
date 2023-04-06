@@ -22,109 +22,112 @@
  * SOFTWARE.
  */
 
+// libc
+#include <stdarg.h>
+#include <stdio.h>
+
+// pico-sdk
 #include "pico/stdlib.h"
 #include "pico/stdio.h"
+
+// pico-ice-sdk
 #include "boards/pico_ice.h"
 #include "ice_usb.h"
 #include "ice_fpga.h"
 #include "ice_led.h"
 
-// Mirrored from the FPGA
-#define BUTTON_PIN  ICE_FPGA_27_PIN
-
 #define FIRST_GPIO  0
 #define LAST_GPIO   29
+#define FPGA_BUTTON_PIN     ICE_FPGA_20_PIN // Mirrored from the FPGA
+#define FPGA_HIGH_Z_PIN     ICE_FPGA_21_PIN
 
 static bool g_step_failed;
 static bool g_test_failed;
 static bool g_any_failed;
 
-enum {
+const enum {
     TYPE_FREE_PIN = 0,
     TYPE_FPGA_PIN,
-    PIN_TYPE_SPI,
+    TYPE_SPI_PIN,
     TYPE_LED_PIN,
-} pin_type[] = {
-    [0] = TYPE_FPGA_PIN,
-    [1] = TYPE_FPGA_PIN,
-    [2] = TYPE_FPGA_PIN,
-    [3] = TYPE_FPGA_PIN,
-    [4] = TYPE_FPGA_PIN,
-    [5] = TYPE_FPGA_PIN,
-    [6] = TYPE_FPGA_PIN,
-    [7] = TYPE_FPGA_PIN,
-    [8] = PIN_TYPE_SPI,
-    [9] = PIN_TYPE_SPI,
-    [10] = PIN_TYPE_SPI,
-    [11] = PIN_TYPE_SPI,
-    [12] = TYPE_LED_PIN,
-    [13] = TYPE_LED_PIN,
-    [14] = PIN_TYPE_SPI,
-    [15] = TYPE_LED_PIN,
-    [16] = TYPE_FREE_PIN,
-    [17] = TYPE_FREE_PIN,
-    [18] = TYPE_FREE_PIN,
-    [19] = TYPE_FREE_PIN,
-    [20] = TYPE_FREE_PIN,
-    [21] = TYPE_FREE_PIN,
-    [22] = TYPE_FREE_PIN,
-    [23] = TYPE_FREE_PIN,
-    [24] = TYPE_FPGA_PIN,
-    [25] = TYPE_FREE_PIN,
-    [26] = TYPE_FREE_PIN,
-    [27] = TYPE_FREE_PIN,
-    [28] = TYPE_FREE_PIN,
-    [29] = TYPE_FREE_PIN,
+    TYPE_SYSTEM_PIN,
+} pin_type[30] = {
+    // shared PMOD pins
+    [0]     = TYPE_FPGA_PIN,
+    [1]     = TYPE_FPGA_PIN,
+    [2]     = TYPE_FPGA_PIN,
+    [3]     = TYPE_FPGA_PIN,
+    [4]     = TYPE_FPGA_PIN,
+    [5]     = TYPE_FPGA_PIN,
+    [6]     = TYPE_FPGA_PIN,
+    [7]     = TYPE_FPGA_PIN,
+
+    // SPI bus
+    [8]     = TYPE_SPI_PIN,
+    [9]     = TYPE_SPI_PIN,
+    [10]    = TYPE_SPI_PIN,
+    [11]    = TYPE_SPI_PIN,
+    [14]    = TYPE_SPI_PIN,
+
+    // Boolean signal pins
+    [ICE_LED_RED_PIN]       = TYPE_LED_PIN,
+    [ICE_LED_GREEN_PIN]     = TYPE_LED_PIN,
+    [ICE_LED_BLUE_PIN]      = TYPE_LED_PIN,
+    [FPGA_BUTTON_PIN]       = TYPE_SYSTEM_PIN,
+    [FPGA_HIGH_Z_PIN]       = TYPE_SYSTEM_PIN,
+    [ICE_FPGA_CRESET_B_PIN] = TYPE_SYSTEM_PIN,
+    [ICE_FPGA_CDONE_PIN]    = TYPE_SYSTEM_PIN,
+
+    // FPGA clock pin
+    [24]    = TYPE_FPGA_PIN,
 };
 
 /*
- *      GPIO26█───█GPIO15 (2i)
- *            :     │
- *      GPIO28█───█GPIO13
- *                : │
- *      GPIO29█───█GPIO12
- *          ┌─:─────┤
- *      GPIO16█───█GPIO20
- *          │     : │
- *      GPIO17█───█GPIO21
- *          │ :     │
- *      GPIO18█───█GPIO22
- *          │     : │
- * (2o) GPIO19█───█GPIO23
- *          │       │
+ *     └───────┤
+ * GPIO26█───█GPIO15
+ *             │
+ * GPIO28█───█GPIO13
+ *             │
+ * GPIO29█───█GPIO12
+ *     ┌───────┤
+ * GPIO16█───█GPIO20
+ *     │       │
+ * GPIO17█───█GPIO21
+ *     │       │
+ * GPIO18█───█GPIO22
+ *     │       │
+ * GPIO19█───█GPIO23
+ *     │       │
  */
-struct { uint8_t from, to; } pin_mirror[] = {
-    { 21, 19 }, // 2o (in)
-    { 23, 22 },
-    { 18, 21 },
-    { 16, 29 },
-    { 12, 13 },
-    { 28, 26 },
-    { 15, 20 }, // 2i (out)
+const struct { uint8_t from, to; } pin_linked[] = {
+    { 26, 15 },
+    { 28, 13 },
+    { 29, 12 },
+    { 16, 20 },
+    { 17, 21 },
+    { 18, 22 },
+    { 19, 23 },
 };
 
 /*
  *          ┌───────┤
- * (0o) ICE_27█   █ICE_26 (0i)
+ * (0o) ICE_25█   █ICE_23 (0i)
  *          │       │
- * (1o) ICE_25█   █ICE_23 (1i)
+ * (1o) ICE_19█   █ICE_18 (1i)
  *          │       │
- * (2o) ICE_21█   █ICE_20 (2i)
- *          │       │
- * (3o) ICE_19█   █ICE_18 (3i)
+ * (2o) ICE_27█   █ICE_26 (2i)
  *          │       │
  */
-const struct { uint8_t a, b; } pin_chain_io[] = {
-    [0] = { ICE_FPGA_27_PIN, ICE_FPGA_26_PIN },
-    [1] = { ICE_FPGA_25_PIN, ICE_FPGA_23_PIN },
-    [2] = { ICE_FPGA_21_PIN, ICE_FPGA_20_PIN },
-    [3] = { ICE_FPGA_19_PIN, ICE_FPGA_18_PIN },
+const struct { uint8_t o, i; } pin_chain[] = {
+    [0] = { ICE_FPGA_25_PIN, ICE_FPGA_23_PIN },
+    [1] = { ICE_FPGA_19_PIN, ICE_FPGA_18_PIN },
+    [2] = { ICE_FPGA_27_PIN, ICE_FPGA_26_PIN },
 };
 
 static void test_sleep_ms(uint32_t delay_ms) {
     for (uint32_t i = 0; i < delay_ms; i += 1) {
         tud_task();
-        sleep_ms(1);
+        ice_usb_sleep_ms(1);
     }
 }
 
@@ -134,6 +137,16 @@ static void test_assert(bool exp) {
         g_test_failed = true;
         g_any_failed = true;
     }
+}
+
+static void test_step_printf(char const *fmt, ...)
+{
+    va_list va;
+
+    va_start(va, fmt);
+    printf(" %s - ", g_step_failed ? "FAIL" : "PASS");
+    vprintf(fmt, va);
+    printf("\n");
 }
 
 static bool test_start(char const *desc) {
@@ -155,22 +168,55 @@ static void test_summary(void (*led_fn)(bool)) {
     } else {
         ice_led_init();
         led_fn(true);
-        printf("\nAll tests passed\n");
+        printf("\nPASS - All tests passed\n");
     }
 }
 
 static bool pull_output(uint pin, bool state) {
-    // Change state of SWDIO or SWCLK using pull-up and pull-down.
+    // change state of SWDIO or SWCLK using pull-up and pull-down
     int pulls = state ? PADS_BANK0_GPIO0_PUE_BITS : PADS_BANK0_GPIO0_PDE_BITS;
     hw_write_masked(&padsbank0_hw->io[pin], pulls, PADS_BANK0_GPIO0_PUE_BITS | PADS_BANK0_GPIO0_PDE_BITS);
+}
+
+static bool button_pressed(void) {
+    test_sleep_ms(1);
+    return !gpio_get(FPGA_BUTTON_PIN);
+}
+
+static bool pin_is_drivable(uint8_t pin) {
+    switch (pin_type[pin]) {
+    case TYPE_SYSTEM_PIN:
+        return false;
+    default:
+        return true;
+    }
+}
+
+static bool pin_is_pulled(uint8_t pin) {
+    switch (pin_type[pin]) {
+    case TYPE_SPI_PIN:
+    case TYPE_LED_PIN:
+    case TYPE_SYSTEM_PIN:
+        return true;
+    default:
+        return false;
+    }
+}
+
+static bool button_wait_press_release(void) {
+    while (!button_pressed());
+    while (button_pressed());
+}
+
+static bool fpga_pins_high_z(bool state) {
+    gpio_set_dir(FPGA_HIGH_Z_PIN, GPIO_OUT);
+    gpio_put(FPGA_HIGH_Z_PIN, state);
 }
 
 static bool check_pin_state(int pin, bool state) {
     g_step_failed = false;
     test_assert(gpio_get(pin) == state);
-    if (g_step_failed) {
-        printf(" FAIL - %s(%d, %s)\n", __func__, pin, state ? "true" : "false");
-    }
+    test_step_printf("%s(%d, %s)", __func__, pin, state ? "true" : "false");
 }
 
 static void check_pin_connected(int input_pin, int output_pin) {
@@ -189,16 +235,14 @@ static void check_pin_connected(int input_pin, int output_pin) {
         test_assert(gpio_get(input_pin) == 1);
     }
 
-    if (g_step_failed) {
-        printf(" FAIL - %s(%d, %d)\n", __func__, input_pin, output_pin);
-    }
+    test_step_printf("%s(%d, %d)", __func__, input_pin, output_pin);
 }
 
-static void check_free_pin_not_connected(int input_pin, int output_pin) {
+static void check_pin_not_connected(int input_pin, int output_pin) {
     g_step_failed = false;
-    gpio_set_dir(input_pin, GPIO_IN);
     gpio_set_dir(output_pin, GPIO_OUT);
-    gpio_set_pulls(input_pin, true, false); // pull-up
+    gpio_set_dir(input_pin, GPIO_IN);
+    gpio_set_pulls(input_pin, true, false);
 
     for (int i = 0; i < 10; i++) {
         gpio_put(output_pin, 0);
@@ -210,30 +254,7 @@ static void check_free_pin_not_connected(int input_pin, int output_pin) {
         test_assert(gpio_get(input_pin) == 1);
     }
 
-    if (g_step_failed) {
-        printf(" FAIL - %s(%d, %d)\n", __func__, input_pin, output_pin);
-    }
-}
-
-static void check_fpga_pin_not_connected(int input_pin, int output_pin) {
-    g_step_failed = false;
-    gpio_set_dir(input_pin, GPIO_IN);
-    gpio_set_dir(output_pin, GPIO_OUT);
-    gpio_set_pulls(input_pin, true, false); // pull-up
-
-    for (int i = 0; i < 10; i++) {
-        gpio_put(output_pin, 0);
-        test_sleep_ms(1);
-        test_assert(gpio_get(input_pin) == 1);
-
-        gpio_put(output_pin, 1);
-        test_sleep_ms(1);
-        test_assert(gpio_get(input_pin) == 1);
-    }
-
-    if (g_step_failed) {
-        printf(" FAIL - %s(%d, %d)\n", __func__, input_pin, output_pin);
-    }
+    test_step_printf("%s(%d, %d)", __func__, input_pin, output_pin);
 }
 
 static void check_free_pin_consistent(int pin) {
@@ -250,12 +271,10 @@ static void check_free_pin_consistent(int pin) {
         test_assert(gpio_get(pin) == 0);
     }
 
-    if (g_step_failed) {
-        printf(" FAIL - %s(%d)\n", __func__, pin);
-    }
+    test_step_printf("%s(%d)", __func__, pin);
 }
 
-static void check_fpga_pin_consistent(int pin) {
+static void check_pulled_pin_consistent(int pin) {
     g_step_failed = false;
     gpio_set_dir(pin, GPIO_OUT);
 
@@ -269,106 +288,79 @@ static void check_fpga_pin_consistent(int pin) {
         test_assert(gpio_get(pin) == 0);
     }
 
-    if (g_step_failed) {
-        printf(" FAIL - %s(%d)\n", __func__, pin);
-    }
+    test_step_printf("%s(%d)", __func__, pin);
 }
 
-static void run_rp2040_tests(void) {
-
-    // RP2040 tests
-
-    ice_fpga_stop();
-
-    // CRESET_B_PIN should be initially pulled down, holding the FPGA in reset.
-    // While in reset, FPGA IOs should be high impedance, weak pull-up.
-    test_start("RP2040 pin CRESET_B");
-    check_pin_state(ICE_FPGA_CRESET_B_PIN, false);
-    test_end();
-
-    // Check that GPIOs are connected to themselves, verifying e.g. that they are not bridged to power nets.
+static void run_out_of_jig_tests(void) {
+    // check that GPIOs are connected to themselves, verifying e.g. that they are not bridged to power nets
     test_start("RP2040 pin self-test");
-    ice_fpga_start();
     for (int i = FIRST_GPIO; i <= LAST_GPIO; ++i) {
         switch (pin_type[i]) {
         case TYPE_FREE_PIN:
+        case TYPE_FPGA_PIN:
             check_free_pin_consistent(i);
             break;
-        case TYPE_FPGA_PIN:
-            check_fpga_pin_consistent(i);
-            break;
         case TYPE_LED_PIN:
+        case TYPE_SPI_PIN:
+            check_pulled_pin_consistent(i);
+            break;
+        case TYPE_SYSTEM_PIN:
             break;
         }
     }
-    ice_fpga_stop();
     test_end();
 
-#define TYPE_PAIR(t1, t2) (((t1) << 8) & 0xFF | ((t2) << 0) & 0xFF)
-
-    // Check adjacent GPIOs are not bridged.
+    // check adjacent GPIOs are not bridged.
     test_start("RP2040 pin not bridged");
-    for (int i = FIRST_GPIO; i <= LAST_GPIO - 1; ++i) {
-        switch (TYPE_PAIR(pin_type[i], pin_type[i + 1])) {
-        case TYPE_PAIR(TYPE_FREE_PIN, TYPE_FREE_PIN):
-            check_free_pin_not_connected(i, i + 1);
-            break;
-        case TYPE_PAIR(TYPE_FPGA_PIN, TYPE_FPGA_PIN):
-            check_fpga_pin_not_connected(i, i + 1);
-            break;
-        default:
-            break;
+    for (int i = FIRST_GPIO, o = i + 1; o <= LAST_GPIO; i++, o++) {
+        if (!pin_is_pulled(i) && pin_is_drivable(o)) {
+            check_pin_not_connected(i, o);
         }
     }
     test_end();
 
-    // Check certain non-adjacent GPIOs are connected via pogo pins
+    // check certain non-adjacent gpios are connected via pogo pins
     // TODO
     test_start("RP2040 pin connected");
     //check_pin_connected(x1, x2);
     test_end();
 }
 
-static void run_ice40_tests(void) {
-    ice_fpga_init(48);
-    ice_fpga_start();
-
+static void run_in_jig_tests(void) {
     test_start("iCE40 pin chain");
     test_end();
-}
-
-static bool button_pressed(void) {
-    test_sleep_ms(1);
-    return gpio_get(BUTTON_PIN);
 }
 
 int main(void) {
     stdio_init_all();
     tusb_init();
-    ice_led_init();
 
-    gpio_init(BUTTON_PIN);
-
-    // wait that the button gets pressed a first time
-    while (!button_pressed()) {
-        tud_task();
-        printf("button still not pressed... ");
+    // initial state of all pins: input
+    for (int i = 0; i <= LAST_GPIO; i++) {
+        gpio_init(i);
     }
 
-    // expected to run tests outside of the test jig
-    run_rp2040_tests();
+    // initialize the peripheral after the great cleanup above
+    ice_led_init();
+    ice_fpga_init(48);
+    ice_fpga_start();
+
+    // run the FPGA from internal oscillator
+    gpio_init(ICE_FPGA_CLOCK_PIN);
+
+    // tests run outside of the test jig
+    fpga_pins_high_z(true);
+    button_wait_press_release();
+    run_out_of_jig_tests();
     test_summary(ice_led_blue);
 
-    // wait that the button gets pressed a second time
-    while (!button_pressed()) {
-        tud_task();
-    }
-
-    // expected to run tests inside of the test jig
+    // tests run inside of the test jig
+    fpga_pins_high_z(false);
+    button_wait_press_release();
     run_ice40_tests();
     test_summary(ice_led_blue);
 
-    // Allow the user to program the board FPGA
+    // endless loop allowing the user to program the board FPGA
     while (1) {
         tud_task();
     }
