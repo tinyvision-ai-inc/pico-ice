@@ -40,6 +40,8 @@
 #define LAST_GPIO_PIN       29
 #define FPGA_BUTTON_PIN     ICE_FPGA_21_PIN // Mirrored from the FPGA
 #define FPGA_HIGH_Z_PIN     ICE_FPGA_20_PIN
+#define CHAIN_IN_PIN        ICE_FPGA_26_PIN
+#define CHAIN_OUT_PIN       ICE_FPGA_27_PIN
 
 #define ARRAY_LENGTH(x) (sizeof(x) / sizeof(*(x)))
 
@@ -337,7 +339,7 @@ static void run_test_in_jig(void) {
      */
     fpga_pins_high_z(false);
     check_pin_connected(ICE_FPGA_27_PIN, ICE_FPGA_26_PIN);
-    //fpga_pins_high_z(true);
+    fpga_pins_high_z(true);
 
     test_end();
 }
@@ -373,11 +375,14 @@ int main(void) {
 
     // endless loop allowing the user to program the board FPGA and
     // debug the pin chain
+    gpio_init(CHAIN_IN_PIN);
+    gpio_set_dir(CHAIN_IN_PIN, GPIO_OUT);
+    fpga_pins_high_z(false);
     while (true) {
-        gpio_put(ICE_FPGA_26_PIN, true);
-        ice_usb_sleep_ms(100);
-        gpio_put(ICE_FPGA_27_PIN, false);
-        ice_usb_sleep_ms(100);
+        gpio_put(CHAIN_IN_PIN, 1);
+        ice_usb_sleep_ms(10);
+        gpio_put(CHAIN_IN_PIN, 0);
+        ice_usb_sleep_ms(10);
     }
 
     return 0;
