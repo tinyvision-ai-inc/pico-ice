@@ -36,10 +36,12 @@
 #include "ice_fpga.h"
 #include "ice_led.h"
 
-#define FIRST_GPIO  0
-#define LAST_GPIO   29
-#define FPGA_BUTTON_PIN     ICE_FPGA_20_PIN // Mirrored from the FPGA
-#define FPGA_HIGH_Z_PIN     ICE_FPGA_21_PIN
+#define FIRST_GPIO_PIN      0
+#define LAST_GPIO_PIN       29
+#define FPGA_BUTTON_PIN     ICE_FPGA_21_PIN // Mirrored from the FPGA
+#define FPGA_HIGH_Z_PIN     ICE_FPGA_20_PIN
+
+#define ARRAY_LENGTH(x) (sizeof(x) / sizeof(*(x)))
 
 static bool g_step_failed;
 static bool g_test_failed;
@@ -52,7 +54,7 @@ const enum {
     TYPE_LED_PIN,
     TYPE_SYSTEM_PIN,
 } pin_type[30] = {
-    // shared PMOD pins
+    // shared Pmod pins
     [0]     = TYPE_FPGA_PIN,
     [1]     = TYPE_FPGA_PIN,
     [2]     = TYPE_FPGA_PIN,
@@ -62,17 +64,19 @@ const enum {
     [6]     = TYPE_FPGA_PIN,
     [7]     = TYPE_FPGA_PIN,
 
-    // SPI bus
+    // SPI pins
     [8]     = TYPE_SPI_PIN,
     [9]     = TYPE_SPI_PIN,
     [10]    = TYPE_SPI_PIN,
     [11]    = TYPE_SPI_PIN,
     [14]    = TYPE_SPI_PIN,
 
-    // Boolean signal pins
+    // LED pins
     [ICE_LED_RED_PIN]       = TYPE_LED_PIN,
     [ICE_LED_GREEN_PIN]     = TYPE_LED_PIN,
     [ICE_LED_BLUE_PIN]      = TYPE_LED_PIN,
+
+    // system pins
     [FPGA_BUTTON_PIN]       = TYPE_SYSTEM_PIN,
     [FPGA_HIGH_Z_PIN]       = TYPE_SYSTEM_PIN,
     [ICE_FPGA_CRESET_B_PIN] = TYPE_SYSTEM_PIN,
@@ -80,48 +84,6 @@ const enum {
 
     // FPGA clock pin
     [24]    = TYPE_FPGA_PIN,
-};
-
-/*
- *     └───────┤
- * GPIO26█───█GPIO15
- *             │
- * GPIO28█───█GPIO13
- *             │
- * GPIO29█───█GPIO12
- *     ┌───────┤
- * GPIO16█───█GPIO20
- *     │       │
- * GPIO17█───█GPIO21
- *     │       │
- * GPIO18█───█GPIO22
- *     │       │
- * GPIO19█───█GPIO23
- *     │       │
- */
-const struct { uint8_t from, to; } pin_linked[] = {
-    { 26, 15 },
-    { 28, 13 },
-    { 29, 12 },
-    { 16, 20 },
-    { 17, 21 },
-    { 18, 22 },
-    { 19, 23 },
-};
-
-/*
- *          ┌───────┤
- * (0o) ICE_25█   █ICE_23 (0i)
- *          │       │
- * (1o) ICE_19█   █ICE_18 (1i)
- *          │       │
- * (2o) ICE_27█   █ICE_26 (2i)
- *          │       │
- */
-const struct { uint8_t o, i; } pin_chain[] = {
-    [0] = { ICE_FPGA_25_PIN, ICE_FPGA_23_PIN },
-    [1] = { ICE_FPGA_19_PIN, ICE_FPGA_18_PIN },
-    [2] = { ICE_FPGA_27_PIN, ICE_FPGA_26_PIN },
 };
 
 static void test_sleep_ms(uint32_t delay_ms) {
@@ -192,7 +154,7 @@ static bool pin_is_drivable(uint8_t pin) {
     }
 }
 
-static bool pin_is_pulled(uint8_t pin) {
+static bool pin_is_pulled_externally(uint8_t pin) {
     switch (pin_type[pin]) {
     case TYPE_SPI_PIN:
     case TYPE_LED_PIN:
@@ -203,13 +165,18 @@ static bool pin_is_pulled(uint8_t pin) {
     }
 }
 
+static bool pin_set_all_input(void) {
+    for (int i = FIRST_GPIO_PIN; i <= LAST_GPIO_PIN; i++) {
+        gpio_init(i);
+    }
+}
+
 static bool button_wait_press_release(void) {
     while (!button_pressed());
     while (button_pressed());
 }
 
 static bool fpga_pins_high_z(bool state) {
-    gpio_set_dir(FPGA_HIGH_Z_PIN, GPIO_OUT);
     gpio_put(FPGA_HIGH_Z_PIN, state);
 }
 
@@ -219,42 +186,45 @@ static bool check_pin_state(int pin, bool state) {
     test_step_printf("%s(%d, %s)", __func__, pin, state ? "true" : "false");
 }
 
-static void check_pin_connected(int input_pin, int output_pin) {
+static void check_pin_connected(int pin_i, int pin_o) {
     g_step_failed = false;
-    gpio_set_dir(output_pin, GPIO_OUT);
-    gpio_set_dir(input_pin, GPIO_IN);
-    gpio_disable_pulls(input_pin);
+    gpio_set_dir(pin_o, GPIO_OUT);
+    gpio_set_dir(pin_i, GPIO_IN);
+    gpio_disable_pulls(pin_i);
 
     for (int i = 0; i < 10; i++) {
-        gpio_put(output_pin, 0);
+        gpio_put(pin_o, 0);
         test_sleep_ms(1);
-        test_assert(gpio_get(input_pin) == 0);
+        test_assert(gpio_get(pin_i) == 0);
 
-        gpio_put(output_pin, 1);
+        gpio_put(pin_o, 1);
         test_sleep_ms(1);
-        test_assert(gpio_get(input_pin) == 1);
+        test_assert(gpio_get(pin_i) == 1);
     }
 
-    test_step_printf("%s(%d, %d)", __func__, input_pin, output_pin);
+    test_step_printf("%s(%d, %d)", __func__, pin_i, pin_o);
+    gpio_set_dir(pin_o, GPIO_IN);
 }
 
-static void check_pin_not_connected(int input_pin, int output_pin) {
+static void check_pin_not_connected(int pin_i, int pin_o) {
     g_step_failed = false;
-    gpio_set_dir(output_pin, GPIO_OUT);
-    gpio_set_dir(input_pin, GPIO_IN);
-    gpio_set_pulls(input_pin, true, false);
+    gpio_set_dir(pin_o, GPIO_OUT);
+    gpio_set_dir(pin_i, GPIO_IN);
+    gpio_set_pulls(pin_i, true, false);
 
     for (int i = 0; i < 10; i++) {
-        gpio_put(output_pin, 0);
+        gpio_put(pin_o, 0);
         test_sleep_ms(1);
-        test_assert(gpio_get(input_pin) == 1);
+        test_assert(gpio_get(pin_i) == 1);
 
-        gpio_put(output_pin, 1);
+        gpio_put(pin_o, 1);
         test_sleep_ms(1);
-        test_assert(gpio_get(input_pin) == 1);
+        test_assert(gpio_get(pin_i) == 1);
     }
 
-    test_step_printf("%s(%d, %d)", __func__, input_pin, output_pin);
+    test_step_printf("%s(%d, %d)", __func__, pin_i, pin_o);
+    gpio_set_dir(pin_o, GPIO_IN);
+    gpio_disable_pulls(pin_i);
 }
 
 static void check_free_pin_consistent(int pin) {
@@ -289,45 +259,86 @@ static void check_pulled_pin_consistent(int pin) {
     }
 
     test_step_printf("%s(%d)", __func__, pin);
+    gpio_set_dir(pin, GPIO_IN);
 }
 
-static void run_out_of_jig_tests(void) {
-    // check that GPIOs are connected to themselves, verifying e.g. that they are not bridged to power nets
+static void run_test_out_of_jig(void) {
+    // check that GPIOs are connected to themselves,
+    // verifying e.g. that they are not bridged to power nets
     test_start("RP2040 pin self-test");
-    for (int i = FIRST_GPIO; i <= LAST_GPIO; ++i) {
-        switch (pin_type[i]) {
-        case TYPE_FREE_PIN:
-        case TYPE_FPGA_PIN:
-            check_free_pin_consistent(i);
-            break;
-        case TYPE_LED_PIN:
-        case TYPE_SPI_PIN:
-            check_pulled_pin_consistent(i);
-            break;
-        case TYPE_SYSTEM_PIN:
-            break;
+    for (int i = FIRST_GPIO_PIN; i <= LAST_GPIO_PIN; ++i) {
+        if (pin_is_drivable(i)) {
+            if (pin_is_pulled_externally(i)) {
+                check_pulled_pin_consistent(i);
+            } else {
+                check_free_pin_consistent(i);
+            }
         }
     }
     test_end();
 
     // check adjacent GPIOs are not bridged.
     test_start("RP2040 pin not bridged");
-    for (int i = FIRST_GPIO, o = i + 1; o <= LAST_GPIO; i++, o++) {
-        if (!pin_is_pulled(i) && pin_is_drivable(o)) {
-            check_pin_not_connected(i, o);
+    for (int i1 = FIRST_GPIO_PIN, i2 = i1 + 1; i2 <= LAST_GPIO_PIN; i1++, i2++) {
+        if (!pin_is_pulled_externally(i2) && pin_is_drivable(i1)) {
+            check_pin_not_connected(i2, i1);
+        }
+        if (!pin_is_pulled_externally(i1) && pin_is_drivable(i2)) {
+            check_pin_not_connected(i1, i2);
         }
     }
     test_end();
-
-    // check certain non-adjacent gpios are connected via pogo pins
-    // TODO
-    test_start("RP2040 pin connected");
-    //check_pin_connected(x1, x2);
-    test_end();
 }
 
-static void run_in_jig_tests(void) {
+static void run_test_in_jig(void) {
+
+    test_start("RP2040 pin pairs");
+
+    /*
+     *             │
+     * GPIO28█───█GPIO13
+     *             │
+     * GPIO29█───█GPIO12
+     *     ┌───────┤
+     * GPIO16█───█GPIO20
+     *     │       │
+     * GPIO17█───█GPIO21
+     *     │       │
+     * GPIO18█───█GPIO22
+     *     │       │
+     * GPIO19█───█GPIO23
+     *     │       │
+     */
+    check_pin_connected(28, 13);
+    check_pin_connected(29, 12);
+    check_pin_connected(16, 20);
+    check_pin_connected(17, 21);
+    check_pin_connected(18, 22);
+    check_pin_connected(19, 23);
+
+    /*
+     *     ┌─:─────┤
+     * ICE_25█───█ICE_23
+     *     │     : │
+     * ICE_19█───█ICE_18
+     *     │ :     │
+     */
+    check_pin_connected(ICE_FPGA_25_PIN, ICE_FPGA_23_PIN);
+    check_pin_connected(ICE_FPGA_19_PIN, ICE_FPGA_18_PIN);
+
+    test_end();
+
     test_start("iCE40 pin chain");
+
+    /*
+     *        │     : │
+     * <--ICE_27█   █ICE_26<--
+     *        │.'     │
+     */
+    fpga_pins_high_z(false);
+    check_pin_connected(ICE_FPGA_27_PIN, ICE_FPGA_26_PIN);
+    //fpga_pins_high_z(true);
+
     test_end();
 }
 
@@ -335,34 +346,38 @@ int main(void) {
     stdio_init_all();
     tusb_init();
 
-    // initial state of all pins: input
-    for (int i = 0; i <= LAST_GPIO; i++) {
-        gpio_init(i);
-    }
+    // initial state of all pins
+    pin_set_all_input();
 
-    // initialize the peripheral after the great cleanup above
+    // configure extra pins states with the SDK
     ice_led_init();
     ice_fpga_init(48);
     ice_fpga_start();
 
-    // run the FPGA from internal oscillator
+    // adjust some pins after the SDK configuration
     gpio_init(ICE_FPGA_CLOCK_PIN);
+    gpio_set_dir(FPGA_HIGH_Z_PIN, GPIO_OUT);
+
+    // prevent the FPGA from interfering
+    fpga_pins_high_z(true);
 
     // tests run outside of the test jig
-    fpga_pins_high_z(true);
     button_wait_press_release();
-    run_out_of_jig_tests();
+    run_test_out_of_jig();
     test_summary(ice_led_blue);
 
     // tests run inside of the test jig
-    fpga_pins_high_z(false);
     button_wait_press_release();
-    run_ice40_tests();
+    run_test_in_jig();
     test_summary(ice_led_blue);
 
-    // endless loop allowing the user to program the board FPGA
-    while (1) {
-        tud_task();
+    // endless loop allowing the user to program the board FPGA and
+    // debug the pin chain
+    while (true) {
+        gpio_put(ICE_FPGA_26_PIN, true);
+        ice_usb_sleep_ms(100);
+        gpio_put(ICE_FPGA_27_PIN, false);
+        ice_usb_sleep_ms(100);
     }
 
     return 0;
