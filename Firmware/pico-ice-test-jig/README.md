@@ -9,7 +9,10 @@ This firmware is meant for testing all connections of the board with a rig as de
 3. reset the board (SW1)
 4. press the button to start the test outside of the jig (SW2), it should turn blue
 5. put the board onto the jig
-5. press the button to start the test inside of the jig (SW2), it should turn green
+6. press the button to start the test inside of the jig (SW2), it should turn green
+7. at the end, to ease debugging, the FPGA is still programmable, and a square wave
+   of 10 Hz is sent through the whole chain, which permits to observe where it
+   eventually stops.
 
 ## Color code
 

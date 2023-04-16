@@ -371,7 +371,7 @@ int main(void) {
     // tests run inside of the test jig
     button_wait_press_release();
     run_test_in_jig();
-    test_summary(ice_led_blue);
+    test_summary(ice_led_green);
 
     // endless loop allowing the user to program the board FPGA and
     // debug the pin chain
