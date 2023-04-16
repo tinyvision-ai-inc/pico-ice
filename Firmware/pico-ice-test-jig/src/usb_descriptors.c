@@ -26,7 +26,6 @@
 
 enum {
     ITF_NUM_CDC0, ITF_NUM_CDC0_DATA,
-    ITF_NUM_MSC0,
     ITF_NUM_DFU,
     ITF_NUM_TOTAL
 };
@@ -46,5 +45,4 @@ char const *tud_string_desc[STRID_NUM_TOTAL] = {
     [STRID_CDC+0]           = "RP2040 UART",
     [STRID_DFU+0]           = "iCE40 DFU (flash)",
     [STRID_DFU+1]           = "iCE40 DFU (CRAM)",
-    [STRID_MSC+0]           = "iCE40 MSC (flash)",
 };
