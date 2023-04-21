@@ -5,8 +5,8 @@ nav_order: 1
 has_children: true
 ---
 
-![](images/pico_ice_v2_front.jpg)
-![](images/pico_ice_v2_back.jpg)
+![](images/pico_ice_front.jpg)
+![](images/pico_ice_back.jpg)
 
 # pico-ice
 
@@ -39,7 +39,7 @@ Here are some resources for you:
 * [Git Repository](https://github.com/tinyvision-ai-inc/pico-ice) (hardware)
 * [Git Repository](https://github.com/tinyvision-ai-inc/pico-ice-sdk) (SDK)
 * [Discord channel](https://discord.gg/3qbXujE)
-* [Schematic](https://raw.githubusercontent.com/tinyvision-ai-inc/pico-ice/main/Board/Rev2/pico-ice.pdf)
-* [Assembly Drawing](https://htmlpreview.github.io/?https://github.com/tinyvision-ai-inc/pico-ice/blob/main/Board/Rev2/bom/ibom.html)
+* [Schematic](https://raw.githubusercontent.com/tinyvision-ai-inc/pico-ice/main/Board/Rev3/pico-ice.pdf)
+* [Assembly Drawing](https://htmlpreview.github.io/?https://github.com/tinyvision-ai-inc/pico-ice/blob/main/Board/Rev3/bom/ibom.html)
 
 [OSHW US002140](https://certification.oshwa.org/us002140.html) |  Certified open source hardware | oshwa.org/cert
