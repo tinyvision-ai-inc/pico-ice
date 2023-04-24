@@ -35,6 +35,7 @@
 #include "ice_usb.h"
 #include "ice_fpga.h"
 #include "ice_led.h"
+#include "ice_sram.h"
 
 #define FIRST_GPIO_PIN      0
 #define LAST_GPIO_PIN       29
@@ -265,6 +266,8 @@ static void check_pulled_pin_consistent(int pin) {
 }
 
 static void run_test_out_of_jig(void) {
+    uint8_t id[8];
+
     // check that GPIOs are connected to themselves,
     // verifying e.g. that they are not bridged to power nets
     test_start("RP2040 pin self-test");
@@ -289,6 +292,16 @@ static void run_test_out_of_jig(void) {
             check_pin_not_connected(i1, i2);
         }
     }
+    test_end();
+
+    // check the SRAM Known Good Die (KGD) self-test status
+    test_start("SRAM chip ID");
+    ice_sram_init();
+    ice_sram_get_id(id);
+    test_assert(id[0] == 0x0D);
+    test_assert(id[1] == 0x5D);
+    test_step_printf("chip_id=0x%02X%02X%02X%02X%02X%02X%02X%02X",
+        id[0], id[1], id[2], id[3], id[4], id[5], id[6], id[7]);
     test_end();
 }
 
