@@ -101,7 +101,7 @@ Review the [pico_fpga](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/ma
 for how this can be done, as well as the [`ice_fpga.h`](ice_fpga.html) library documentation.
 
 The USB DFU provided as part of the pico-ice-sdk must also be enabled for the DFU interface to show-up.
-The [template](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/template) project have it enabled by default.
+The [pico_usb_uart example](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_usb_uart) project have it enabled by default.
 
 ### Cannot open DFU device 1209:b1c0 found on devnum 61 (LIBUSB_ERROR_NOT_FOUND)
 
