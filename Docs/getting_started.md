@@ -1,5 +1,5 @@
 ---
-title: Programming the FPGA
+title: Getting Started
 layout: default
 nav_order: 1
 parent: pico-ice
@@ -7,8 +7,7 @@ parent: pico-ice
 
 # Getting Started
 
-Once you receive the board,
-you would be able to plug via USB and see the RGB LED blinking.
+Once you receive the board, you would be able to plug via USB and see the RGB LED blinking.
 
 This is the FPGA bitstream project loaded onto the board by default.
 You can replace it with your own by one of the [FPGA programming methods](/programming_the_fpga.html).
@@ -26,7 +25,7 @@ The suggested way to solder the PMODs is as seen below:
 
 This lets the other pins accessible from jumper cables for instance:
 
-![pmod install after soldering](images/pico_ice_pmod_install_1.jpg)
+![pmod install after soldering](images/pico_ice_pmod_install_2.jpg)
 
 It is also possible to solder a full pin header row on each side for use on a breadboard,
 or any other way.
