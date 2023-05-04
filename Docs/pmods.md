@@ -87,3 +87,4 @@ If you have made a Pmod module, let us know and we would add it to this list!
 - <https://aliexpress.com/store/912189181/search?SearchText=pmod>
 - <https://github.com/swetland/ethernet-pmod>
 - <https://fpga.fm4dd.com/>
+- <https://github.com/icebreaker-fpga/icebreaker-pmod>
