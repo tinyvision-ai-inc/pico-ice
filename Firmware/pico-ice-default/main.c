@@ -22,29 +22,34 @@
  * SOFTWARE.
  */
 
-// libc
-#include <stdarg.h>
-#include <stdio.h>
-
-// pico-sdk
-#include "pico/stdlib.h"
 #include "pico/stdio.h"
-
-// pico-ice-sdk
-#include "boards/pico_ice.h"
+#include "hardware/irq.h"
+#include "hardware/gpio.h"
+#include "hardware/uart.h"
 #include "ice_usb.h"
 #include "ice_fpga.h"
-#include "ice_led.h"
 
 int main(void) {
-    stdio_init_all();
+    stdio_init_all(); // uses CDC0, next available is CDC1
     tusb_init();
-    ice_fpga_start();
-    ice_led_init();
 
-    while (1) {
+    // Let the FPGA start and give it a clock
+    ice_fpga_init(48);
+    ice_fpga_start();
+
+    // Enable the UART
+    uart_init(uart0, 115200);
+    gpio_set_function(0, GPIO_FUNC_UART);
+    gpio_set_function(1, GPIO_FUNC_UART);
+
+    // Bind USB CDC1 callback for piping input data to UART0
+    tud_cdc_rx_cb_table[1] = &ice_usb_cdc_to_uart0;
+
+    // Bind UART0 interrupt for piping to USB CDC1
+    irq_set_exclusive_handler(UART0_IRQ, ice_usb_uart0_to_cdc1);
+
+    while (true) {
         tud_task();
     }
-
     return 0;
 }

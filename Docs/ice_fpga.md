@@ -10,9 +10,9 @@ Low-level API for interacting with the FPGA chip.
 
 ---
 
-## `void ice_fpga_init(uint8_t frequency_mhz)`
+## `void ice_fpga_init(uint8_t freq_mhz)`
 
-* `frequency_mhz` - Exported clock frequency in MHz. Valid values: 48MHz, 24MHz, 16MHz 12MHz, 8MHz, 6MHz, 4MHz, 3MHz, 2MHz, 1MHz.
+* `freq_mhz` - Exported clock frequency in MHz. Valid values: 48MHz, 24MHz, 16MHz 12MHz, 8MHz, 6MHz, 4MHz, 3MHz, 2MHz, 1MHz.
 
 Let the FPGA start and export a clock for it over `ICE_FPGA_CLOCK_PIN`.
 
