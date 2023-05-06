@@ -35,6 +35,7 @@ Board and Firmware features:
 
 Here are some resources for you:
 
+* [Order from LectronZ](https://lectronz.com/products/pico-ice-rp2040-plus-lattice-ice40up5k-fpga)
 * [Documentation](http://pico-ice.tinyvision.ai/)
 * [Git Repository](https://github.com/tinyvision-ai-inc/pico-ice) (hardware)
 * [Git Repository](https://github.com/tinyvision-ai-inc/pico-ice-sdk) (SDK)
