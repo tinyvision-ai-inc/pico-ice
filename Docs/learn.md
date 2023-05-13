@@ -16,6 +16,9 @@ Some of them have been collected and aggregated on this page:
   Starts with defining FPGA and covers HDLs, programming flow etc.
   New to FPGAs? Start here!
 
+- [SystemVerilog in 5 minutes](https://www.bilibili.com/video/BV1Rr4y1z7Dv?p=1)
+  Serie of concise and focused descriptions of the SystemVerilog language.
+
 - [VLSI Chaps](https://youtube.com/channel/UCzvXC7WbnaWs5FZ5djO8cag)
   Discussion and explanation of ASICs, VLISI, but also SystemVerilog.
 
