@@ -16,6 +16,7 @@ Out of the box, the [default firmware](https://github.com/tinyvision-ai-inc/pico
 You can skip step 1 if this is the case.
 
 1.  If you changed the default firwmare, [program](programming_the_mcu.html) it again onto the RP2040.
+    You can also integrate the FPGA programming code in your own firmware with [ice_usb.h](/ice_usb.html).
 
 2.  Install or build the [UF2 Tools](uf2_tools.html),
     and a [blinky example](https://github.com/tinyvision-ai-inc/UPduino-v3.0/blob/master/RTL/blink_led/rgb_blink.bin) for any iCE40 board.
@@ -33,39 +34,30 @@ You can skip step 1 if this is the case.
 
 ## Using the DFU mode
 
-1.  Follow the same step as above for building the `pico_usb_uf2` code.
+1.  If you changed the default firwmare, [program](programming_the_mcu.html) it again onto the RP2040.
+    You can also integrate the FPGA programming code in your own firmware with [ice_usb.h](/ice_usb.html).
 
-2.  Install the DFU utilities. For Windows, [yosys-hq tabby-cad](https://www.yosyshq.com/tabby-cad-datasheet) is known to work.
+2.  Install the DFU utilities.
 
-    a. If using Windows, you can open a OSS prompt by double clicking on the `start.bat` file in the OSS CAD Suite installation.
+    a.  For Windows, [yosys-hq tabby-cad](https://www.yosyshq.com/tabby-cad-datasheet):
+        double-clicking on `start.bat` on the OSS CAD Suite installation opens a prompt with the dfu-util command available.
+
+    b.  For other systems you can install the [dfu-util](https://repology.org/project/dfu-util/versions) package.
 
 3.  Check whether the Pico is recognized as a DFU device: `dfu-util -l`.
     This should list the pico-ice as a DFU device:
 
-    ```shell
-    $ dfu-util -l
-    dfu-util 0.11-dev
-
-    Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
-    Copyright 2010-2021 Tormod Volden and Stefan Schmidt
-    This program is Free Software and has ABSOLUTELY NO WARRANTY
-    Please report bugs to http://sourceforge.net/p/dfu-util/tickets/
-
+    ```
     Found DFU: [1209:b1c0] ver=0100, devnum=105, cfg=1, intf=0, path="1-4.4", alt=1, name="iCE40 DFU (CRAM)", serial="DE62A435436F5939"
     Found DFU: [1209:b1c0] ver=0100, devnum=105, cfg=1, intf=0, path="1-4.4", alt=0, name="iCE40 DFU (flash)", serial="DE62A435436F5939"
     ```
 
 4.  Download the FPGA bin file to the pico-ice.
-    The Pico can be rebooted as soon as the download succeeds by passing the optional `-R` argument to the `dfu-utl` program.
+    The Pico can be rebooted as soon as the download succeeds with the `-R` flag.
 
-    ```shell
-    $ dfu-util -D -a 0 rgb_blink.bin
-    dfu-util 0.11-dev
-
-    Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
-    Copyright 2010-2021 Tormod Volden and Stefan Schmidt
-    This program is Free Software and has ABSOLUTELY NO WARRANTY
-    Please report bugs to http://sourceforge.net/p/dfu-util/tickets/
+    ```
+    $ dfu-util -D -a 1 rgb_blink.bin
+    [...]
 
     Opening DFU capable USB device...
     Device ID 1209:0001
