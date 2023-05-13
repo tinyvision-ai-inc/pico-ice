@@ -31,3 +31,7 @@ Set the ICE_FPGA_CRESET_B_PIN to LOW which keeps the FPGA in reset mode.
 * Return `true` on success and `false` if it timeouts.
 
 Release the stop mode if it was present, and wait that the FPGA confirms its startup with `ICE_FPGA_CDONE_PIN`.
+
+---
+
+

@@ -12,32 +12,34 @@ This Flash can be programmed by the Pico processor which exposes the Flash to th
 
 ## Using a Drag-Drop or file copy scheme
 
-1. Get a pico-ice with the [`pico-empty`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/example/pico-empty) example [loaded onto the RP2040](programming_the_mcu.html).
+Out of the box, the [`default firmware`](https://github.com/tinyvision-ai-inc/pico-ice/tree/main/Firmware/pico-ice-default) should already be present on your board. You can skip step 1 if this is the case.
 
-2. Install or build the [UF2 Tools](uf2_tools.html),
-   and a [blinky example](https://github.com/tinyvision-ai-inc/UPduino-v3.0/blob/master/RTL/blink_led/rgb_blink.bin) for any iCE40 board.
+1.  Get a pico-ice with the [`pico_usb_uf2`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/example/pico_usb_uf2) example [loaded onto the RP2040](programming_the_mcu.html).
 
-3. Convert the binary bitstream `rgb_blink.bin` into an UF2 `rgb_blink.uf2` with the UF2 Tools:
+2.  Install or build the [UF2 Tools](uf2_tools.html),
+    and a [blinky example](https://github.com/tinyvision-ai-inc/UPduino-v3.0/blob/master/RTL/blink_led/rgb_blink.bin) for any iCE40 board.
 
-    ```shell
-    $ bin2uf2 -o rgb_blink.uf2 rgb_blink.bin
-    ```
+3.  Convert the binary bitstream `rgb_blink.bin` into an UF2 `rgb_blink.uf2` with the UF2 Tools:
 
-4. Connect the pico-ice via USB and lookup the USB drive named `pico-ice`. Open it.
+     ```shell
+     $ bin2uf2 -o rgb_blink.uf2 rgb_blink.bin
+     ```
 
-5. You can copy the `rgb_blink.uf2` file to that drive you just attached.
-   As soon as you copy the file over,t he pico-ice will reboot and allow the FPGA to come up depending on the code running in the Pico processor.
+4.  Connect the pico-ice via USB and lookup the USB drive named `pico-ice`. Open it.
+
+5.  You can copy the `rgb_blink.uf2` file to that drive you just attached.
+    As soon as you copy the file over,t he pico-ice will reboot and allow the FPGA to come up depending on the code running in the Pico processor.
 
 ## Using the DFU mode
 
-1. Follow the same step as above for building the `pico-empty` code.
+1.  Follow the same step as above for building the `pico_usb_uf2` code.
 
-2. Install the DFU utilities, preferably from the [`yosys-hq`](https://www.yosyshq.com/tabby-cad-datasheet) site. This version is known to work on Windows.
+2.  Install the DFU utilities. For Windows, [yosys-hq tabby-cad](https://www.yosyshq.com/tabby-cad-datasheet) is known to work.
 
     a. If using Windows, you can open a OSS prompt by double clicking on the `start.bat` file in the OSS CAD Suite installation.
 
-3. Check whether the Pico is recognized as a DFU device: `dfu-util -l`.
-   This should list the pico-ice as a DFU device:
+3.  Check whether the Pico is recognized as a DFU device: `dfu-util -l`.
+    This should list the pico-ice as a DFU device:
 
     ```shell
     $ dfu-util -l
@@ -51,8 +53,8 @@ This Flash can be programmed by the Pico processor which exposes the Flash to th
     Found DFU: [1209:0001] ver=0100, devnum=5, cfg=1, intf=5, path="2-2.3", alt=0, name="DFU flash", serial="DE622480A7482A2A"
     ```
 
-4. Download the FPGA bin file to the pico-ice.
-   The Pico can be rebooted as soon as the download succeeds by passing the optional `-R` argument to the `dfu-utl` program.
+4.  Download the FPGA bin file to the pico-ice.
+    The Pico can be rebooted as soon as the download succeeds by passing the optional `-R` argument to the `dfu-utl` program.
 
     ```shell
     $ dfu-util -D -a 0 rgb_blink.bin
@@ -128,6 +130,6 @@ This restart device should appear from the debug UART: `board_dfu_complete: rebo
 
 ### Device's firmware is corrupt. It cannot return to run-time (non-DFU) operations.
 
-This message comes from `dfu-util` when the `-R` flag is not used.
+This message sometimes comes from `dfu-util` when the `-R` flag is not used.
 With the `-R` flag, the pico-ice will reboot at the end of the transfer,
 and DFU-util should not complain anymore.
