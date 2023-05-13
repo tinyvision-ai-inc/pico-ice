@@ -20,6 +20,17 @@ In firmware using the pico-ice-sdk,
 an USB disk named ``pico-ice`` provides a file named ``CURRENT.UF2`` with the content of the flash,
 and permits to load new UF2 files that will program the flash chip.
 
+To install them:
+
+```shell
+git clone https://github.com/tinyvision-ai-inc/pico-ice-sdk
+mkdir -p pico-ice-sdk/tools/build
+cd  pico-ice-sdk/tools/build
+cmake ..
+make
+sudo make install
+```
+
 ---
 
 ## `bin2uf2`

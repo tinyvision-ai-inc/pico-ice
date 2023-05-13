@@ -8,13 +8,14 @@ parent: pico-ice
 # Programming the iCE40 FPGA
 
 The FPGA normally boots from a dedicated serial NOR flash.
-This Flash can be programmed by the Pico processor which exposes the Flash to the host OS as either a removable drive or a DFU endpoint.
+This flash can be programmed by the Pico processor which exposes the flash to the host OS as either a removable drive or a DFU endpoint.
 
 ## Using a Drag-Drop or file copy scheme
 
-Out of the box, the [`default firmware`](https://github.com/tinyvision-ai-inc/pico-ice/tree/main/Firmware/pico-ice-default) should already be present on your board. You can skip step 1 if this is the case.
+Out of the box, the [default firmware](https://github.com/tinyvision-ai-inc/pico-ice/releases/) should already be present on your board.
+You can skip step 1 if this is the case.
 
-1.  Get a pico-ice with the [`pico_usb_uf2`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/example/pico_usb_uf2) example [loaded onto the RP2040](programming_the_mcu.html).
+1.  If you changed the default firwmare, [program](programming_the_mcu.html) it again onto the RP2040.
 
 2.  Install or build the [UF2 Tools](uf2_tools.html),
     and a [blinky example](https://github.com/tinyvision-ai-inc/UPduino-v3.0/blob/master/RTL/blink_led/rgb_blink.bin) for any iCE40 board.
@@ -50,7 +51,8 @@ Out of the box, the [`default firmware`](https://github.com/tinyvision-ai-inc/pi
     This program is Free Software and has ABSOLUTELY NO WARRANTY
     Please report bugs to http://sourceforge.net/p/dfu-util/tickets/
 
-    Found DFU: [1209:0001] ver=0100, devnum=5, cfg=1, intf=5, path="2-2.3", alt=0, name="DFU flash", serial="DE622480A7482A2A"
+    Found DFU: [1209:b1c0] ver=0100, devnum=105, cfg=1, intf=0, path="1-4.4", alt=1, name="iCE40 DFU (CRAM)", serial="DE62A435436F5939"
+    Found DFU: [1209:b1c0] ver=0100, devnum=105, cfg=1, intf=0, path="1-4.4", alt=0, name="iCE40 DFU (flash)", serial="DE62A435436F5939"
     ```
 
 4.  Download the FPGA bin file to the pico-ice.

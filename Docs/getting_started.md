@@ -8,24 +8,19 @@ parent: pico-ice
 # Getting Started
 
 Once you receive the board, you would be able to plug via USB and see the RGB LED blinking.
-
 This is the FPGA bitstream project loaded onto the board by default.
-You can replace it with your own by one of the [FPGA programming methods](/programming_the_fpga.html).
 
-You can also [program the RP2040 microcontroller](/programming_the_mcu.html) using the standard procedure of any Raspberry Pi Pico board.
+From here, you can:
+
+-   Program a new FPGA design onto the iCE40: [programming the FPGA](/programming_the_fpga.html).
+
+-   Program a custom firmware onto the RP2040: [Programming the MCU](/programming_the_mcu.html).
 
 
 ## Soldering the PMODs
 
-In case you ordered the board without the PMODs soldered, you would need to solder them in.
+In case you ordered the board without the Pmod connectors soldered,
+you would need to solder them in to plug something onto the board.
+For instance like this:
 
-The suggested way to solder the PMODs is as seen below:
-
-![pmod install before soldering](images/pico_ice_pmod_install_1.jpg)
-
-This lets the other pins accessible from jumper cables for instance:
-
-![pmod install after soldering](images/pico_ice_pmod_install_2.jpg)
-
-It is also possible to solder a full pin header row on each side for use on a breadboard,
-or any other way.
+![pmod install after soldering](images/pico_ice_pmod_install.jpg)
