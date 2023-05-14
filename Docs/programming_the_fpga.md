@@ -10,7 +10,12 @@ parent: pico-ice
 The FPGA normally boots from a dedicated serial NOR flash.
 This flash can be programmed by the Pico processor which exposes the flash to the host OS as either a removable drive or a DFU endpoint.
 
+On Windows, while the RaspberryPi guide mentions using Visual Studio Code with a plugin a an IDE, better results were obtained by using the [WSL2 environment](https://learn.microsoft.com/en-us/windows/wsl/install).
+
 ## Using a Drag-Drop or file copy scheme
+
+You would need a compiler toolchain installed for building the [UF2 Tools](uf2_tools.html) on your system.
+You can use the DFU mode if you wish to avoid this.
 
 Out of the box, the [default firmware](https://github.com/tinyvision-ai-inc/pico-ice/releases/) should already be present on your board.
 You can skip step 1 if this is the case.
@@ -56,7 +61,7 @@ You can skip step 1 if this is the case.
     The Pico can be rebooted as soon as the download succeeds with the `-R` flag.
 
     ```
-    $ dfu-util -D -a 1 rgb_blink.bin
+    $ dfu-util -a 0 -D rgb_blink.bin
     [...]
 
     Opening DFU capable USB device...
@@ -103,7 +108,9 @@ The [pico_usb_uart example](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tr
 
 This error might occur when a communication error occurs.
 
-- On Windows operating system, the device needs to be declared with [Zadig](https://zadig.akeo.ie/).
+- On Windows operating system, the device needs to be declared with [Zadig](https://zadig.akeo.ie/) as described [here](https://github.com/pbatard/libwdi/wiki/Zadig#basic-usage).
+  Make sure to select the pico-ice device on the list rather than any other to avoid erasing your system's USB drivers.
+
 - On Linux operating system, it might need to be allowed with an udev rule,
   or `dfu-util` might need to be run as super user.
 
