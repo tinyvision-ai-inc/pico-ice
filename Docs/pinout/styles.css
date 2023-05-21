@@ -8,7 +8,6 @@ text {
     stroke-width: 2;
     fill: none;
 }
-
 .pinlabel__text{
     dominant-baseline: central;
     fill: #fff;
@@ -17,68 +16,51 @@ text {
     text-anchor: middle;
 }
 
+.pmod .pinlabel__body{
+    fill: hsl(0 0% 60%);
+}
+.pmod .swatch__body {
+    fill: hsl(0 0% 60%);
+}
+
+.pin_rpi .pinlabel__body{
+    fill: hsl(290 100% 25%);
+}
+.pin_rpi .pinlabel__leader{
+    stroke: hsl(290 100% 25%);
+}
+.pin_rpi .swatch__body {
+    fill: hsl(290 100% 25%);
+}
+
+.pin_ice .pinlabel__body{
+    fill: hsl(320 100% 25%);
+}
+.pin_ice .pinlabel__leader{
+    stroke: hsl(320 100% 25%);
+}
+.pin_ice .swatch__body {
+    fill: hsl(320 100% 25%);
+}
+
 .pwr .pinlabel__body{
-    fill: rgb(173, 0, 0);
+    fill: hsl(0 100% 25%);
 }
 .pwr .pinlabel__leader{
-    stroke: rgb(173, 0, 0);
+    stroke: hsl(0 100% 25%);
 }
 .pwr .swatch__body {
-    fill: rgb(173, 0, 0);
+    fill: hsl(0 100% 25%);
 }
-.comms .pinlabel__body{
-    fill: rgb(182, 69, 176);
-}
-.comms .pinlabel__leader{
-    stroke: rgb(182, 69, 176);
-}
-.comms .swatch__body {
-    fill: rgb(182, 69, 176);
-}
-.gpio .pinlabel__body{
-    fill: rgb(160, 133, 26);
-}
-.gpio .pinlabel__leader{
-    stroke: rgb(160, 133, 26);
-}
-.gpio .swatch__body {
-    fill: rgb(160, 133, 26);
-}
-.analog .pinlabel__body{
-    fill: rgb(32, 150, 165);
-}
-.analog .pinlabel__leader{
-    stroke: rgb(32, 150, 165);
-}
-.analog .swatch__body {
-    fill: rgb(32, 150, 165);
-}
+
 .gnd .pinlabel__body{
-    fill: rgb(0, 0, 0);
+    fill: hsl(0 0% 0%);
 }
 .gnd .pinlabel__leader{
-    stroke: rgb(0, 0, 0);
+    stroke: hsl(0 0% 0%);
 }
 .gnd .swatch__body {
-    fill: rgb(0, 0, 0);
-}
-.pwm .pinlabel__body{
-    fill: rgb(151, 76, 23);
-}
-.pwm .pinlabel__leader{
-    stroke: rgb(151, 76, 23);
-}
-.pwm .swatch__body {
-    fill: rgb(151, 76, 23);
-}
-.touch .pinlabel__body{
-    fill: rgb(230, 87, 10);
-}
-.touch .pinlabel__leader{
-    stroke: rgb(230, 87, 10);
-}
-.touch .swatch__body {
-    fill: rgb(230, 87, 10);
+    fill: hsl(0 0% 0%);
 }
 
 .panel__inner {
@@ -86,6 +68,9 @@ text {
 }
 .panel__outer {
     fill: #333;
+}
+.panel--info .panel__inner{
+    fill: #f4f4f4;
 }
 
 .legendentry text {
@@ -102,8 +87,4 @@ text {
 }
 .strong{
     font-weight: bold;
-}
-
-.panel--info .panel__inner{
-    fill: #f4f4f4;
 }

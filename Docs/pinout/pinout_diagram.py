@@ -12,7 +12,7 @@ import data
 # Create a new diagram
 # The Diagram_2Rows class provides 2 panels,
 # 'panel_01' and 'panel_02', to insert components into.
-diagram = Diagram_2Rows(1230, 1150, 1000, "diagram")
+diagram = Diagram_2Rows(1112, 1010, 880, "diagram")
 
 # Add a stylesheet
 diagram.add_stylesheet("styles.css", embed=True)
@@ -21,7 +21,7 @@ diagram.add_stylesheet("styles.css", embed=True)
 graphic = diagram.panel_01.add(Group(400, 42))
 
 # Add and embed an image
-hardware = graphic.add(Image("pico_ice_front.png", embed=True))
+hardware = graphic.add(Image("pico_ice_front.png", x=-50, y=-70, embed=True))
 
 # Measure and record key locations with the hardware Image instance
 pin_pitch_v = 34.9
@@ -30,6 +30,43 @@ hardware.add_coord("left", 100, pin_start_y)
 hardware.add_coord("right", 307, pin_start_y)
 # Other (x,y) pairs can also be stored here
 hardware.add_coord("pin_pitch_v", 0, pin_pitch_v)
+
+graphic.add(
+    PinLabel(
+        content="",
+        x=hardware.coord("right").x,
+        y=hardware.coord("right").y,
+        tag="pmod",
+        body={"x": 57, "y": 227, "width": 370, "height": 210},
+    )
+)
+graphic.add(
+    PinLabel(
+        content="",
+        x=hardware.coord("right").x,
+        y=hardware.coord("right").y,
+        tag="pmod",
+        body={"x": 57, "y": 541, "width": 370, "height": 210},
+    )
+)
+graphic.add(
+    PinLabel(
+        content="",
+        x=hardware.coord("left").x,
+        y=hardware.coord("left").y,
+        tag="pmod",
+        body={"x": -(370 + 57), "y": 227, "width": 370, "height": 210},
+    )
+)
+graphic.add(
+    PinLabel(
+        content="",
+        x=hardware.coord("left").x,
+        y=hardware.coord("left").y,
+        tag="pmod",
+        body={"x": -(370 + 57), "y": 541, "width": 370, "height": 210},
+    )
+)
 
 # Create pinlabels on the left header
 graphic.add(
@@ -56,6 +93,7 @@ graphic.add(
         labels=data.right_header,
     )
 )
+
 
 # Create a title and description text-blocks
 title_block = diagram.panel_02.add(

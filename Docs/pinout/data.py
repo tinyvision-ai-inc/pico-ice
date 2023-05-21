@@ -1,11 +1,19 @@
 legend = [
-    ("Digital pin",  "gpio"),
-    ("Pmod pin",   "analog"),
-    ("Ground", "gnd"),
-    ("Power", "pwr"),
+    ("RP2040 pin",          "pin_rpi"),
+    ("~R ~G ~B: LED",       "pin_rpi"),
+    ("~0 ~1 ~2 ~3: ADC",    "pin_rpi"),
+    ("CK0 CK2 CK3: clock",  "pin_rpi"),
+    ("iCE40 pin",           "pin_ice"),
+    ("SS SCK SI SO: SPI",   "pin_ice"),
+    ("FIO2 FIO3: QSPI",     "pin_ice"),
+    ("PB: Push Button",     "pin_ice"),
+    ("Pmod 1: ICE Pmod",    "pmod"),
+    ("Pmod 2: ICE Pmod",    "pmod"),
+    ("Pmod 3: RP Pmod",     "pmod"),
+    ("Pmod 4: RP-ICE Pmod", "pmod"),
+    ("Ground pin",          "gnd"),
+    ("Power pin",           "pwr"),
 ]
-
-# Pinlabels
 
 def double(label, type, x):
     return (label, type, {"body": {"width": 166, "x": x}})
@@ -13,7 +21,14 @@ def double(label, type, x):
 def row_2_2(name1, type1, name2, type2):
     return [
         (name1, type1, {"body": {"width": 166, "x": 6}}),
-        (name2, type2, {"body": {"width": 166, "x": 20}})
+        (name2, type2, {"body": {"width": 166, "x": 20}}),
+    ]
+
+def row_2_2_pmod(pmod, name1, type1, name2, type2):
+    return [
+        (name1, type1, {"body": {"width": 166, "x": 6}}),
+        (name2, type2, {"body": {"width": 166, "x": 20}}),
+        (pmod, "pmod", {"body": {"width": 20, "x": 0}}),
     ]
 
 def row_1_1_1_1(name1, type1, name2, type2, name3, type3, name4, type4):
@@ -21,116 +36,126 @@ def row_1_1_1_1(name1, type1, name2, type2, name3, type3, name4, type4):
         (name1, type1),
         (name2, type2),
         (name3, type3, {"body": {"x": 20}}),
-        (name4, type4)
+        (name4, type4),
+    ]
+
+def row_1_1_1_1_pmod(pmod, name1, type1, name2, type2, name3, type3, name4, type4):
+    return [
+        (name1, type1),
+        (name2, type2),
+        (name3, type3, {"body": {"x": 20}}),
+        (name4, type4),
+        (pmod, "pmod", {"body": {"width": 20, "x": 0}}),
     ]
 
 def row_2_1_1(name1, type1, name2, type2, name3, type3):
     return [
         (name1, type1, {"body": {"width": 166, "x": 6}}),
         (name2, type2, {"body": {"x": 20}}),
-        (name3, type3)
+        (name3, type3),
     ]
 
 def row_1_1_2(name1, type1, name2, type2, name3, type3, name4, type4):
     return [
         (name1, type1, {"body": {"x": 6}}),
         (name2, type2, {"body": {"x": 6}}),
-        (name3, type3, {"body": {"width": 166, "x": 20}})
+        (name3, type3, {"body": {"width": 166, "x": 20}}),
     ]
 
+# The pins will appear swapped left/right
 left_header = [
     row_2_2(
-        "INNER ROW","", "OUTTER ROW","",
+        "INNER ROW","l", "OUTTER ROW","l",
     ),
     row_1_1_1_1(
-        "RP2040","", "iCE40","", "RP2040","", "iCE40",""
+        "iCE40","l", "RP2040","l", "iCE40","l", "RPI2040","l"
     ),
     row_1_1_1_1(
-        "GP27~1","gpio", "CRESET","gpio", "","gpio", "IOB22a IO2","gpio"
+        "CRESET","pin_ice", "RPI27 ~1","pin_rpi", "ICE12 FIO2","pin_ice", "","pin_rpi"
     ),
     row_2_1_1(
-        "GND","gnd", "","gpio", "IOB24a IO3","gpio"
+        "GND","gnd", "ICE13 FIO3","pin_ice", "","pin_rpi"
     ),
-    row_2_2(
+    row_2_2_pmod("2",
         "3V3","pwr", "3V3","pwr"
     ),
     row_2_2(
         "GND","gnd", "GND","gnd"
     ),
     row_1_1_1_1(
-        "","analog", "IOT42b","analog", "","analog", "IOT41a","analog"
+        "ICE31","pin_ice", "","pin_rpi", "ICE28","pin_ice", "","pin_rpi"
     ),
     row_1_1_1_1(
-        "","analog", "IOT44b","analog", "","analog", "IOT43a","analog"
+        "ICE34","pin_ice", "","pin_rpi", "ICE32","pin_ice", "","pin_rpi"
     ),
     row_1_1_1_1(
-        "","analog", "IOT50b","analog", "","analog", "IOT48b","analog"
+        "ICE38","pin_ice", "","pin_rpi", "ICE36","pin_ice", "","pin_rpi"
     ),
     row_1_1_1_1(
-        "","analog", "IOT49a","analog", "","analog", "IOT51a","analog"
+        "ICE43","pin_ice", "","pin_rpi", "ICE42","pin_ice", "","pin_rpi"
     ),
     row_1_1_1_1(
-        "GP24 CLK2","gpio", "IOT46b G0","gpio", "GP14 SS","gpio", "IOT45a G1","gpio"
+        "ICE35","pin_ice", "RPI24 CK2","pin_rpi", "ICE37 SS","pin_ice", "RPI14","pin_rpi"
     ),
     row_1_1_1_1(
-        "","gpio", "IOB13b","gpio", "","gpio", "IOB20a","gpio"
+        "ICE6","pin_ice", "","pin_rpi", "ICE11","pin_ice", "","pin_rpi"
     ),
     row_1_1_1_1(
-        "","gpio", "IOB16a","gpio", "","gpio", "IOB18a PB","gpio"
+        "ICE9","pin_ice", "","pin_rpi", "ICE12 PB","pin_ice", "","pin_rpi"
     ),
-    row_2_2(
-        "VCCIO2","pwr", "VCCIO2","pwr"
+    row_2_2_pmod("1",
+        "VIO2","pwr", "VIO2","pwr"
     ),
     row_2_2(
         "GND","gnd", "GND","gnd"
     ),
     row_1_1_1_1(
-        "","analog", "IOB5b","analog", "","analog", "IOB3b G6","analog"
+        "ICE45","pin_ice", "","pin_rpi", "ICE44","pin_ice", "","pin_rpi"
     ),
     row_1_1_1_1(
-        "","analog", "IOB2a","analog", "","analog", "IOB0a","analog"
+        "ICE47","pin_ice", "","pin_rpi", "ICE46","pin_ice", "","pin_rpi"
     ),
     row_1_1_1_1(
-        "","analog", "IOB6a","analog", "","analog", "IOB4a","analog"
+        "ICE2","pin_ice", "","pin_rpi", "ICE48","pin_ice", "","pin_rpi"
     ),
     row_1_1_1_1(
-        "","analog", "IOB8a","analog", "","analog", "IOB9b","analog"
+        "ICE4","pin_ice", "","pin_rpi", "ICE3","pin_ice", "","pin_rpi"
     ),
     row_1_1_1_1(
-        "RESET","gpio", "","gpio", "SWDIO","gpio", "","gpio"
+        "","pin_ice", "RESET","pin_rpi", "","pin_ice", "SWDIO","pin_rpi"
     ),
     row_2_1_1(
-        "GND","gnd", "SWCLK","gpio", "","gpio"
+        "GND","gnd", "","pin_ice", "SWCLK","pin_rpi"
     ),
     row_1_1_1_1(
-        "BOOT","gpio", "","gpio", "GP25 CLK3","gpio", "","gpio"
+        "","pin_ice", "USBBOOT","pin_rpi", "","pin_ice", "RPI25 CK3","pin_rpi"
     ),
 ]
 
 right_header = [
     row_2_2(
-        "INNER ROW","", "OUTTER ROW",""
+        "INNER ROW","l", "OUTTER ROW","l"
     ),
     row_1_1_1_1(
-        "RP2040","", "iCE40","", "RP2040","", "iCE40",""
+        "RP2040","l", "iCE40","l", "RPI2040","l", "iCE40","l"
     ),
     row_1_1_1_1(
-        "GP9","gpio", "IOB35B SS","gpio", "GP8 SO","gpio", "IOB32A","gpio"
+        "RPI9","pin_rpi", "ICE16 SS","pin_ice", "RPI8","pin_rpi", "ICE14 SO","pin_ice"
     ),
     row_1_1_1_1(
-        "GP11","gpio", "IOB33b SI","gpio", "GP10","gpio", "IOB34a SCK","gpio"
+        "RPI11","pin_rpi", "ICE17 SI","pin_ice", "RPI10","pin_rpi", "ICE15 SCK","pin_ice"
+    ),
+    row_1_1_1_1_pmod("3",
+        "RPI0","pin_rpi", "ICE25","pin_ice", "RPI4","pin_rpi", "ICE23","pin_ice"
     ),
     row_1_1_1_1(
-        "GP0","analog", "IOT38b","analog", "GP4","analog", "IOT39a","analog"
+        "RPI1","pin_rpi", "ICE19","pin_ice", "RPI5","pin_rpi", "ICE18","pin_ice"
     ),
     row_1_1_1_1(
-        "GP1","analog", "IOT36b","analog", "GP5","analog", "IOT37a","analog"
+        "RPI2","pin_rpi", "ICE27","pin_ice", "RPI6","pin_rpi", "ICE26","pin_ice"
     ),
     row_1_1_1_1(
-        "GP2","analog", "IOB23b","analog", "GP6","analog", "IOB25b","analog"
-    ),
-    row_1_1_1_1(
-        "GP3","analog", "IOB29b","analog", "GP7","analog", "IOB31b","analog"
+        "RPI3","pin_rpi", "ICE21","pin_ice", "RPI7","pin_rpi", "ICE20","pin_ice"
     ),
     row_2_2(
         "GND","gnd", "GND","gnd"
@@ -139,25 +164,25 @@ right_header = [
         "3V3","pwr", "3V3","pwr"
     ),
     row_1_1_1_1(
-        "GP26~0","gpio", "CDONE","gpio", "GP5 LED B","gpio", "RGB1","gpio"
+        "RPI26 ~0","pin_rpi", "CDONE","pin_ice", "RPI5 ~B","pin_rpi", "RGB1","pin_ice"
     ),
     row_1_1_1_1(
-        "GP28~2","gpio", "","gpio", "GP3 LED R","gpio", "RGB2","gpio"
+        "RPI28 ~2","pin_rpi", "","pin_ice", "RPI3 ~R","pin_rpi", "RGB2","pin_ice"
     ),
     row_1_1_1_1(
-        "GP29~3","gpio", "","gpio", "GP2 LED G","gpio", "RGB0","gpio"
+        "RPI29 ~3","pin_rpi", "","pin_ice", "RPI2 ~G","pin_rpi", "RGB0","pin_ice"
+    ),
+    row_1_1_1_1_pmod("4",
+        "RPI17","pin_rpi", "","pin_ice", "RPI1","pin_rpi", "","pin_ice"
     ),
     row_1_1_1_1(
-        "GP17","analog", "","analog", "GP1","analog", "","analog"
+        "RPI19","pin_rpi", "","pin_ice", "RPI3 CK0","pin_rpi", "","pin_ice"
     ),
     row_1_1_1_1(
-        "GP19","analog", "","analog", "GP3 CLK0","analog", "","analog"
+        "RPI16","pin_rpi", "","pin_ice", "RPI0","pin_rpi", "","pin_ice"
     ),
     row_1_1_1_1(
-        "GP16","analog", "","analog", "GP0","analog", "","analog"
-    ),
-    row_1_1_1_1(
-        "GP18","analog", "","analog", "GP22","analog", "","analog"
+        "RPI18","pin_rpi", "","pin_ice", "RPI22","pin_rpi", "","pin_ice"
     ),
     row_2_2(
         "GND","gnd", "GND","gnd"
@@ -169,13 +194,12 @@ right_header = [
         "3V3","pwr", "VCC","pwr"
     ),
     row_2_1_1(
-        "3V3_SBY","gpio", "PWR_EN","gpio", "","gpio"
+        "3V3_SBY","pin_rpi", "PWR_EN","pin_rpi", "","pin_ice"
     ),
     row_2_2(
         "VBUS","pwr", "GND","gnd"
     ),
 ]
-
 
 title = "<tspan class='h1'>pico-ice</tspan>"
 
