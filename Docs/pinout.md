@@ -6,7 +6,7 @@ parent: pico-ice
 
 # Pinout
 
-![pinout diagram](/pinout/diagram.svg)
+![pinout diagram](/pinout/diagram.svg?v=1684704750)
 
 fullscreen: [svg](/pinout/diagram.svg) [png](/pinout/diagram.png)
 
