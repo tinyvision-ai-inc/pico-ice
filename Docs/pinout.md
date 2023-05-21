@@ -48,13 +48,13 @@ RAM_SS│G1      GPOUT2│G0      │ SS  35 │SJ5│            ~0  B  │   A
       │              │        │ 11   6                  ~2  R  │   ADC2│         LED_R│
       █IOB_18a       █IOB_16a │(█) (█)                  (█) (█)│ GPIO29█        GPIO12█RGB0
       │PB            │        ├─10───9┐                ┌~3──G──┤   ADC3│         LED_G│
-VCCIO2█VCCIO2  VCCIO2█VCCIO2  │(█) (█)│                │(█) (█)│ GPIO16█        GPIO20█
+VCCIO2█VCCIO2  VCCIO2█VCCIO2  │(█) (█)│                │(█) (█)│ GPIO17█        GPIO21█
       │              │        │ Vio   │  ┌──────────┐  │A1  B1 │       │              │
-   GND█GND        GND█GND     │(█) (█)│  │          │  │(█) (█)│ GPIO17█        GPIO21█
+   GND█GND        GND█GND     │(█) (█)│  │          │  │(█) (█)│ GPIO19█        GPIO23█
       │              │        │  G   G│  │          │  │A2  B2 │       │        GPOUT0│
-      █IOB_3b        █IOB_5b  │(█) (█)│  │  RP2040  │  │(█) (█)│ GPIO18█        GPIO22█
+      █IOB_3b        █IOB_5b  │(█) (█)│  │  RP2040  │  │(█) (█)│ GPIO16█        GPIO20█
       │G6            │        │ 44  45│  │          │  │A3  B3 │       │              │
-      █IOB_0a        █IOB_2a  │(█) (█)│  │          │  │(█) (█)│ GPIO19█        GPIO23█
+      █IOB_0a        █IOB_2a  │(█) (█)│  │          │  │(█) (█)│ GPIO18█        GPIO22█
       │              │        │ 46  47│  └──────────┘  │A4  B4 │       │              │
       █IOB_4a        █IOB_6a  │(█) (█)│                │(█) (█)│    GND█GND        GND█GND
       │              │        │ 48   2│                │   G   │       │              │
