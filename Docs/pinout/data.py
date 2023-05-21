@@ -68,10 +68,10 @@ left_header = [
         "INNER ROW","l", "OUTTER ROW","l",
     ),
     row_1_1_1_1(
-        "iCE40","l", "RP2040","l", "iCE40","l", "RPI2040","l"
+        "iCE40","l", "RP2040","l", "iCE40","l", "RP2040","l"
     ),
     row_1_1_1_1(
-        "CRESET","pin_ice", "RPI27 ~1","pin_rpi", "ICE12 FIO2","pin_ice", "","pin_rpi"
+        "CRESET","pin_ice", "RP27 ~1","pin_rpi", "ICE12 FIO2","pin_ice", "","pin_rpi"
     ),
     row_2_1_1(
         "GND","gnd", "ICE13 FIO3","pin_ice", "","pin_rpi"
@@ -95,13 +95,13 @@ left_header = [
         "ICE43","pin_ice", "","pin_rpi", "ICE42","pin_ice", "","pin_rpi"
     ),
     row_1_1_1_1(
-        "ICE35","pin_ice", "RPI24 CK2","pin_rpi", "ICE37 SS","pin_ice", "RPI14","pin_rpi"
+        "ICE35","pin_ice", "RP24 CK2","pin_rpi", "ICE37 SS","pin_ice", "RP14","pin_rpi"
     ),
     row_1_1_1_1(
         "ICE6","pin_ice", "","pin_rpi", "ICE11","pin_ice", "","pin_rpi"
     ),
     row_1_1_1_1(
-        "ICE9","pin_ice", "","pin_rpi", "ICE12 PB","pin_ice", "","pin_rpi"
+        "ICE9","pin_ice", "","pin_rpi", "ICE10 PB","pin_ice", "","pin_rpi"
     ),
     row_2_2_pmod("1",
         "VIO2","pwr", "VIO2","pwr"
@@ -128,7 +128,7 @@ left_header = [
         "GND","gnd", "","pin_ice", "SWCLK","pin_rpi"
     ),
     row_1_1_1_1(
-        "","pin_ice", "USBBOOT","pin_rpi", "","pin_ice", "RPI25 CK3","pin_rpi"
+        "","pin_ice", "USBBOOT","pin_rpi", "","pin_ice", "RP25 CK3","pin_rpi"
     ),
 ]
 
@@ -137,25 +137,25 @@ right_header = [
         "INNER ROW","l", "OUTTER ROW","l"
     ),
     row_1_1_1_1(
-        "RP2040","l", "iCE40","l", "RPI2040","l", "iCE40","l"
+        "RP2040","l", "iCE40","l", "RP2040","l", "iCE40","l"
     ),
     row_1_1_1_1(
-        "RPI9","pin_rpi", "ICE16 SS","pin_ice", "RPI8","pin_rpi", "ICE14 SO","pin_ice"
+        "RP9","pin_rpi", "ICE16 SS","pin_ice", "RP8","pin_rpi", "ICE14 SO","pin_ice"
     ),
     row_1_1_1_1(
-        "RPI11","pin_rpi", "ICE17 SI","pin_ice", "RPI10","pin_rpi", "ICE15 SCK","pin_ice"
+        "RP11","pin_rpi", "ICE17 SI","pin_ice", "RP10","pin_rpi", "ICE15 SCK","pin_ice"
     ),
     row_1_1_1_1_pmod("3",
-        "RPI0","pin_rpi", "ICE25","pin_ice", "RPI4","pin_rpi", "ICE23","pin_ice"
+        "RP1","pin_rpi", "ICE25","pin_ice", "RP5","pin_rpi", "ICE23","pin_ice"
     ),
     row_1_1_1_1(
-        "RPI1","pin_rpi", "ICE19","pin_ice", "RPI5","pin_rpi", "ICE18","pin_ice"
+        "RP3","pin_rpi", "ICE19","pin_ice", "RP7","pin_rpi", "ICE18","pin_ice"
     ),
     row_1_1_1_1(
-        "RPI2","pin_rpi", "ICE27","pin_ice", "RPI6","pin_rpi", "ICE26","pin_ice"
+        "RP0","pin_rpi", "ICE27","pin_ice", "RP4","pin_rpi", "ICE26","pin_ice"
     ),
     row_1_1_1_1(
-        "RPI3","pin_rpi", "ICE21","pin_ice", "RPI7","pin_rpi", "ICE20","pin_ice"
+        "RP2","pin_rpi", "ICE21","pin_ice", "RP6","pin_rpi", "ICE20","pin_ice"
     ),
     row_2_2(
         "GND","gnd", "GND","gnd"
@@ -164,25 +164,25 @@ right_header = [
         "3V3","pwr", "3V3","pwr"
     ),
     row_1_1_1_1(
-        "RPI26 ~0","pin_rpi", "CDONE","pin_ice", "RPI5 ~B","pin_rpi", "RGB1","pin_ice"
+        "RP26 ~0","pin_rpi", "CDONE","pin_ice", "RP5 ~B","pin_rpi", "RGB1","pin_ice"
     ),
     row_1_1_1_1(
-        "RPI28 ~2","pin_rpi", "","pin_ice", "RPI3 ~R","pin_rpi", "RGB2","pin_ice"
+        "RP28 ~2","pin_rpi", "","pin_ice", "RP3 ~R","pin_rpi", "RGB2","pin_ice"
     ),
     row_1_1_1_1(
-        "RPI29 ~3","pin_rpi", "","pin_ice", "RPI2 ~G","pin_rpi", "RGB0","pin_ice"
+        "RP29 ~3","pin_rpi", "","pin_ice", "RP2 ~G","pin_rpi", "RGB0","pin_ice"
     ),
     row_1_1_1_1_pmod("4",
-        "RPI17","pin_rpi", "","pin_ice", "RPI1","pin_rpi", "","pin_ice"
+        "RP17","pin_rpi", "","pin_ice", "RP21","pin_rpi", "","pin_ice"
     ),
     row_1_1_1_1(
-        "RPI19","pin_rpi", "","pin_ice", "RPI3 CK0","pin_rpi", "","pin_ice"
+        "RP19","pin_rpi", "","pin_ice", "RP23 CK0","pin_rpi", "","pin_ice"
     ),
     row_1_1_1_1(
-        "RPI16","pin_rpi", "","pin_ice", "RPI0","pin_rpi", "","pin_ice"
+        "RP16","pin_rpi", "","pin_ice", "RP20","pin_rpi", "","pin_ice"
     ),
     row_1_1_1_1(
-        "RPI18","pin_rpi", "","pin_ice", "RPI22","pin_rpi", "","pin_ice"
+        "RP18","pin_rpi", "","pin_ice", "RP22","pin_rpi", "","pin_ice"
     ),
     row_2_2(
         "GND","gnd", "GND","gnd"
