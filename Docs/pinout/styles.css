@@ -1,0 +1,90 @@
+text {
+    font-family: Verdana, Georgia, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.pinlabel__leader{
+    stroke-width: 2;
+    fill: none;
+}
+.pinlabel__text{
+    dominant-baseline: central;
+    fill: #fff;
+    font-weight: bold;
+    stroke-width: 0;
+    text-anchor: middle;
+}
+
+.pmod .pinlabel__body{
+    fill: hsl(0 0% 60%);
+}
+.pmod .swatch__body {
+    fill: hsl(0 0% 60%);
+}
+
+.pin_rpi .pinlabel__body{
+    fill: hsl(290 100% 25%);
+}
+.pin_rpi .pinlabel__leader{
+    stroke: hsl(290 100% 25%);
+}
+.pin_rpi .swatch__body {
+    fill: hsl(290 100% 25%);
+}
+
+.pin_ice .pinlabel__body{
+    fill: hsl(320 100% 25%);
+}
+.pin_ice .pinlabel__leader{
+    stroke: hsl(320 100% 25%);
+}
+.pin_ice .swatch__body {
+    fill: hsl(320 100% 25%);
+}
+
+.pwr .pinlabel__body{
+    fill: hsl(0 100% 25%);
+}
+.pwr .pinlabel__leader{
+    stroke: hsl(0 100% 25%);
+}
+.pwr .swatch__body {
+    fill: hsl(0 100% 25%);
+}
+
+.gnd .pinlabel__body{
+    fill: hsl(0 0% 0%);
+}
+.gnd .pinlabel__leader{
+    stroke: hsl(0 0% 0%);
+}
+.gnd .swatch__body {
+    fill: hsl(0 0% 0%);
+}
+
+.panel__inner {
+    fill: #fff;
+}
+.panel__outer {
+    fill: #333;
+}
+.panel--info .panel__inner{
+    fill: #f4f4f4;
+}
+
+.legendentry text {
+    dominant-baseline: central;
+}
+
+.h1 {
+    font-size: 26px;
+    font-weight: bold;
+    font-style: italic;
+}
+.italic{
+    font-style: italic;
+}
+.strong{
+    font-weight: bold;
+}
