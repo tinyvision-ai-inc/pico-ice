@@ -14,7 +14,7 @@ On Windows, while the RaspberryPi guide mentions using Visual Studio Code with a
 
 ## Using a Drag-Drop or file copy scheme
 
-You would need a compiler toolchain installed for building the [UF2 Tools](uf2_tools.html) on your system.
+You would need a compiler toolchain installed for building the [UF2 Utils](https://github.com/tinyvision-ai-inc/uf2-utils) on your system.
 You can use the DFU mode if you wish to avoid this.
 
 Out of the box, the [default firmware](https://github.com/tinyvision-ai-inc/pico-ice/releases/) should already be present on your board.
@@ -23,10 +23,10 @@ You can skip step 1 if this is the case.
 1.  If you changed the default firwmare, [program](programming_the_mcu.html) it again onto the RP2040.
     You can also integrate the FPGA programming code in your own firmware with [ice_usb.h](/ice_usb.html).
 
-2.  Install or build the [UF2 Tools](uf2_tools.html),
+2.  Install or build the [UF2 Utils](https://github.com/tinyvision-ai-inc/uf2-utils),
     and a [blinky example](https://github.com/tinyvision-ai-inc/UPduino-v3.0/blob/master/RTL/blink_led/rgb_blink.bin) for any iCE40 board.
 
-3.  Convert the binary bitstream `rgb_blink.bin` into an UF2 `rgb_blink.uf2` with the UF2 Tools:
+3.  Convert the binary bitstream `rgb_blink.bin` into an UF2 `rgb_blink.uf2` with the UF2 Utils:
 
      ```shell
      $ bin2uf2 -o rgb_blink.uf2 rgb_blink.bin
