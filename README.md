@@ -10,8 +10,8 @@
 [![LectronZ](https://lectronz.com/static/badges/buy-it-on-lectronz-medium.png)](https://lectronz.com/stores/tinyvision-ai-store)
 [![Tindie](https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-smalls.png)](https://www.tindie.com/stores/tinyvision_ai/?ref=offsite_badges&utm_source=sellers_vr2045&utm_medium=badges&utm_campaign=badge_small%22%3E)
 
-![](Docs/images/pico_ice_v2_front.jpg)
-![](Docs/images/pico_ice_v2_back.jpg)
+![](Docs/images/pico_ice_front.jpg)
+![](Docs/images/pico_ice_back.jpg)
 
 ## PCB Design Files, Designs, Documentation
 
