@@ -1,5 +1,15 @@
 # pico-ice
 
+[Doc](http://pico-ice.tinyvision.ai/)
+| [Hardware](https://github.com/tinyvision-ai-inc/pico-ice)
+| [Software](https://github.com/tinyvision-ai-inc/pico-ice-sdk)
+| [Schematic](https://raw.githubusercontent.com/tinyvision-ai-inc/pico-ice/main/Board/Rev3/pico-ice.pdf)
+| [Assembly](https://htmlpreview.github.io/?https://github.com/tinyvision-ai-inc/pico-ice/blob/main/Board/Rev3/bom/ibom.html)
+| [Discord](https://discord.gg/t2CzbAYeD2)
+
+[![LectronZ](https://lectronz.com/static/badges/buy-it-on-lectronz-medium.png)](https://lectronz.com/stores/tinyvision-ai-store)
+[![Tindie](https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-smalls.png)](https://www.tindie.com/stores/tinyvision_ai/?ref=offsite_badges&utm_source=sellers_vr2045&utm_medium=badges&utm_campaign=badge_small%22%3E)
+
 ![](Docs/images/pico_ice_v2_front.jpg)
 ![](Docs/images/pico_ice_v2_back.jpg)
 
@@ -29,16 +39,5 @@ Firmware features:
 * Alternate programming of the FPGA flash using DFU mode
 * FPGA clock under RP2040 control
 * Passthrough UART code enables transparent access to the FPGA's UART for debug/logging/control
-
-
-Here are some resources for you:
-
-* [Documentation](https://pico-ice.tinyvision.ai)
-* [Git Repository](https://github.com/tinyvision-ai-inc/pico-ice) (Hardware)
-* [Git Repository](https://github.com/tinyvision-ai-inc/pico-ice-sdk) (SDK)
-* [Discord channel](https://discord.gg/3qbXujE)
-* [Schematic](https://raw.githubusercontent.com/tinyvision-ai-inc/pico-ice/main/Board/Rev3/pico-ice.pdf)
-* [Assembly Drawing](https://htmlpreview.github.io/?https://github.com/tinyvision-ai-inc/pico-ice/blob/main/Board/Rev2/bom/ibom.html)
-
 
 [OSHW US002140](https://certification.oshwa.org/us002140.html) | Certified open source hardware | oshwa.org/cert
