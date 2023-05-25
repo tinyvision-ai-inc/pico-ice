@@ -89,3 +89,4 @@ If you have made a Pmod module, let us know and we would add it to this list!
 - <https://fpga.fm4dd.com/>
 - <https://github.com/icebreaker-fpga/icebreaker-pmod>
 - <https://blackmesalabs.wordpress.com/>
+- <https://www.solder.party/docs/keyboard-pmod/pmod-to-qwiic-adapter/>

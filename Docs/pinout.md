@@ -20,7 +20,6 @@ For Amaranth, until this gets upstreamed, the various board resources including 
 [`pico_ice.py`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/amaranth/pico_ice.py).
 
 
-
 ## With code on the RP2040
 
 The FPGA pins and other signals are defined in [`pico_ice.h`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/include/boards/pico_ice.h).
