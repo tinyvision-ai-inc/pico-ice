@@ -72,6 +72,21 @@ example.
 
 ---
 
+## `#define ICE_USB_USE_DEFAULT_DFU`
+
+If set to non-zero, provides an implementation for TinyUSB DFU callbacks.
+Callbacks for DFU permit to program the FPGA through the CRAM (alt0) or flash (alt1) with i.e
+[dfu-util](https://dfu-util.sourceforge.net/).
+
+---
+
+## `#define ICE_USB_USE_TINYUF2_MSC`
+
+If set to non-zero, provides an implementation for TinyUSB MSC callbacks.
+These permits to enable an extra UF2 drive for loading the FPGA bitstream to them.
+
+---
+
 ## `#define ICE_USB_USE_DEFAULT_CDC`
 
 If set to non-zero, provides an implementation for TinyUSB CDC callbacks.
@@ -101,21 +116,6 @@ All data sent ot this UART interface will be sent to the USB CDC above.
 See the
 [`pico_fpga_io`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_fpga_io/)
 example.
-
----
-
-## `#define ICE_USB_USE_DEFAULT_DFU`
-
-If set to non-zero, provides an implementation for TinyUSB DFU callbacks.
-Callbacks for DFU permit to program the FPGA through the CRAM (alt0) or flash (alt1) with i.e
-[dfu-util](https://dfu-util.sourceforge.net/).
-
----
-
-## `#define ICE_USB_USE_TINYUF2_MSC`
-
-If set to non-zero, provides an implementation for TinyUSB MSC callbacks.
-These permits to enable an extra UF2 drive for loading the FPGA bitstream to them.
 
 ---
 
