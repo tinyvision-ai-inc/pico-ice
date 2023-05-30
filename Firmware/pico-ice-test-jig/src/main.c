@@ -25,10 +25,10 @@
 // libc
 #include <stdarg.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 // pico-sdk
-#include "pico/stdlib.h"
-#include "pico/stdio.h"
+#include "hardware/irq.h"
 
 // pico-ice-sdk
 #include "boards/pico_ice.h"
