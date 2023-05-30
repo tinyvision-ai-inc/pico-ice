@@ -12,30 +12,125 @@ the [TinyUSB](https://github.com/hathach/tinyusb) library.
 
 It comes as a separate library to link against the target: `pico_ice_usb`.
 
-The library user needs to implement short `tusb_config.h` and `usb_descriptors.c` himself,
-for which examples and a template are provided.
+The library user needs to implement short `tusb_config.h` and `usb_descriptors.c` himself.
+Examples listed [at the bottom](#examples).
 
-The pico-ice-sdk is split in one section per device class, can be turned off for controlling the
-equivalent TinyUSB callbacks directly:
+`tud_task()` from TinyUSB still need to be called periodically.
 
-- `ICE_USB_USE_DEFAULT_DESCRIPTOR` -
-   Callbacks for general USB configuration provide default behavior expected by most users
-  (pull requests welcome for adjusting that behavior).
+## USB CDC: UART forwarding
 
-- `ICE_USB_USE_DEFAULT_CDC` -
-  Callbacks for DFU permit to program the FPGA through the CRAM (alt0) or flash (alt1) with i.e
-  [dfu-util](https://dfu-util.sourceforge.net/).
+The pico-ice-sdk allows to configure forwarding from an USB CDC interface to an
+UART interface with the two defines below:
 
-- `ICE_USB_USE_DEFAULT_DFU` -
-  Callbacks for CDC are small wrapper for dispatching individual CDC channels to individual functions.
+Dependencies: `ICE_USB_USE_DEFAULT_CDC`, `ICE_USB_UART_CDC`, `ICE_USB_UART_NUM`
+[`ITF_NUM_CDCx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L30),
+[`ITF_NUM_DATAx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L30),
+[`CFG_TUD_CDC`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/tusb_config.h#L44),
+[`TUD_CDC_DESCRIPTOR`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L38),
+[`STRID_CDC+x`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L49)
 
-Normal TinyUSB functions such as`tusb_init()` or `tud_task()` are to be called directly.
+See the
+[`pico_usb_uart`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_usb_uart/)
+example.
+
+## USB CDC: FPGA forwarding
+
+The pico-ice-sdk allows to configure forwarding
+from the USB CDC interface using the
+[wishbone-serial](https://wishbone-utils.readthedocs.io/en/latest/wishbone-tool/#serial-bridge) protocol
+to the FPGA SPI interface using the
+[wishbone-spi](https://wishbone-utils.readthedocs.io/en/latest/wishbone-tool/#spi-bridge) protocol..
+
+Dependencies: `ICE_USB_USE_DEFAULT_CDC`, `ICE_USB_FPGA_CDC`,
+[`ITF_NUM_CDCx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L30),
+[`ITF_NUM_DATAx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L30),
+[`CFG_TUD_CDC`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/tusb_config.h#L44),
+[`TUD_CDC_DESCRIPTOR`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L38),
+[`STRID_CDC+x`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L49)
+
+See the
+[`pico_usb_fpga`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_usb_fpga/)
+example.
+
+## USB MSC: [TinyUF2](https://github.com/adafruit/tinyuf2)
+
+The TinyUF2 library from Adafruit permits to expose an MSC USB storage device, with a fake FAT filesystem.
+This will allow to copy UF2-formatted files using a drag-and-drop scheme containing a bitstream programmed into the FPGA flash.
+This means no Zadig driver setup needed on Windows.
+
+You would need something like the [`uf2-utils`](https://github.com/tinyvision-ai-inc/uf2-utils) to generate the UF2-formatted files.
+
+Dependencies: `ICE_USB_USE_TINYUF2_MSC`, `ICE_USB_FPGA_CDC`,
+[`ITF_NUM_MSCx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L30),
+[`CFG_TUD_MSC`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/tusb_config.h#L45),
+[`TUD_MSC_DESCRIPTOR`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uf2/usb_descriptors.c#L37),
+[`STRID_MSC+x`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uf2/usb_descriptors.c#L49)
+
+See the
+[`pico_usb_uf2`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_usb_uf2/)
+example.
+
+---
+
+## `#define ICE_USB_USE_DEFAULT_CDC`
+
+If set to non-zero, provides an implementation for TinyUSB CDC callbacks.
+See `tud_cdc_rx_cb_table` below.
+
+---
+
+## `#define ICE_USB_UART_CDC`
+
+The USB CDC interface number (0, 1, 2...) to use for USB-CDC <-> UART forwarding.
+All data sent to this USB interface will be sent to the UART below.
+
+---
+
+## `#define ICE_USB_UART_NUM`
+
+The UART interface number (0 or 1) to use for USB-CDC <-> UART forwarding.
+All data sent ot this UART interface will be sent to the USB CDC above.
+
+---
+
+## `#define ICE_USB_FPGA_CDC` - the USB CDC interface number (0, 1, 2...) to use.
+  wishbone-serial requests sent to that interface will be sent as
+  wishbone-spi requests to the FPGA.
+  This sets [`<ice_wishbone.h>`](/ice_wishbone.html) callbacks.
+
+See the
+[`pico_fpga_io`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_fpga_io/)
+example.
+
+---
+
+## `#define ICE_USB_USE_DEFAULT_DFU`
+
+If set to non-zero, provides an implementation for TinyUSB DFU callbacks.
+Callbacks for DFU permit to program the FPGA through the CRAM (alt0) or flash (alt1) with i.e
+[dfu-util](https://dfu-util.sourceforge.net/).
+
+---
+
+## `#define ICE_USB_USE_TINYUF2_MSC`
+
+If set to non-zero, provides an implementation for TinyUSB MSC callbacks.
+These permits to enable an extra UF2 drive for loading the FPGA bitstream to them.
+
+---
+
+## `void ice_usb_init(void)`
+
+Initiates the CDC forwarding as well as the TinyUSB library.
+
+If CDC forwarding is not used, you can initiate TinyUSB yourself by calling
+`tud_init()` directly.
 
 ---
 
 ## `void ice_usb_sleep_ms(uint32_t ms)`
 
-* `ms` to sleep in milliseconds, while calling `tud_task()` every millisecond.
+- `ms` to sleep in milliseconds, while calling `tud_task()` every millisecond.
 
 This is a replacement for `sleep_ms()`, making USB stuck.
 Shorter delays can use `sleep_us()` which does not get the appication stuck long enough to become a problem.
@@ -44,39 +139,33 @@ Shorter delays can use `sleep_us()` which does not get the appication stuck long
 
 ---
 
-## `void (*tud_cdc_rx_cb_table[CFG_TUD_CDC])(uint8_t cdc_num)`
+## `void (*tud_cdc_rx_cb_table[CFG_TUD_CDC])(uint8_t byte)`
 
-* `cdc_num` - this will be filled with the CDC interface receiving the message.
+- `byte` - this will be filled with a byte read from the selected CDC interface.
 
-Table of CDC interface callbacks, that can be filled freely as long as tud_task() is not being executed.
+A table for controlling how USB CDC interfaces are dispatched: upon reception
+of a byte on a CDC interface `N`, the function in the table at position `N` is
+called with that byte as argument.
 
-The function would be called whenever tud_cdc_rx_cb() is executed,
-and the position in the table indicates the CDC number at which that table entry would be called.
+This permits to catch the content sent to an USB CDC stream by adding a new
+entry to that table.
 
----
-
-## `void ice_usb_cdc_to_uart0(uint8_t cdc_num)`
-## `void ice_usb_cdc_to_uart1(uint8_t cdc_num)`
-
-* `cdc_num` - The CDC interface number that the data was received from.
-
-Read one byte from the indicated CDC interface and write it to the indicated UART interface.
-
-These can be used in combination with `tud_cdc_rx_cb_table[]`
-to pipe all data coming from an USB CDC interface to a physical UART interface.
+It is only required to adjust it for custom CDC interfaces. The built-in ones
+are already configured in that table by default.
 
 ---
 
-## `void ice_usb_uart0_to_cdc0(void)`
-## `void ice_usb_uart0_to_cdc1(void)`
-## `void ice_usb_uart1_to_cdc0(void)`
-## `void ice_usb_uart1_to_cdc1(void)`
+## Examples
 
-Read one byte from the indicated UART interface and write it to the indicated CDC interface.
+- [`pico_hello_world`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_hello_world/)
 
-These can be used in combination with
-[`irq_set_exclusive_handler()`](https://raspberrypi.github.io/pico-sdk-doxygen/group__hardware__irq.html#gafffd448ba2d2eef5b355b88180aefe7f)
-to pipe all data coming from an USB CDC interface to a physical UART interface.
+- [`pico_usb_uart`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_hello_world/)
+
+- [`pico_usb_uf2`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_hello_world/)
+
+- [`pico_usb_fpga`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_fpga_io/)
+
+- [`pico_fpga_io`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_fpga_io/)
 
 ---
 
@@ -92,4 +181,4 @@ You may check the configuration constants such as `CFG_TUD_MSC` and set them to 
 you do not use that feature.
 
 If you do plan to use that feature, you might lack either the `ice_sdk_usb` or `tinyuf2`
-who both implement TinyUSB callbacks.
+who provide the TinyUSB callbacks.
