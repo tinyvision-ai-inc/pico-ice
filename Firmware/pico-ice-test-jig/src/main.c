@@ -325,15 +325,15 @@ static void run_test_out_of_jig(void) {
 
     // check a few pages
     test_start("SRAM chip read/write");
-    for (addr = 0; addr < 64 * 1024; addr += 123) {
+    for (uint32_t addr = 0; addr < 64 * 1024; addr += 123) {
 
-        ice_sram_write_blocking(addr, dummy_range, sizeof(dummy_range))
-        ice_sram_read_blocking(addr, buf, sizeof(buf))
-        test_assert(memcmp(buf, sizeof(buf), dummy_range) == 0);
+        ice_sram_write_blocking(addr, dummy_range, sizeof(dummy_range));
+        ice_sram_read_blocking(addr, buf, sizeof(buf));
+        test_assert(memcmp(buf, dummy_range, sizeof(buf)) == 0);
 
-        ice_sram_write_blocking(addr, dummy_zero, sizeof(dummy_zero))
-        ice_sram_read_blocking(addr, buf, sizeof(buf))
-        test_assert(memcmp(buf, sizeof(buf), dummy_zero) == 0);
+        ice_sram_write_blocking(addr, dummy_zero, sizeof(dummy_zero));
+        ice_sram_read_blocking(addr, buf, sizeof(buf));
+        test_assert(memcmp(buf, dummy_zero, sizeof(buf)) == 0);
 
         test_step_printf("addr=0x%06X", addr);
     }
