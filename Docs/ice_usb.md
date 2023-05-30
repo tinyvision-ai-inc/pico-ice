@@ -108,10 +108,15 @@ All data sent ot this UART interface will be sent to the USB CDC above.
 
 ---
 
-## `#define ICE_USB_FPGA_CDC` - the USB CDC interface number (0, 1, 2...) to use.
-  wishbone-serial requests sent to that interface will be sent as
-  wishbone-spi requests to the FPGA.
-  This sets [`<ice_wishbone.h>`](/ice_wishbone.html) callbacks.
+## `#define ICE_USB_FPGA_CDC`
+
+The USB CDC interface number (0, 1, 2...) to use.
+[wishbone-serial](https://wishbone-utils.readthedocs.io/en/latest/wishbone-tool/#serial-bridge)
+requests sent to that interface will be sent as
+[wishbone-spi](https://wishbone-utils.readthedocs.io/en/latest/wishbone-tool/#spi-bridge)
+requests to the FPGA.
+
+This sets [`<ice_wishbone.h>`](/ice_wishbone.html) callbacks.
 
 See the
 [`pico_fpga_io`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_fpga_io/)
