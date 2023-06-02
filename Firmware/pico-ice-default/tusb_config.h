@@ -23,7 +23,10 @@
  * THE SOFTWARE.
  */
 #pragma once
+
+// pico-ice-sdk
 #include "ice_flash.h"
+#include "boards/pico_ice.h"
 
 // RHPort number used for device can be defined by board.mk, port 0 for pico-ice
 #define BOARD_DEVICE_RHPORT_NUM     0
