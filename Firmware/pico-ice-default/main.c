@@ -22,24 +22,31 @@
  * SOFTWARE.
  */
 
+// pico-sdk
 #include "pico/stdio.h"
 #include "hardware/irq.h"
 #include "hardware/gpio.h"
 #include "hardware/uart.h"
+
+// pico-ice-sdk
 #include "ice_usb.h"
 #include "ice_fpga.h"
 
+#define UART_TX_PIN 0
+#define UART_RX_PIN 1
+
 int main(void) {
-    ice_usb_init();
-
-    // Let the FPGA start and give it a clock
-    ice_fpga_init(48);
-    ice_fpga_start();
-
     // Enable the UART
     uart_init(uart0, 115200);
-    gpio_set_function(0, GPIO_FUNC_UART);
-    gpio_set_function(1, GPIO_FUNC_UART);
+    gpio_set_function(UART_TX_PIN, GPIO_FUNC_UART);
+    gpio_set_function(UART_RX_PIN, GPIO_FUNC_UART);
+
+    // Configure the piping as configured in <tusb_config.h>
+    ice_usb_init();
+
+    // Let the FPGA start
+    ice_fpga_init(48);
+    ice_fpga_start();
 
     while (true) {
         tud_task();
