@@ -8,7 +8,9 @@ parent: pico-ice
 # Getting Started
 
 Once you receive the board, you would be able to plug via USB and see the RGB LED blinking.
-This is the FPGA bitstream project loaded onto the board by default.
+This is from the
+[default FPGA bitstream](https://github.com/tinyvision-ai-inc/UPduino-v3.0/blob/master/RTL/blink_led/rgb_blink.bin)
+loaded onto the board. It should work with any iCE40-based board.
 
 From here, you can:
 
