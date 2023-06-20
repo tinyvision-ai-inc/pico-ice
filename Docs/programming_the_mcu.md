@@ -11,7 +11,7 @@ To upload a new firmware image on the PR2040 (the "pico" part of "pico-ice"), yo
 
 You can do that by connecting a jumper between the `BT` pin a `Gnd` pin, then press the `RESET` button:
 
-1.  Connect the `USB_BOOT` pin to ground.
+1.  Connect the `USB_BOOT` pin to ground. For instance with a pair of tweezers, or with a jumper:
 
     {: .lh-0 }
     ```
