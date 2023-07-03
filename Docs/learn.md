@@ -97,6 +97,9 @@ Some of them have been collected and aggregated on this page:
 - [Upduino FPGA Tutorial](https://blog.idorobots.org/entries/upduino-fpga-tutorial.html)
   UPduino FPGA tutorial using APIO.
 
+- [Installing the Icestorm Toolchain](https://www.youtube.com/watch?v=Bfhnu9XUzLs)
+  Guide on getting comfortable with a Makefile-based development process for Icestorm/Yosys and Verilog.
+
 ## Specific topic
 
 - [clock domain crossing](http://fpgacpu.ca/fpga/handshake.html)
@@ -109,8 +112,11 @@ Some of them have been collected and aggregated on this page:
 - [Interfacing FPGAs to an ADC’s Digital Data Output](https://www.analog.com/en/technical-articles/interfacing-fpgas-to-an-adcs-digital-data-output.html)
   Article from Analog Design exploring the topic of ADC/DAC <-> FPGA interface.
 
-- [RISCV on an ICE40 FPGA](https://pingu98.wordpress.com/2019/04/08/)
-  A very detailed blog on implementing a RISCV in the FPGA.
+- [RISC-V on an ICE40 FPGA](https://pingu98.wordpress.com/2019/04/08/)
+  A very detailed blog on implementing a RISC-V in the FPGA.
+
+- [RISC-V on an iCE40 FPGA](https://github.com/BrunoLevy/learn-fpga)
+  by the author of the relatively high-performance yet tiny RISC-V core FemtoRV.
 
 ## Wiki
 
