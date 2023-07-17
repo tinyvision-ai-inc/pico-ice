@@ -41,7 +41,7 @@ int main(void) {
     gpio_set_function(UART_TX_PIN, GPIO_FUNC_UART);
     gpio_set_function(UART_RX_PIN, GPIO_FUNC_UART);
 
-    // Configure the piping as configured in <tusb_config.h>
+    // Configure the piping as defined in <tusb_config.h>
     ice_usb_init();
 
     // Let the FPGA start

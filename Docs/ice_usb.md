@@ -22,12 +22,14 @@ Examples listed [at the bottom](#examples).
 The pico-ice-sdk allows to configure forwarding from an USB CDC interface to an
 UART interface with the two defines below:
 
-Dependencies: `ICE_USB_USE_DEFAULT_CDC`, `ICE_USB_UART_CDC`, `ICE_USB_UART_NUM`
-[`ITF_NUM_CDCx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L30),
-[`ITF_NUM_DATAx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L30),
-[`CFG_TUD_CDC`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/tusb_config.h#L44),
-[`TUD_CDC_DESCRIPTOR`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L38),
-[`STRID_CDC+x`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L49)
+To enable:
+1. Define `ICE_USB_UART0_CDC` or `ICE_USB_UART1_CDC` to the CDC interface number to use.
+2. Adjust these as needed:
+   [`ITF_NUM_CDCx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L30),
+   [`ITF_NUM_DATAx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L30),
+   [`CFG_TUD_CDC`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/tusb_config.h#L44),
+   [`TUD_CDC_DESCRIPTOR`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L38),
+   [`STRID_CDC+x`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L49)
 
 See the
 [`pico_usb_uart`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_usb_uart/)
@@ -41,12 +43,14 @@ from the USB CDC interface using the
 to the FPGA SPI interface using the
 [wishbone-spi](https://wishbone-utils.readthedocs.io/en/latest/wishbone-tool/#spi-bridge) protocol..
 
-Dependencies: `ICE_USB_USE_DEFAULT_CDC`, `ICE_USB_FPGA_CDC`,
-[`ITF_NUM_CDCx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L30),
-[`ITF_NUM_DATAx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L30),
-[`CFG_TUD_CDC`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/tusb_config.h#L44),
-[`TUD_CDC_DESCRIPTOR`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L38),
-[`STRID_CDC+x`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L49)
+To enable:
+1. Define `ICE_USB_FPGA_CDC` to the CDC interface number to use.
+2. Adjust these as needed:
+   [`ITF_NUM_CDCx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L30),
+   [`ITF_NUM_DATAx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L30),
+   [`CFG_TUD_CDC`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/tusb_config.h#L44),
+   [`TUD_CDC_DESCRIPTOR`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L38),
+   [`STRID_CDC+x`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L49)
 
 See the
 [`pico_usb_fpga`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_usb_fpga/)
@@ -60,11 +64,13 @@ This means no Zadig driver setup needed on Windows.
 
 You would need something like the [`uf2-utils`](https://github.com/tinyvision-ai-inc/uf2-utils) to generate the UF2-formatted files.
 
-Dependencies: `ICE_USB_USE_TINYUF2_MSC`, `ICE_USB_FPGA_CDC`,
-[`ITF_NUM_MSCx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L30),
-[`CFG_TUD_MSC`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/tusb_config.h#L45),
-[`TUD_MSC_DESCRIPTOR`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uf2/usb_descriptors.c#L37),
-[`STRID_MSC+x`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uf2/usb_descriptors.c#L49)
+To enable:
+1. Define `ICE_USB_USE_TINYUF2_MSC`
+2. Adjust these as needed:
+   [`ITF_NUM_MSCx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/usb_descriptors.c#L30),
+   [`CFG_TUD_MSC`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uart/tusb_config.h#L45),
+   [`TUD_MSC_DESCRIPTOR`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uf2/usb_descriptors.c#L37),
+   [`STRID_MSC+x`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uf2/usb_descriptors.c#L49)
 
 See the
 [`pico_usb_uf2`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_usb_uf2/)

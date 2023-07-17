@@ -52,15 +52,11 @@
 #define CFG_TUD_MIDI                0
 #define CFG_TUD_VENDOR              0
 
-// Use implementation from the pico-ice-sdk or not
-#define ICE_USB_USE_DEFAULT_DESCRIPTOR 1
-#define ICE_USB_USE_DEFAULT_CDC     1
-#define ICE_USB_USE_DEFAULT_DFU     1
+// Configure the TinyUF2 drag-and-drop to USB drive for FPGA-programming
 #define ICE_USB_USE_TINYUF2_MSC     1
 
-// Configure forwarding between USB CDC and UART
-#define ICE_USB_UART_CDC            1
-#define ICE_USB_UART_NUM            0
+// Configure 2-way forwarding between USB CDC and UART
+#define ICE_USB_UART0_CDC           1
 
 // CDC FIFO size of TX and RX and Endpoint buffer size
 #define CFG_TUD_CDC_RX_BUFSIZE      512
