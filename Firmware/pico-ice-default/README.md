@@ -1,9 +1,14 @@
-# pico_usb_uart
+# Default Firmware
 
-In addition to the main USB-UART interface, used for the standard I/O (as used by `<stdio.h>`) (#0),
-a second USB-UART (#1) interface is created:
+- A first USB-UART (#0) is used for the logs, although currently nothing is printed.
 
-- mirrors all input from the USB-UART to the FPGA as UART data,
-- mirrors back all UART data from the FPGA to the USB-UART
+- A second USB-UART (#1) interface is used for mirroring everything between
+  this USB interface and the physical UART on the RP2040 pins 0 and 1.
 
-Any shared I/O pins can be used. In this example, pins 0 and 1 are used.
+- A 12 MHz clock is exported from the RP2040 pin 24 toward the iCE40 pin 35.
+
+- An USB DFU interface allows programming through dfu-utils.
+
+- An USB MSC interface allows programming with UF2.
+
+See the [documentation](https://pico-ice.tinyvision.ai/) for how to use them.
