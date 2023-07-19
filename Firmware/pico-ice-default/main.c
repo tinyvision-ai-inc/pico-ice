@@ -31,6 +31,7 @@
 // pico-ice-sdk
 #include "ice_usb.h"
 #include "ice_fpga.h"
+#include "ice_led.h"
 
 #define UART_TX_PIN 0
 #define UART_RX_PIN 1
@@ -47,6 +48,9 @@ int main(void) {
     // Let the FPGA start
     ice_fpga_init(12);
     ice_fpga_start();
+
+    // Prevent the LEDs from glowing slightly
+    ice_led_init();
 
     while (true) {
         tud_task();
