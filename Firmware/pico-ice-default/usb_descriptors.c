@@ -47,9 +47,9 @@ char const *tud_string_desc[STRID_NUM_TOTAL] = {
     [STRID_PRODUCT]         = USB_PRODUCT,
     [STRID_SERIAL_NUMBER]   = usb_serial_number,
     [STRID_VENDOR]          = USB_VENDOR,
-    [STRID_CDC+0]           = "RP2040 UART",
+    [STRID_CDC+0]           = "RP2040 logs",
     [STRID_CDC+1]           = "iCE40 UART",
-    [STRID_MSC+0]           = "iCE40 MSC (flash)",
-    [STRID_DFU+0]           = "iCE40 DFU (flash)",
-    [STRID_DFU+1]           = "iCE40 DFU (CRAM)",
+    [STRID_MSC+0]           = "iCE40 MSC (Flash)",
+    [STRID_DFU+0]           = "iCE40 DFU (CRAM)",
+    [STRID_DFU+1]           = "iCE40 DFU (Flash)",
 };
