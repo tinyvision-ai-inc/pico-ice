@@ -26,14 +26,15 @@ cd my-new-pico-ice-firmware
 
 # turn it into a git repository
 git init
-git remote add git@github.com:your-username/my-new-pico-ice-firmware
+git remote add origin git@github.com:your-username/my-new-pico-ice-firmware
 
 # replace the two symlinks by git submodules
 rm pico-sdk pico-ice-sdk
 git submodule add https://github.com/raspberrypi/pico-sdk
 git submodule add https://github.com/tinyvision-ai-inc/pico-ice-sdk
 
-# setup the pico-sdk
+# fetch the submodules (using --recursive is very slow)
+git -C pico-ice-sdk submodule update --init
 git -C pico-sdk submodule update --init lib/tinyusb
 
 # you can now build it as a CMake project
