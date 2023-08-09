@@ -100,6 +100,9 @@ Some of them have been collected and aggregated on this page:
 - [Installing the Icestorm Toolchain](https://www.youtube.com/watch?v=Bfhnu9XUzLs)
   Guide on getting comfortable with a Makefile-based development process for Icestorm/Yosys and Verilog.
 
+- [Explanation of essential Verilog concepts](https://vanhunteradams.com/DE1/Lorenz/Verilog.html)
+  Several pitfalls and myths debunked about the Verilog language, as part of an introduction.
+
 ## Specific topic
 
 - [clock domain crossing](http://fpgacpu.ca/fpga/handshake.html)
