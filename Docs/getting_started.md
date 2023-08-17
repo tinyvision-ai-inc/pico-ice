@@ -14,9 +14,22 @@ loaded onto the board. It should work with any iCE40-based board.
 
 From here, you can:
 
--   Program a new FPGA design onto the iCE40: [programming the FPGA](/programming_the_fpga.html).
+- Program a new FPGA design onto the iCE40: [programming the FPGA](/programming_the_fpga.html).
 
--   Program a custom firmware onto the RP2040: [Programming the MCU](/programming_the_mcu.html).
+- Program a custom firmware onto the RP2040: [Programming the MCU](/programming_the_mcu.html).
+
+
+## Default Firmware
+
+To provide the various USB programming methods and allow to boot the FPGA, a
+[default firmware](https://github.com/tinyvision-ai-inc/pico-ice/blob/main/Firmware/pico-ice-default/main.c)
+is loaded onto the RP2040 (Pico part of the pico-ice).
+
+It provides:
+
+- USB programming with DFU
+- USB programming with UF2 (drag-and-drop to a storage device)
+- USB-UART forwarding
 
 
 ## Soldering the PMODs
