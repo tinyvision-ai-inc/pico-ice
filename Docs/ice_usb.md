@@ -63,7 +63,7 @@ RX: -------------    -------------    -------------
 ```
 
 You can use this python library:
-[`pico_ice_spi.py`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_uf2/pico_sdk_import.cmake).
+[`pico_ice_spi.py`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_spi/pico_ice_spi.py)
 
 To enable:
 1. Define `ICE_USB_SPI_CDC` to the CDC interface number to use.
