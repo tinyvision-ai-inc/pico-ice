@@ -21,9 +21,11 @@ From here, you can:
 
 ## Default Firmware
 
+[source](https://github.com/tinyvision-ai-inc/pico-ice/blob/main/Firmware/pico-ice-default/) -
+[download](https://github.com/tinyvision-ai-inc/pico-ice/releases/)
+
 To provide the various USB programming methods and allow to boot the FPGA, a
-[default firmware](https://github.com/tinyvision-ai-inc/pico-ice/blob/main/Firmware/pico-ice-default/main.c)
-is loaded onto the RP2040 (Pico part of the pico-ice).
+default firmware is loaded onto the RP2040 (Pico part of the pico-ice).
 
 It provides:
 
