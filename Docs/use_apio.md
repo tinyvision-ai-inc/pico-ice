@@ -37,3 +37,7 @@ apio build
 # Plug your pico-ice board and upload the blinky project to it
 apio upload
 ```
+
+If the USB driver setup did not work, it is also possible to convert the `.bin` file to `.uf2` and use
+the [usb drag and drop](https://pico-ice.tinyvision.ai/programming_the_fpga.html#using-a-drag-drop-or-file-copy-scheme)
+method which does not require firmware installation on Windows.
