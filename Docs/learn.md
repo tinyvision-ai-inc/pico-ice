@@ -8,7 +8,11 @@ nav_order: 4
 
 A large number of resources exists for learning FPGA design.
 
-Some of them have been collected and aggregated on this page:
+Some of them have been collected and aggregated on this page.
+
+An online class was held by tinyVision.ai, and is available freely:
+
+- [Hands-on-FPGA-class](https://github.com/tinyvision-ai-inc/Hands-on-FPGA-class/)
 
 ## Video format
 
@@ -191,6 +195,9 @@ Some of them have been collected and aggregated on this page:
   Low-level format aiming to be a de-facto industry standard for FPGA toolchains.
 
 ## Courses
+
+- [Hands-on FPGA class](https://github.com/tinyvision-ai-inc/Hands-on-FPGA-class/)
+  A 8-week class was given by tinyVision.ai for getting started with FPGAs.
 
 - [Intel FPGA Academy](https://fpgacademy.org/courses.html)
   Digital logic/FPGA courses by Intel.

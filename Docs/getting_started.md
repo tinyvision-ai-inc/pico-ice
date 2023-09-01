@@ -8,16 +8,40 @@ parent: pico-ice
 # Getting Started
 
 Once you receive the board, you would be able to plug via USB and see the RGB LED blinking.
-This is from the
-[default FPGA bitstream](https://github.com/tinyvision-ai-inc/UPduino-v3.0/blob/master/RTL/blink_led/rgb_blink.bin)
-loaded onto the board. It should work with any iCE40-based board.
-
-From here, you can:
+You might want to [update your firmware](https://github.com/tinyvision-ai-inc/pico-ice/releases/) to make sure to have the latest bugfixes.
 
 - Program a new FPGA design onto the iCE40: [programming the FPGA](/programming_the_fpga.html).
 
 - Program a custom firmware onto the RP2040: [Programming the MCU](/programming_the_mcu.html).
 
+## Quick-start with APIO
+
+The [APIO](https://github.com/FPGAwars/apio) project is a command line tool to fetch and use
+the [oss-cad-suite](https://github.com/YosysHQ/oss-cad-suite-build) FPGA toolchain based
+on [Yosys](https://github.com/YosysHQ/).
+
+It will bring an up-to-date build environment running quickly.
+
+```
+# Download the latest APIO dev version (with pico-ice support):
+pip3 install git+https://github.com/FPGAwars/apio
+
+# Download and install oss-cad-suite
+apio install -a
+
+# Build a new directory with a "blinky" example project inside
+mkdir pico-ice-blinky; cd pico-ice-blinky
+apio examples -f iCE40-UP5K/blink
+
+# Set the board to "pico-ice"
+apio init --sayyes --board pico-ice
+
+# Build the project using yosys/nextpnr
+apio build
+
+# Plug your pico-ice board and upload the blinky project to it
+apio upload
+```
 
 ## Default Firmware
 
