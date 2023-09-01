@@ -44,7 +44,7 @@
 #define CFG_TUD_MAX_SPEED           OPT_MODE_FULL_SPEED
 
 // Device classes
-#define CFG_TUD_CDC                 2
+#define CFG_TUD_CDC                 3
 #define CFG_TUD_MSC                 1
 #define CFG_TUD_DFU                 1
 #define CFG_TUD_DFU_ALT             2
@@ -55,8 +55,11 @@
 // Configure the TinyUF2 drag-and-drop to USB drive for FPGA-programming
 #define ICE_USB_USE_TINYUF2_MSC     1
 
-// Configure 2-way forwarding between USB CDC and UART
+// Configure 2-way forwarding between USB CDC1 and UART
 #define ICE_USB_UART0_CDC           1
+
+// Configure 2-way forwarding between USB CDC2 and SPI
+#define ICE_USB_SPI_CDC             2
 
 // CDC FIFO size of TX and RX and Endpoint buffer size
 #define CFG_TUD_CDC_RX_BUFSIZE      512
