@@ -115,12 +115,12 @@ int main(void) {
     gpio_set_function(UART_TX_PIN, GPIO_FUNC_UART);
     gpio_set_function(UART_RX_PIN, GPIO_FUNC_UART);
 
-    // Configure the piping as defined in <tusb_config.h>
-    ice_usb_init();
-
     // Let the FPGA start
     ice_fpga_init(12);
     ice_fpga_start();
+
+    // Configure the piping as defined in <tusb_config.h>
+    ice_usb_init();
 
     // Prevent the LEDs from glowing slightly
     ice_led_init();
