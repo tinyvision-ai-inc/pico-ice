@@ -15,7 +15,8 @@ On Windows, while the RaspberryPi guide mentions using Visual Studio Code with a
 ## Using a Drag-Drop or file copy scheme
 
 You would need a compiler toolchain installed for building the [UF2 Utils](https://github.com/tinyvision-ai-inc/uf2-utils) on your system.
-You can use the DFU mode if you wish to avoid this.
+On Windows, you can use <https://github.com/microsoft/uf2> instead,
+which contains [uf2conv.py](https://github.com/microsoft/uf2/blob/master/utils/uf2conv.md).
 
 Out of the box, the [default firmware](https://github.com/tinyvision-ai-inc/pico-ice/releases/) should already be present on your board.
 You can skip step 1 if this is the case.
