@@ -1,3 +1,10 @@
+---
+title: Use APIO
+layout: default
+nav_order: 3
+parent: Getting Started
+---
+
 # Use APIO
 
 The [APIO](https://github.com/FPGAwars/apio) project is a command line tool to fetch and use
