@@ -2,7 +2,7 @@
 title: Use APIO
 layout: default
 nav_order: 3
-parent: Getting Started
+parent: pico-ice
 ---
 
 # Use APIO
@@ -38,6 +38,7 @@ apio build
 apio upload
 ```
 
-If the USB driver setup did not work, it is also possible to convert the `.bin` file to `.uf2` and use
-the [usb drag and drop](https://pico-ice.tinyvision.ai/programming_the_fpga.html#using-a-drag-drop-or-file-copy-scheme)
-method which does not require firmware installation on Windows.
+If `apio upload` fails, it is also possible to convert the `.bin` file to `.uf2`
+with [uf2-utils](https://github.com/tinyvision-ai-inc/uf2-utils/)
+or [uf2conv.py](https://github.com/microsoft/uf2/blob/master/utils/uf2conv.md):
+[doc](https://pico-ice.tinyvision.ai/programming_the_fpga.html#using-a-drag-drop-or-file-copy-scheme).
