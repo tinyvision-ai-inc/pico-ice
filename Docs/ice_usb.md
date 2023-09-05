@@ -8,14 +8,14 @@ parent: pico-ice-sdk
 
 The [pico-ice-sdk](https://github.com/tinyvision-ai-inc/pico-ice-sdk/) makes use of
 the [pico-sdk](https://github.com/raspberrypi/pico-sdk/) which uses
-the [TinyUSB](https://github.com/hathach/tinyusb) library.
+the [TinyUSB](https://github.com/hathach/tinyusb) library for providing USB device mode and host mode.
 
-It comes as a separate library to link against the target: `pico_ice_usb`.
+`ice_usb` comes as a separate `pico_ice_usb` library to [add in the `CMakeLists.txt`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/develop/examples/pico_usb_uart/CMakeLists.txt#L21).
 
-The library user needs to implement short `tusb_config.h` and `usb_descriptors.c` himself.
-Examples listed [at the bottom](#examples).
+The library user needs to provide `tusb_config.h` and `usb_descriptors.c`.
+Examples listed [below](#examples).
+`tud_task()` needs to be called frequently in the firmware.
 
-`tud_task()` from TinyUSB still need to be called periodically.
 
 ## USB CDC: UART forwarding
 
@@ -34,6 +34,7 @@ To enable:
 See the
 [`pico_usb_uart`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_usb_uart/)
 example.
+
 
 ## USB SPI: FPGA/SRAM/flash forwarding
 
@@ -78,6 +79,7 @@ See the
 [`pico_usb_spi`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_usb_spi/)
 example.
 
+
 ## USB CDC: FPGA forwarding
 
 The pico-ice-sdk allows to configure forwarding
@@ -98,6 +100,7 @@ To enable:
 See the
 [`pico_usb_fpga`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_usb_fpga/)
 example.
+
 
 ## USB MSC: [TinyUF2](https://github.com/adafruit/tinyuf2)
 
@@ -221,7 +224,7 @@ are already configured in that table by default.
 
 - [`pico_fpga_io`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_fpga_io/)
 
----
+- [more...](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples)
 
 ## Troubleshooting
 

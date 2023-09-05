@@ -7,6 +7,25 @@ has_children: true
 
 # pico-ice-sdk
 
+Out of the box, the RP2040 present on the pico-ice has [built-in features](https://pico-ice.tinyvision.ai/getting_started.html#default-firmware) to interact with the FPGA over USB.
+
+But with its [specifications](https://www.raspberrypi.com/products/rp2040/specifications/) the RP2040 can be programmed to support advanced features.
+
+The RP2040 can be programmed with either custom C firmware, or one of many languages such as
+[MicroPython](https://micropython.org/download/RPI_PICO/),
+[CircuitPython](https://circuitpython.org/board/raspberry_pi_pico/),
+[Go](https://tinygo.org/docs/reference/microcontrollers/pico/),
+[Rust](https://docs.rs/rp2040/latest/rp2040/),
+[JavaScript](https://kalumajs.org/),
+[ZeptoForth](https://github.com/tabemann/zeptoforth),
+[Mecrisp Forth](https://wellys.com/posts/rp2040_forth/),
+...
+
+Currently C/C++ programming is best suported through the pico-ice-sdk (this page),
+itself built as a library for the
+[pico-sdk](https://github.com/raspberrypi/pico-sdk/) from Raspberry Pi.
+
+
 ## Getting Started
 
 This is a guide for how to build application running on the RP2040 microcontroller.
