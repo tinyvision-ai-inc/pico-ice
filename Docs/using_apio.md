@@ -1,11 +1,11 @@
 ---
-title: Use APIO
+title: Using APIO
 layout: default
 nav_order: 3
 parent: pico-ice
 ---
 
-# Use APIO
+# Using APIO
 
 The [APIO](https://github.com/FPGAwars/apio) project is a command line tool to fetch and use
 the [oss-cad-suite](https://github.com/YosysHQ/oss-cad-suite-build) FPGA toolchain based
