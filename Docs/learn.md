@@ -31,6 +31,9 @@ An online class was held by tinyVision.ai, and is available freely:
 
 ## General tutorials
 
+- [Hardware as Code](https://www.hackster.io/sthibault/hardware-as-code-part-i-an-introduction-48bacb)
+  A 5-part tutorial series using the UPduino as an example.
+
 - [Alchitry](https://alchitry.com/)
   Tutorial focused on the Artix 7 Alchitry boards.
 
