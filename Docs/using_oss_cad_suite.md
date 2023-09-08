@@ -23,3 +23,13 @@ under which you can navigate to the example repositories and try them.
 If you [used `apio` to install OSS CAD Suite](/using_apio.html),
 then you can use the APIO install directory as well:
 `export OSS_CAD_SUITE="$HOME/.apio/packages/tools-oss-cad-suite/"`.
+
+
+## F.A.Q.
+
+### Q: Why is specifying the OSS_CAD_SUITE directory needed?
+
+APIO installs OSS-CAD-Suite, but it is not possible to directly call the commands from the shell environment
+so it is needed to provide the full path to the binaries to execute them.
+
+With OSS-CAD-Suite, there is a script to source in the current shell environment to avoid this, but if the user forgets, then nothing works.
