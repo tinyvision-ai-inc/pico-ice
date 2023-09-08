@@ -8,11 +8,7 @@ parent: pico-ice
 # Getting Started
 
 Once you receive the board, you would be able to plug via USB and see the RGB LED blinking.
-You might want to [update your firmware](https://github.com/tinyvision-ai-inc/pico-ice/releases/) to make sure to have the latest bugfixes.
-
-- [Programming the FPGA](/programming_the_fpga.html) with a new FPGA design.
-- [Programming the MCU](/programming_the_mcu.html) with custom firmware.
-- [Using APIO](/using_apio.html) to install the toolchain and program the FPGA.
+You might want to update the default firmware to make sure to have the latest bugfixes:
 
 
 ## Default Firmware
@@ -41,6 +37,8 @@ It provides:
 
 - An USB MSC interface allows programming the board by copying a file to an USB device
   ([doc](https://pico-ice.tinyvision.ai/programming_the_fpga.html#using-a-drag-drop-or-file-copy-scheme)).
+
+See [Programing the MCU](/programming_the_mcu.html) for how to load this firmware file.
 
 
 ## Soldering the PMODs
