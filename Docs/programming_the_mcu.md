@@ -24,6 +24,5 @@ You can do that by connecting a jumper between the `BT` pin a `Gnd` pin, then pr
 
 6. Eject the USB drive.
    At this step, the firmware should be uploaded and running.
-   You can remove the jumper for normal use.
 
 ![photo of which pins to short](images/pico_ice_reset_button.jpg)
