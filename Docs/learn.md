@@ -29,13 +29,23 @@ An online class was held by tinyVision.ai, and is available freely:
 - [Digital to FPGA 101](https://youtu.be/FcFbFTbngrw)
   design a circuit in digital convert into verilog and run it on an ice40 FPGA (like Upduino_v3.1).
 
+## Examples
+
+- [icebreaker-verilog-examples](https://github.com/icebreaker-fpga/icebreaker-verilog-examples)
+  A collection of examples using Makefiles for iCE40 boards.
+  Can be used for the `pico-ice` with minor adaptations.
+
+- [Xark's upduino-example](https://github.com/XarkLabs/upduino-example/tree/master)
+  An example for how to use a Makefile for building a Verilog.
+  Can be used for the `pico-ice` with minor adaptations.
+
+- [Librecores](https://www.librecores.org/)
+  Index of open source cores (Verilog, VHDL...) projects. Good Verilog examples.
+
+- [Upduino v2 icestorm examples](https://github.com/osresearch/up5k)
+  large collection of very useful code, and a good overview. Upduino v2 only.
+
 ## General tutorials
-
-- [Hardware as Code](https://www.hackster.io/sthibault/hardware-as-code-part-i-an-introduction-48bacb)
-  A 5-part tutorial series using the UPduino as an example.
-
-- [Alchitry](https://alchitry.com/)
-  Tutorial focused on the Artix 7 Alchitry boards.
 
 - [Hobbyist's guide to FPGAs](https://hackaday.io/project/27550-the-hobbyists-guide-to-fpgas)
   FPGA tutorials, theory of design articles, hands-on labs targeted towards hobbyists.
@@ -43,8 +53,14 @@ An online class was held by tinyVision.ai, and is available freely:
 - [VHDL Wiz](https://vhdlwhiz.com/)
   Community offering tutoring focused on VHDL.
 
+- [Hardware as Code](https://www.hackster.io/sthibault/hardware-as-code-part-i-an-introduction-48bacb)
+  A 5-part tutorial series using the UPduino as an example.
+
 - [fpga 101 fpgas for beginners](https://www.nandland.com/articles/fpga-101-fpgas-for-beginners.html)
   Tutorial explaining concepts and practice with videos and articles.
+
+- [Alchitry](https://alchitry.com/)
+  Tutorial focused on the Artix 7 Alchitry boards.
 
 - [Fomu Workshop](https://workshop.fomu.im/en/latest/)
   Workshop by FOMU the ICE40 FPGA that fits on an USB port.
@@ -286,11 +302,3 @@ An online class was held by tinyVision.ai, and is available freely:
 - [NandGame](https://nandgame.com/)
   Browser based puzzle game about logic gates.
   serves as litmus test to determine familiarity with digital logic. Good for visual learners
-
-## Examples
-
-- [Upduino v2 icestorm examples](https://github.com/osresearch/up5k)
-  large collection of very useful code and a good overview.
-
-- [Librecores](https://www.librecores.org/)
-  Index of open source cores (Verilog, VHDL...) projects. Good Verilog examples.
