@@ -39,6 +39,9 @@ An online class was held by tinyVision.ai, and is available freely:
   An example for how to use a Makefile for building a Verilog.
   Can be used for the `pico-ice` with minor adaptations.
 
+- [tnt's ice40-playground](https://github.com/smunaut/ice40-playground/)
+  S. Munaut's examples for the iCE40.
+
 - [Librecores](https://www.librecores.org/)
   Index of open source cores (Verilog, VHDL...) projects. Good Verilog examples.
 
