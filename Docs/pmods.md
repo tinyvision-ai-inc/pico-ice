@@ -18,6 +18,8 @@ This standard is documented [here](https://reference.digilentinc.com/_media/refe
 
 ## Pmod in the pico-ice
 
+Here is an [example of how to solder](/getting_started.html#soldering-the-pmods) the Pmod connectors.
+
 There are 4 Pmod connectors in the pico-ice, numbered clockwise from 1 to 4 starting from the USB connector.
 
 - 2 connected ot the iCE40

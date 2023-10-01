@@ -41,9 +41,9 @@ It provides:
 See [Programing the MCU](/programming_the_mcu.html) for how to load this firmware file.
 
 
-## Soldering the PMODs
+## Soldering the Pmods
 
-In case you ordered the board without the Pmod connectors soldered,
+In case you ordered the board without the [Pmod](/pmods.html) connectors soldered,
 you would need to solder them in to plug something onto the board.
 For instance like this:
 
