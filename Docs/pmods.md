@@ -93,3 +93,4 @@ If you have made a Pmod module, let us know and we would add it to this list!
 - <https://blackmesalabs.wordpress.com/>
 - <https://www.solder.party/docs/keyboard-pmod/pmod-to-qwiic-adapter/>
 - <https://github.com/marcinwachowiak/pmod-pdm-microphone-array/>
+- <https://github.com/apfelaudio/eurorack-pmod>
