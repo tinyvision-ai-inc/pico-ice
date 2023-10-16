@@ -8,14 +8,14 @@ parent: pico-ice-sdk
 
 The [pico-ice-sdk](https://github.com/tinyvision-ai-inc/pico-ice-sdk/) makes use of
 the [pico-sdk](https://github.com/raspberrypi/pico-sdk/) which uses
-the [TinyUSB](https://github.com/hathach/tinyusb) library.
+the [TinyUSB](https://github.com/hathach/tinyusb) library for providing USB device mode and host mode.
 
-It comes as a separate library to link against the target: `pico_ice_usb`.
+`ice_usb` comes as a separate `pico_ice_usb` library to [add in the `CMakeLists.txt`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/develop/examples/pico_usb_uart/CMakeLists.txt#L21).
 
-The library user needs to implement short `tusb_config.h` and `usb_descriptors.c` himself.
-Examples listed [at the bottom](#examples).
+The library user needs to provide `tusb_config.h` and `usb_descriptors.c`.
+Examples listed [below](#examples).
+`tud_task()` needs to be called frequently in the firmware.
 
-`tud_task()` from TinyUSB still need to be called periodically.
 
 ## USB CDC: UART forwarding
 
@@ -34,6 +34,51 @@ To enable:
 See the
 [`pico_usb_uart`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_usb_uart/)
 example.
+
+
+## USB SPI: FPGA/SRAM/flash forwarding
+
+The pico-ice-sdk allows to configure forwarding data between an USB CDC interface and the main SPI interface around which everything is hooked-up together.
+This allows to exchange data with the iCE40, SRAM and flash directly from USB.
+To do so, a very small protocol was added on op of USB-CDC to control SPI:
+
+When wanting to write `\x31\x32\x33\x34\x35` over SPI, the I/O over USB-CDC would be:
+```
+TX: -<0x05 0x31 0x32 0x33 0x34 0x35 0x00>-
+RX: --------------------------------------
+      WR*5   D1   D2   D3   D4   D5  END
+```
+
+When trying to read 4 bytes from SPI, the I/O over USB-CDC would be:
+```
+TX: -<0x84>-----------------------<0x00>-
+RX: --------<0x00 0x00 0x00 0x00>--------
+      RD*4    D1   D2   D3   D4    END
+```
+
+To change to a different SPI chip select pin, the I/O over USB-CDC would be:
+```
+TX: -<0x80 0x00>- or -<0x80 0x01>- or -<0x80 0x02>-
+RX: -------------    -------------    -------------
+      CMD  FPGA        CMD  SRAM        CMD  FLASH
+```
+
+You can use this python library:
+[`pico_ice_spi.py`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_spi/pico_ice_spi.py)
+
+To enable:
+1. Define `ICE_USB_SPI_CDC` to the CDC interface number to use.
+2. Adjust these as needed:
+   [`ITF_NUM_CDCx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_spi/usb_descriptors.c#L30),
+   [`ITF_NUM_DATAx`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_spi/usb_descriptors.c#L30),
+   [`CFG_TUD_CDC`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_spi/tusb_config.h#L44),
+   [`TUD_CDC_DESCRIPTOR`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_spi/usb_descriptors.c#L38),
+   [`STRID_CDC+x`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examples/pico_usb_spi/usb_descriptors.c#L49)
+
+See the
+[`pico_usb_spi`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_usb_spi/)
+example.
+
 
 ## USB CDC: FPGA forwarding
 
@@ -55,6 +100,7 @@ To enable:
 See the
 [`pico_usb_fpga`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_usb_fpga/)
 example.
+
 
 ## USB MSC: [TinyUF2](https://github.com/adafruit/tinyuf2)
 
@@ -178,7 +224,7 @@ are already configured in that table by default.
 
 - [`pico_fpga_io`](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_fpga_io/)
 
----
+- [more...](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples)
 
 ## Troubleshooting
 

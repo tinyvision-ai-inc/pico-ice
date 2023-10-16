@@ -15,7 +15,8 @@ On Windows, while the RaspberryPi guide mentions using Visual Studio Code with a
 ## Using a Drag-Drop or file copy scheme
 
 You would need a compiler toolchain installed for building the [UF2 Utils](https://github.com/tinyvision-ai-inc/uf2-utils) on your system.
-You can use the DFU mode if you wish to avoid this.
+On Windows, you can use <https://github.com/microsoft/uf2> instead,
+which contains [uf2conv.py](https://github.com/microsoft/uf2/blob/master/utils/uf2conv.md).
 
 Out of the box, the [default firmware](https://github.com/tinyvision-ai-inc/pico-ice/releases/) should already be present on your board.
 You can skip step 1 if this is the case.
@@ -53,35 +54,15 @@ You can skip step 1 if this is the case.
     This should list the pico-ice as a DFU device:
 
     ```
-    Found DFU: [1209:b1c0] ver=0100, devnum=105, cfg=1, intf=0, path="1-4.4", alt=1, name="iCE40 DFU (CRAM)", serial="DE62A435436F5939"
-    Found DFU: [1209:b1c0] ver=0100, devnum=105, cfg=1, intf=0, path="1-4.4", alt=0, name="iCE40 DFU (flash)", serial="DE62A435436F5939"
+    Found DFU: [1209:b1c0] ver=0100, devnum=105, cfg=1, intf=0, path="1-4.4", alt=1, name="iCE40 DFU (flash)", serial="DE62A435436F5939"
+    Found DFU: [1209:b1c0] ver=0100, devnum=105, cfg=1, intf=0, path="1-4.4", alt=0, name="iCE40 DFU (CRAM)", serial="DE62A435436F5939"
     ```
 
 4.  Download the FPGA bin file to the pico-ice.
     The Pico can be rebooted as soon as the download succeeds with the `-R` flag.
 
     ```
-    $ dfu-util -a 0 -D rgb_blink.bin
-    [...]
-
-    Opening DFU capable USB device...
-    Device ID 1209:0001
-    Run-Time device DFU version 0101
-    Claiming USB DFU Interface...
-    Setting Alternate Interface #0 ...
-    Determining device status...
-    DFU state(2) = dfuIDLE, status(0) = No error condition is present
-    DFU mode device DFU version 0101
-    Device returned transfer size 256
-    Copying data from PC to DFU device
-    Download        [=========================] 100%       104090 bytes
-    Download done.
-    DFU state(7) = dfuMANIFEST, status(0) = No error condition is present
-    DFU state(8) = dfuMANIFEST-WAIT-RESET, status(0) = No error condition is present
-    Resetting USB to switch back to runtime mode
-    Done!
-    Warning: Invalid DFU suffix signature
-    A valid DFU suffix will be required in a future dfu-util release
+    $ dfu-util -a 1 -D rgb_blink.bin
     ```
 
 ## Troubleshooting

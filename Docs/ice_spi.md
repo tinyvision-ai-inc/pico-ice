@@ -18,9 +18,10 @@ such as the iCE40 during initial configuration.
 
 ---
 
-## `void ice_spi_chip_select(uint8_t csn_pin)`
+## `void ice_spi_chip_select(uint8_t csn_pin, bool active_high)`
 
 * `csn_pin` - user-selectable GPIO pin to assert (set to LOW voltage level)
+* `active_high` - true for active-high chip-select pin, false for active-low
 
 Also set the SPI TX and SCK pins to output/drive mode, and keeps the RX pin to input/high-z mode.
 

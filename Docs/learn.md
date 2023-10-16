@@ -8,7 +8,11 @@ nav_order: 4
 
 A large number of resources exists for learning FPGA design.
 
-Some of them have been collected and aggregated on this page:
+Some of them have been collected and aggregated on this page.
+
+An online class was held by tinyVision.ai, and is available freely:
+
+- [Hands-on-FPGA-class](https://github.com/tinyvision-ai-inc/Hands-on-FPGA-class/)
 
 ## Video format
 
@@ -25,10 +29,26 @@ Some of them have been collected and aggregated on this page:
 - [Digital to FPGA 101](https://youtu.be/FcFbFTbngrw)
   design a circuit in digital convert into verilog and run it on an ice40 FPGA (like Upduino_v3.1).
 
-## General tutorials
+## Examples
 
-- [Alchitry](https://alchitry.com/)
-  Tutorial focused on the Artix 7 Alchitry boards.
+- [icebreaker-verilog-examples](https://github.com/icebreaker-fpga/icebreaker-verilog-examples)
+  A collection of examples using Makefiles for iCE40 boards.
+  Can be used for the `pico-ice` with minor adaptations.
+
+- [Xark's upduino-example](https://github.com/XarkLabs/upduino-example/tree/master)
+  An example for how to use a Makefile for building a Verilog.
+  Can be used for the `pico-ice` with minor adaptations.
+
+- [tnt's ice40-playground](https://github.com/smunaut/ice40-playground/)
+  S. Munaut's examples for the iCE40.
+
+- [Librecores](https://www.librecores.org/)
+  Index of open source cores (Verilog, VHDL...) projects. Good Verilog examples.
+
+- [Upduino v2 icestorm examples](https://github.com/osresearch/up5k)
+  large collection of very useful code, and a good overview. Upduino v2 only.
+
+## General tutorials
 
 - [Hobbyist's guide to FPGAs](https://hackaday.io/project/27550-the-hobbyists-guide-to-fpgas)
   FPGA tutorials, theory of design articles, hands-on labs targeted towards hobbyists.
@@ -36,8 +56,14 @@ Some of them have been collected and aggregated on this page:
 - [VHDL Wiz](https://vhdlwhiz.com/)
   Community offering tutoring focused on VHDL.
 
+- [Hardware as Code](https://www.hackster.io/sthibault/hardware-as-code-part-i-an-introduction-48bacb)
+  A 5-part tutorial series using the UPduino as an example.
+
 - [fpga 101 fpgas for beginners](https://www.nandland.com/articles/fpga-101-fpgas-for-beginners.html)
   Tutorial explaining concepts and practice with videos and articles.
+
+- [Alchitry](https://alchitry.com/)
+  Tutorial focused on the Artix 7 Alchitry boards.
 
 - [Fomu Workshop](https://workshop.fomu.im/en/latest/)
   Workshop by FOMU the ICE40 FPGA that fits on an USB port.
@@ -99,6 +125,9 @@ Some of them have been collected and aggregated on this page:
 
 - [Installing the Icestorm Toolchain](https://www.youtube.com/watch?v=Bfhnu9XUzLs)
   Guide on getting comfortable with a Makefile-based development process for Icestorm/Yosys and Verilog.
+
+- [Explanation of essential Verilog concepts](https://vanhunteradams.com/DE1/Lorenz/Verilog.html)
+  Several pitfalls and myths debunked about the Verilog language, as part of an introduction.
 
 ## Specific topic
 
@@ -189,6 +218,9 @@ Some of them have been collected and aggregated on this page:
 
 ## Courses
 
+- [Hands-on FPGA class](https://github.com/tinyvision-ai-inc/Hands-on-FPGA-class/)
+  A 8-week class was given by tinyVision.ai for getting started with FPGAs.
+
 - [Intel FPGA Academy](https://fpgacademy.org/courses.html)
   Digital logic/FPGA courses by Intel.
   requires .edu email (contact intel for access without .edu email but response may vary)
@@ -273,11 +305,3 @@ Some of them have been collected and aggregated on this page:
 - [NandGame](https://nandgame.com/)
   Browser based puzzle game about logic gates.
   serves as litmus test to determine familiarity with digital logic. Good for visual learners
-
-## Examples
-
-- [Upduino v2 icestorm examples](https://github.com/osresearch/up5k)
-  large collection of very useful code and a good overview.
-
-- [Librecores](https://www.librecores.org/)
-  Index of open source cores (Verilog, VHDL...) projects. Good Verilog examples.

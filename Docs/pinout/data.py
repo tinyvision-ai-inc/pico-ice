@@ -9,8 +9,8 @@ legend = [
     ("PB: Push Button",     "pin_ice"),
     ("Pmod 1: ICE Pmod",    "pmod"),
     ("Pmod 2: ICE Pmod",    "pmod"),
-    ("Pmod 3: RP Pmod",     "pmod"),
-    ("Pmod 4: RP-ICE Pmod", "pmod"),
+    ("Pmod 3: RP-ICE Pmod", "pmod"),
+    ("Pmod 4: RP Pmod",     "pmod"),
     ("Ground pin",          "gnd"),
     ("Power pin",           "pwr"),
 ]
