@@ -459,7 +459,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "pico-ice.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""

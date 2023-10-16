@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <export version="E">
   <design>
-    <source>E:\Data\local_github\pico-ice\Board\Rev2\pico-ice.kicad_sch</source>
-    <date>2/13/2023 8:52:56 AM</date>
-    <tool>Eeschema (6.0.5)</tool>
+    <source>E:\Data\local_github\pico-ice\Board\Rev3\pico-ice.kicad_sch</source>
+    <date>3/7/2023 3:38:51 PM</date>
+    <tool>Eeschema (7.0.0)</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PICO-iCE</title>
@@ -41,6 +41,8 @@
       <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor"/>
+      <property name="ki_keywords" value="cap capacitor"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>00000000-0000-0000-0000-00005ed96b87</tstamps>
     </comp>
@@ -61,6 +63,8 @@
       <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor"/>
+      <property name="ki_keywords" value="cap capacitor"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>00000000-0000-0000-0000-00005ed98685</tstamps>
     </comp>
@@ -283,6 +287,26 @@
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>00000000-0000-0000-0000-00005e3089ee</tstamps>
+    </comp>
+    <comp ref="C14">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">CAP CER 0.1UF 16V X7R 0402</field>
+        <field name="MPN">GRM155R71C104KA88J</field>
+        <field name="Manufacturer">Murata Electronics</field>
+        <field name="Supplier">Mouser</field>
+      </fields>
+      <libsource lib="UPduino_v3.0" part="Device_C" description=""/>
+      <property name="Description" value="CAP CER 0.1UF 16V X7R 0402"/>
+      <property name="Digi-Key Part Number" value=""/>
+      <property name="MPN" value="GRM155R71C104KA88J"/>
+      <property name="Manufacturer" value="Murata Electronics"/>
+      <property name="Supplier" value="Mouser"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>74a2400c-4701-4b89-9130-cea6f2e5a7ef</tstamps>
     </comp>
     <comp ref="C15">
       <value>0.1u</value>
@@ -769,18 +793,42 @@
     <comp ref="D4">
       <value>1N5819WS</value>
       <footprint>Diode_SMD:D_SOD-323</footprint>
+      <fields>
+        <field name="Description">40V 600mV@1A 1A SOD-323 Schottky Barrier Diodes (SBD) ROHS</field>
+        <field name="MPN">1N5819WS</field>
+        <field name="Manufacturer">Guangdong Hottech</field>
+        <field name="Supplier">LCSC</field>
+      </fields>
       <libsource lib="Device" part="D_Schottky" description="Schottky diode"/>
+      <property name="Description" value="40V 600mV@1A 1A SOD-323 Schottky Barrier Diodes (SBD) ROHS"/>
+      <property name="MPN" value="1N5819WS"/>
+      <property name="Manufacturer" value="Guangdong Hottech"/>
+      <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Schottky diode"/>
+      <property name="ki_keywords" value="diode Schottky"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>25ff1037-0297-45a2-85e5-17a5be171fc3</tstamps>
     </comp>
     <comp ref="D5">
       <value>1N5819WS</value>
       <footprint>Diode_SMD:D_SOD-323</footprint>
+      <fields>
+        <field name="Description">40V 600mV@1A 1A SOD-323 Schottky Barrier Diodes (SBD) ROHS</field>
+        <field name="MPN">1N5819WS</field>
+        <field name="Manufacturer">Guangdong Hottech</field>
+        <field name="Supplier">LCSC</field>
+      </fields>
       <libsource lib="Device" part="D_Schottky" description="Schottky diode"/>
+      <property name="Description" value="40V 600mV@1A 1A SOD-323 Schottky Barrier Diodes (SBD) ROHS"/>
+      <property name="MPN" value="1N5819WS"/>
+      <property name="Manufacturer" value="Guangdong Hottech"/>
+      <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Schottky diode"/>
+      <property name="ki_keywords" value="diode Schottky"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>d49dd1b1-60be-4bef-a18f-1ba097edbe3b</tstamps>
     </comp>
@@ -893,6 +941,8 @@
       <property name="MPN" value="DNP"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Mounting Hole without connection"/>
+      <property name="ki_keywords" value="mounting hole"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>00000000-0000-0000-0000-00005ef4c292</tstamps>
     </comp>
@@ -906,6 +956,8 @@
       <property name="MPN" value="DNP"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Mounting Hole without connection"/>
+      <property name="ki_keywords" value="mounting hole"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>00000000-0000-0000-0000-00005ef4cf1f</tstamps>
     </comp>
@@ -919,6 +971,8 @@
       <property name="MPN" value="DNP"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Mounting Hole without connection"/>
+      <property name="ki_keywords" value="mounting hole"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>00000000-0000-0000-0000-00005ef4d323</tstamps>
     </comp>
@@ -932,6 +986,8 @@
       <property name="MPN" value="DNP"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Mounting Hole without connection"/>
+      <property name="ki_keywords" value="mounting hole"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>00000000-0000-0000-0000-00005ef4d57b</tstamps>
     </comp>
@@ -952,33 +1008,53 @@
       <property name="Supplier" value="Mouser"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="USB 2.0-only Type-C Receptacle connector"/>
+      <property name="ki_keywords" value="usb universal serial bus type-C USB2.0"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>4e140170-c825-4e0a-959b-4a253eb23583</tstamps>
     </comp>
     <comp ref="J2">
       <value>Conn_02x20_Odd_Even</value>
-      <footprint>Connector_PinHeader_2.54mm:PinHeader_2x20_P2.54mm_Vertical</footprint>
+      <footprint>RP2040_minimal:PinHeader_2x20_P2.54mm_Vertical_Left</footprint>
+      <fields>
+        <field name="MPN">DNP</field>
+      </fields>
       <libsource lib="Connector_Generic" part="Conn_02x20_Odd_Even" description="Generic connector, double row, 02x20, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="MPN" value="DNP"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Generic connector, double row, 02x20, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="ki_keywords" value="connector"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>e4dc3a43-2f8b-4a24-850c-efb37da532e0</tstamps>
     </comp>
     <comp ref="J3">
       <value>Conn_02x20_Odd_Even</value>
-      <footprint>Connector_PinHeader_2.54mm:PinHeader_2x20_P2.54mm_Vertical</footprint>
+      <footprint>RP2040_minimal:PinHeader_2x20_P2.54mm_Vertical_Right</footprint>
+      <fields>
+        <field name="MPN">DNP</field>
+      </fields>
       <libsource lib="Connector_Generic" part="Conn_02x20_Odd_Even" description="Generic connector, double row, 02x20, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="MPN" value="DNP"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Generic connector, double row, 02x20, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="ki_keywords" value="connector"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>e428b349-3be2-4493-be37-7262e24320f0</tstamps>
     </comp>
     <comp ref="J4">
       <value>PB_SEL</value>
       <footprint>Jumper:SolderJumper-3_P1.3mm_Bridged12_RoundedPad1.0x1.5mm_NumberLabels</footprint>
+      <fields>
+        <field name="MPN">DNP</field>
+      </fields>
       <libsource lib="Connector" part="Conn_01x03_Male" description="Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="MPN" value="DNP"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="ki_keywords" value="connector"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>76ea5fc8-95b4-4464-9c57-01463c7b1a24</tstamps>
     </comp>
@@ -1007,9 +1083,21 @@
       <value>2N7002</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
       <datasheet>https://www.onsemi.com/pub/Collateral/NDS7002A-D.PDF</datasheet>
+      <fields>
+        <field name="Description">60V 115mA 7.5Ω@10V,500mA 225mW 2.5V@250uA N Channel SOT-23 MOSFETs</field>
+        <field name="MPN">2N7002</field>
+        <field name="Manufacturer">Slkor(SLKORMICRO Elec.)</field>
+        <field name="Supplier">LCSC</field>
+      </fields>
       <libsource lib="Transistor_FET" part="2N7002" description="0.115A Id, 60V Vds, N-Channel MOSFET, SOT-23"/>
+      <property name="Description" value="60V 115mA 7.5Ω@10V,500mA 225mW 2.5V@250uA N Channel SOT-23 MOSFETs"/>
+      <property name="MPN" value="2N7002"/>
+      <property name="Manufacturer" value="Slkor(SLKORMICRO Elec.)"/>
+      <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="0.115A Id, 60V Vds, N-Channel MOSFET, SOT-23"/>
+      <property name="ki_keywords" value="N-Channel Switching MOSFET"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>374d0f29-e2b6-4ff7-bf84-1f596283c413</tstamps>
     </comp>
@@ -1030,6 +1118,8 @@
       <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>00000000-0000-0000-0000-00005f0d8ebf</tstamps>
     </comp>
@@ -1050,6 +1140,8 @@
       <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>00000000-0000-0000-0000-00005edae9f0</tstamps>
     </comp>
@@ -1070,6 +1162,8 @@
       <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>00000000-0000-0000-0000-00005ede0881</tstamps>
     </comp>
@@ -1090,6 +1184,8 @@
       <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>00000000-0000-0000-0000-00005ede1624</tstamps>
     </comp>
@@ -1110,6 +1206,8 @@
       <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>c9fd0a88-0d2d-4128-8b3e-60e5d53e60ac</tstamps>
     </comp>
@@ -1150,6 +1248,8 @@
       <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>fc82742a-366d-4279-99b4-dd5894f5d847</tstamps>
     </comp>
@@ -1210,6 +1310,8 @@
       <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>342715ca-3e27-4d48-ab47-ef04f9eb6c9a</tstamps>
     </comp>
@@ -1310,6 +1412,8 @@
       <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>8b6e024f-c9f5-4011-ae16-a2f1e3287559</tstamps>
     </comp>
@@ -1330,6 +1434,8 @@
       <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>dd6aaf10-96c6-418d-8f40-fdea5772f6a8</tstamps>
     </comp>
@@ -1350,6 +1456,8 @@
       <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>32fa9ac4-a890-4543-bf1f-186343c820e6</tstamps>
     </comp>
@@ -1430,6 +1538,8 @@
       <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>63d991ab-3318-4665-9d7f-a73a7a6ec613</tstamps>
     </comp>
@@ -1470,17 +1580,31 @@
       <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>6f5f81a4-aa60-4d97-9149-949052c9aac6</tstamps>
     </comp>
     <comp ref="RN1">
       <value>10K</value>
       <footprint>Resistor_SMD:R_Array_Concave_4x0402</footprint>
+      <fields>
+        <field name="Description">10kΩ 62.5mW ±200ppm/℃ 0402x4 Resistor Networks &amp; Arrays</field>
+        <field name="MPN">YC124-FR-0710KL</field>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="Supplier">LCSC</field>
+      </fields>
       <libsource lib="Device" part="R_Pack04_Split" description="4 resistor network, parallel topology, split"/>
+      <property name="Description" value="10kΩ 62.5mW ±200ppm/℃ 0402x4 Resistor Networks &amp; Arrays"/>
+      <property name="MPN" value="YC124-FR-0710KL"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="Supplier" value="LCSC"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="4 resistor network, parallel topology, split"/>
+      <property name="ki_keywords" value="R network parallel topology isolated"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>1f9f333c-cd98-4d5e-b6a6-761e3b059cdb b7b0d805-8186-46c8-a166-f78752d26d44 b536f62d-42ab-4d68-9bf3-5fe588f1fb8b 060a66bf-91fa-4967-9051-4826e33cd62d</tstamps>
+      <tstamps>b7b0d805-8186-46c8-a166-f78752d26d44 b536f62d-42ab-4d68-9bf3-5fe588f1fb8b 1f9f333c-cd98-4d5e-b6a6-761e3b059cdb 060a66bf-91fa-4967-9051-4826e33cd62d</tstamps>
     </comp>
     <comp ref="SJ1">
       <value>SHORT</value>
@@ -1553,6 +1677,8 @@
       <property name="Supplier" value="Mouser"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Push button switch, generic, two pins"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>798b7091-1553-4270-be8f-968074f133c1</tstamps>
     </comp>
@@ -1575,28 +1701,32 @@
       <property name="Supplier" value="Mouser"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Push button switch, generic, two pins"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>319fc93f-5ab3-4d4a-856f-11b8769b0801</tstamps>
     </comp>
     <comp ref="U1">
-      <value>CL9293A12L5M</value>
-      <footprint>Package_TO_SOT_SMD:SOT-23-5</footprint>
-      <datasheet>https://www.diodes.com/assets/Datasheets/AP2127.pdf</datasheet>
+      <value>NCP115AMX120TCG</value>
+      <footprint>RP2040_minimal:OnSemi_XDFN4-1EP_1.0x1.0mm_EP0.52x0.52mm</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/NCP115-D.PDF</datasheet>
       <fields>
-        <field name="Description">IC REG LINEAR 1.2V 300MA SOT23-5</field>
-        <field name="MPN">CL9293A12L5M</field>
-        <field name="Manufacturer">ChipLink Tech</field>
-        <field name="Supplier">LCSC</field>
+        <field name="Description">IC REG LINEAR 1.2V 300MA 4XDFN</field>
+        <field name="MPN">NCP115AMX120TCG</field>
+        <field name="Manufacturer">onsemi</field>
+        <field name="Supplier">Mouser</field>
       </fields>
-      <libsource lib="UPduino_v3.0" part="AP2127K-1.2" description=""/>
-      <property name="Description" value="IC REG LINEAR 1.2V 300MA SOT23-5"/>
-      <property name="MPN" value="CL9293A12L5M"/>
-      <property name="Manufacturer" value="ChipLink Tech"/>
-      <property name="Supplier" value="LCSC"/>
+      <libsource lib="Regulator_Linear" part="NCP115AMX120TCG" description="300mA Low-Dropout Linear Regulators, 1.2V output voltage, LDO with low noise and enable pin, XDFN-4"/>
+      <property name="Description" value="IC REG LINEAR 1.2V 300MA 4XDFN"/>
+      <property name="MPN" value="NCP115AMX120TCG"/>
+      <property name="Manufacturer" value="onsemi"/>
+      <property name="Supplier" value="Mouser"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="300mA Low-Dropout Linear Regulators, 1.2V output voltage, LDO with low noise and enable pin, XDFN-4"/>
+      <property name="ki_keywords" value="Single Output LDO"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>602aa715-ab52-46c3-86d9-64e38caf56d0</tstamps>
+      <tstamps>cf33e0d4-1ab3-47fc-9d3a-df5cf9cbfb2c</tstamps>
     </comp>
     <comp ref="U2">
       <value>W25Q32JVSSIQ</value>
@@ -1638,24 +1768,26 @@
       <tstamps>00000000-0000-0000-0000-000062b0339f</tstamps>
     </comp>
     <comp ref="U4">
-      <value>CL9293A33L5M</value>
-      <footprint>Package_TO_SOT_SMD:SOT-23-5</footprint>
-      <datasheet>https://www.diodes.com/assets/Datasheets/AP2127.pdf</datasheet>
+      <value>NCP115AMX330TCG</value>
+      <footprint>RP2040_minimal:OnSemi_XDFN4-1EP_1.0x1.0mm_EP0.52x0.52mm</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/NCP115-D.PDF</datasheet>
       <fields>
-        <field name="Description">IC REG LINEAR 1.2V 300MA SOT23-5</field>
-        <field name="MPN">CL9293A12L5M</field>
-        <field name="Manufacturer">ChipLink Tech</field>
-        <field name="Supplier">LCSC</field>
+        <field name="Description">IC REG LINEAR 3.3V 300MA 4XDFN</field>
+        <field name="MPN">NCP115AMX330TCG</field>
+        <field name="Manufacturer">onsemi</field>
+        <field name="Supplier">Mouser</field>
       </fields>
-      <libsource lib="UPduino_v3.0" part="AP2127K-1.2" description=""/>
-      <property name="Description" value="IC REG LINEAR 1.2V 300MA SOT23-5"/>
-      <property name="MPN" value="CL9293A12L5M"/>
-      <property name="Manufacturer" value="ChipLink Tech"/>
-      <property name="Supplier" value="LCSC"/>
+      <libsource lib="Regulator_Linear" part="NCP115AMX330TCG" description="300mA Low-Dropout Linear Regulators, 1.2V output voltage, LDO with low noise and enable pin, XDFN-4"/>
+      <property name="Description" value="IC REG LINEAR 3.3V 300MA 4XDFN"/>
+      <property name="MPN" value="NCP115AMX330TCG"/>
+      <property name="Manufacturer" value="onsemi"/>
+      <property name="Supplier" value="Mouser"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="300mA Low-Dropout Linear Regulators, 1.2V output voltage, LDO with low noise and enable pin, XDFN-4"/>
+      <property name="ki_keywords" value="Single Output LDO"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>00000000-0000-0000-0000-00005e308a06</tstamps>
+      <tstamps>7fab53ae-bb1e-4ff3-8323-aab497d9100b</tstamps>
     </comp>
     <comp ref="U5">
       <value>APS6404L-3SQN-SN</value>
@@ -1695,7 +1827,7 @@
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>00000000-0000-0000-0000-00005e18c89b 00000000-0000-0000-0000-00005dd28af8 00000000-0000-0000-0000-00005dd25432 00000000-0000-0000-0000-00005dd1f79b</tstamps>
+      <tstamps>00000000-0000-0000-0000-00005e18c89b 00000000-0000-0000-0000-00005dd25432 00000000-0000-0000-0000-00005dd28af8 00000000-0000-0000-0000-00005dd1f79b</tstamps>
     </comp>
     <comp ref="U8">
       <value>W25Q32JVSSIQ</value>
@@ -1733,6 +1865,8 @@
       <property name="Supplier" value="Mouser"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico-ice.kicad_sch"/>
+      <property name="ki_description" value="Four pin crystal, GND on pins 2 and 4"/>
+      <property name="ki_keywords" value="quartz ceramic resonator oscillator"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>7fe7e1b0-2b9d-4df7-ae6d-508c8059e858</tstamps>
     </comp>
@@ -1977,6 +2111,46 @@
         <field name="Datasheet">~</field>
       </fields>
     </libpart>
+    <libpart lib="Regulator_Linear" part="NCP115AMX120TCG">
+      <description>300mA Low-Dropout Linear Regulators, 1.2V output voltage, LDO with low noise and enable pin, XDFN-4</description>
+      <docs>https://www.onsemi.com/pub/Collateral/NCP115-D.PDF</docs>
+      <footprints>
+        <fp>OnSemi*XDFN4*1EP*1.0x1.0mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">NCP115AMX120TCG</field>
+        <field name="Footprint">Package_DFN_QFN:OnSemi_XDFN4-1EP_1.0x1.0mm_EP0.52x0.52mm</field>
+        <field name="Datasheet">https://www.onsemi.com/pub/Collateral/NCP115-D.PDF</field>
+      </fields>
+      <pins>
+        <pin num="1" name="OUT" type="power_out"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="EN" type="input"/>
+        <pin num="4" name="IN" type="power_in"/>
+        <pin num="5" name="GND" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Regulator_Linear" part="NCP115AMX330TCG">
+      <description>300mA Low-Dropout Linear Regulators, 1.2V output voltage, LDO with low noise and enable pin, XDFN-4</description>
+      <docs>https://www.onsemi.com/pub/Collateral/NCP115-D.PDF</docs>
+      <footprints>
+        <fp>OnSemi*XDFN4*1EP*1.0x1.0mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">NCP115AMX330TCG</field>
+        <field name="Footprint">Package_DFN_QFN:OnSemi_XDFN4-1EP_1.0x1.0mm_EP0.52x0.52mm</field>
+        <field name="Datasheet">https://www.onsemi.com/pub/Collateral/NCP115-D.PDF</field>
+      </fields>
+      <pins>
+        <pin num="1" name="OUT" type="power_out"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="EN" type="input"/>
+        <pin num="4" name="IN" type="power_in"/>
+        <pin num="5" name="GND" type="passive"/>
+      </pins>
+    </libpart>
     <libpart lib="Switch" part="SW_Push">
       <description>Push button switch, generic, two pins</description>
       <docs>~</docs>
@@ -2014,23 +2188,6 @@
         <pin num="1" name="G" type="input"/>
         <pin num="2" name="S" type="passive"/>
         <pin num="3" name="D" type="passive"/>
-      </pins>
-    </libpart>
-    <libpart lib="UPduino_v3.0" part="AP2127K-1.2">
-      <footprints>
-        <fp>SOT?23?5*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">U</field>
-        <field name="Value">AP2127K-1.2</field>
-        <field name="Footprint">Package_TO_SOT_SMD:SOT-23-5</field>
-      </fields>
-      <pins>
-        <pin num="1" name="VIN" type="power_in"/>
-        <pin num="2" name="GND" type="power_in"/>
-        <pin num="3" name="EN" type="input"/>
-        <pin num="4" name="NC" type="no_connect"/>
-        <pin num="5" name="VOUT" type="power_out"/>
       </pins>
     </libpart>
     <libpart lib="UPduino_v3.0" part="Device_C">
@@ -2272,22 +2429,25 @@
   </libparts>
   <libraries>
     <library logical="Connector">
-      <uri>e:\Program Files\KiCad\6.0\share\kicad\symbols\/Connector.kicad_sym</uri>
+      <uri>E:\Program Files\KiCad\7.0\share\kicad\symbols\/Connector.kicad_sym</uri>
     </library>
     <library logical="Connector_Generic">
-      <uri>e:\Program Files\KiCad\6.0\share\kicad\symbols\/Connector_Generic.kicad_sym</uri>
+      <uri>E:\Program Files\KiCad\7.0\share\kicad\symbols\/Connector_Generic.kicad_sym</uri>
     </library>
     <library logical="Device">
-      <uri>e:\Program Files\KiCad\6.0\share\kicad\symbols\/Device.kicad_sym</uri>
+      <uri>E:\Program Files\KiCad\7.0\share\kicad\symbols\/Device.kicad_sym</uri>
     </library>
     <library logical="Mechanical">
-      <uri>e:\Program Files\KiCad\6.0\share\kicad\symbols\/Mechanical.kicad_sym</uri>
+      <uri>E:\Program Files\KiCad\7.0\share\kicad\symbols\/Mechanical.kicad_sym</uri>
+    </library>
+    <library logical="Regulator_Linear">
+      <uri>E:\Program Files\KiCad\7.0\share\kicad\symbols\/Regulator_Linear.kicad_sym</uri>
     </library>
     <library logical="Switch">
-      <uri>e:\Program Files\KiCad\6.0\share\kicad\symbols\/Switch.kicad_sym</uri>
+      <uri>E:\Program Files\KiCad\7.0\share\kicad\symbols\/Switch.kicad_sym</uri>
     </library>
     <library logical="Transistor_FET">
-      <uri>e:\Program Files\KiCad\6.0\share\kicad\symbols\/Transistor_FET.kicad_sym</uri>
+      <uri>E:\Program Files\KiCad\7.0\share\kicad\symbols\/Transistor_FET.kicad_sym</uri>
     </library>
     <library logical="UPduino_v3.0">
       <uri>E:/Data/local_github/UPduino-v3.0/Board/v3.01/UPduino_v3.0.lib</uri>
@@ -2309,7 +2469,7 @@
       <node ref="C37" pin="1" pintype="passive"/>
       <node ref="R11" pin="2" pintype="passive"/>
       <node ref="SJ4" pin="2" pintype="passive"/>
-      <node ref="U1" pin="5" pinfunction="VOUT" pintype="power_out"/>
+      <node ref="U1" pin="1" pinfunction="OUT" pintype="power_out"/>
     </net>
     <net code="3" name="+3V3">
       <node ref="C10" pin="1" pintype="passive"/>
@@ -2339,10 +2499,10 @@
       <node ref="J3" pin="35" pinfunction="Pin_35" pintype="passive"/>
       <node ref="R14" pin="2" pintype="passive"/>
       <node ref="R16" pin="2" pintype="passive"/>
+      <node ref="R21" pin="1" pintype="passive"/>
       <node ref="R8" pin="2" pintype="passive"/>
       <node ref="SJ1" pin="2" pintype="passive"/>
       <node ref="SJ5" pin="1" pintype="passive"/>
-      <node ref="SW2" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U2" pin="8" pinfunction="VCC" pintype="power_in"/>
       <node ref="U3" pin="1" pinfunction="IOVDD" pintype="power_in"/>
       <node ref="U3" pin="10" pinfunction="IOVDD" pintype="power_in"/>
@@ -2353,7 +2513,7 @@
       <node ref="U3" pin="44" pinfunction="VREG_IN" pintype="power_in"/>
       <node ref="U3" pin="48" pinfunction="USB_VDD" pintype="power_in"/>
       <node ref="U3" pin="49" pinfunction="IOVDD" pintype="power_in"/>
-      <node ref="U4" pin="5" pinfunction="VOUT" pintype="power_out"/>
+      <node ref="U4" pin="1" pinfunction="OUT" pintype="power_out"/>
       <node ref="U6" pin="22" pinfunction="SPI_VCCIO1" pintype="power_in"/>
       <node ref="U6" pin="33" pinfunction="VCCIO_0" pintype="power_in"/>
       <node ref="U8" pin="8" pinfunction="VCC" pintype="power_in"/>
@@ -2401,8 +2561,9 @@
       <node ref="U6" pin="9" pinfunction="IOB_16a" pintype="bidirectional"/>
     </net>
     <net code="13" name="/ICE_10|PB">
+      <node ref="C14" pin="1" pintype="passive"/>
       <node ref="J2" pin="21" pinfunction="Pin_21" pintype="passive"/>
-      <node ref="R21" pin="1" pintype="passive"/>
+      <node ref="R21" pin="2" pintype="passive"/>
       <node ref="SW2" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="U6" pin="10" pinfunction="IOB_18a" pintype="bidirectional"/>
     </net>
@@ -2411,42 +2572,42 @@
       <node ref="U6" pin="11" pinfunction="IOB_20a" pintype="bidirectional"/>
     </net>
     <net code="15" name="/ICE_18">
-      <node ref="J3" pin="12" pinfunction="Pin_12" pintype="passive"/>
+      <node ref="J3" pin="8" pinfunction="Pin_8" pintype="passive"/>
       <node ref="U3" pin="9" pinfunction="GPIO7" pintype="bidirectional"/>
       <node ref="U6" pin="18" pinfunction="IOB_31b" pintype="bidirectional"/>
     </net>
     <net code="16" name="/ICE_19">
-      <node ref="J3" pin="11" pinfunction="Pin_11" pintype="passive"/>
+      <node ref="J3" pin="7" pinfunction="Pin_7" pintype="passive"/>
       <node ref="U3" pin="5" pinfunction="GPIO3" pintype="bidirectional"/>
       <node ref="U6" pin="19" pinfunction="IOB_29b" pintype="bidirectional"/>
     </net>
     <net code="17" name="/ICE_20_G3">
-      <node ref="J3" pin="10" pinfunction="Pin_10" pintype="passive"/>
+      <node ref="J3" pin="12" pinfunction="Pin_12" pintype="passive"/>
       <node ref="U3" pin="8" pinfunction="GPIO6" pintype="bidirectional"/>
       <node ref="U6" pin="20" pinfunction="IOB_25b_G3" pintype="bidirectional"/>
     </net>
     <net code="18" name="/ICE_21">
-      <node ref="J3" pin="9" pinfunction="Pin_9" pintype="passive"/>
+      <node ref="J3" pin="11" pinfunction="Pin_11" pintype="passive"/>
       <node ref="U3" pin="4" pinfunction="GPIO2" pintype="bidirectional"/>
       <node ref="U6" pin="21" pinfunction="IOB_23b" pintype="bidirectional"/>
     </net>
     <net code="19" name="/ICE_23">
-      <node ref="J3" pin="8" pinfunction="Pin_8" pintype="passive"/>
+      <node ref="J3" pin="6" pinfunction="Pin_6" pintype="passive"/>
       <node ref="U3" pin="7" pinfunction="GPIO5" pintype="bidirectional"/>
       <node ref="U6" pin="23" pinfunction="IOT_37a" pintype="bidirectional"/>
     </net>
     <net code="20" name="/ICE_25">
-      <node ref="J3" pin="7" pinfunction="Pin_7" pintype="passive"/>
+      <node ref="J3" pin="5" pinfunction="Pin_5" pintype="passive"/>
       <node ref="U3" pin="3" pinfunction="GPIO1" pintype="bidirectional"/>
       <node ref="U6" pin="25" pinfunction="IOT_36b" pintype="bidirectional"/>
     </net>
     <net code="21" name="/ICE_26">
-      <node ref="J3" pin="6" pinfunction="Pin_6" pintype="passive"/>
+      <node ref="J3" pin="10" pinfunction="Pin_10" pintype="passive"/>
       <node ref="U3" pin="6" pinfunction="GPIO4" pintype="bidirectional"/>
       <node ref="U6" pin="26" pinfunction="IOT_39a" pintype="bidirectional"/>
     </net>
     <net code="22" name="/ICE_27">
-      <node ref="J3" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="J3" pin="9" pinfunction="Pin_9" pintype="passive"/>
       <node ref="U3" pin="2" pinfunction="GPIO0" pintype="bidirectional"/>
       <node ref="U6" pin="27" pinfunction="IOT_38b" pintype="bidirectional"/>
     </net>
@@ -2590,35 +2751,35 @@
     </net>
     <net code="50" name="/PICO_PMOD_A1">
       <node ref="J3" pin="23" pinfunction="Pin_23" pintype="passive"/>
-      <node ref="U3" pin="27" pinfunction="GPIO16" pintype="bidirectional"/>
+      <node ref="U3" pin="28" pinfunction="GPIO17" pintype="bidirectional"/>
     </net>
     <net code="51" name="/PICO_PMOD_A2">
       <node ref="J3" pin="25" pinfunction="Pin_25" pintype="passive"/>
-      <node ref="U3" pin="28" pinfunction="GPIO17" pintype="bidirectional"/>
+      <node ref="U3" pin="30" pinfunction="GPIO19" pintype="bidirectional"/>
     </net>
     <net code="52" name="/PICO_PMOD_A3">
       <node ref="J3" pin="27" pinfunction="Pin_27" pintype="passive"/>
-      <node ref="U3" pin="29" pinfunction="GPIO18" pintype="bidirectional"/>
+      <node ref="U3" pin="27" pinfunction="GPIO16" pintype="bidirectional"/>
     </net>
     <net code="53" name="/PICO_PMOD_A4">
       <node ref="J3" pin="29" pinfunction="Pin_29" pintype="passive"/>
-      <node ref="U3" pin="30" pinfunction="GPIO19" pintype="bidirectional"/>
+      <node ref="U3" pin="29" pinfunction="GPIO18" pintype="bidirectional"/>
     </net>
     <net code="54" name="/PICO_PMOD_B1">
       <node ref="J3" pin="24" pinfunction="Pin_24" pintype="passive"/>
-      <node ref="U3" pin="31" pinfunction="GPIO20" pintype="bidirectional"/>
+      <node ref="U3" pin="32" pinfunction="GPIO21" pintype="bidirectional"/>
     </net>
     <net code="55" name="/PICO_PMOD_B2">
       <node ref="J3" pin="26" pinfunction="Pin_26" pintype="passive"/>
-      <node ref="U3" pin="32" pinfunction="GPIO21" pintype="bidirectional"/>
+      <node ref="U3" pin="35" pinfunction="GPIO23" pintype="bidirectional"/>
     </net>
     <net code="56" name="/PICO_PMOD_B3">
       <node ref="J3" pin="28" pinfunction="Pin_28" pintype="passive"/>
-      <node ref="U3" pin="34" pinfunction="GPIO22" pintype="bidirectional"/>
+      <node ref="U3" pin="31" pinfunction="GPIO20" pintype="bidirectional"/>
     </net>
     <net code="57" name="/PICO_PMOD_B4">
       <node ref="J3" pin="30" pinfunction="Pin_30" pintype="passive"/>
-      <node ref="U3" pin="35" pinfunction="GPIO23" pintype="bidirectional"/>
+      <node ref="U3" pin="34" pinfunction="GPIO22" pintype="bidirectional"/>
     </net>
     <net code="58" name="/PWR_EN">
       <node ref="J3" pin="38" pinfunction="Pin_38" pintype="passive"/>
@@ -2728,6 +2889,7 @@
       <node ref="C11" pin="2" pintype="passive"/>
       <node ref="C12" pin="2" pintype="passive"/>
       <node ref="C13" pin="2" pintype="passive"/>
+      <node ref="C14" pin="2" pintype="passive"/>
       <node ref="C15" pin="2" pintype="passive"/>
       <node ref="C16" pin="2" pintype="passive"/>
       <node ref="C17" pin="2" pintype="passive"/>
@@ -2777,7 +2939,6 @@
       <node ref="Q1" pin="2" pinfunction="S" pintype="passive"/>
       <node ref="R10" pin="2" pintype="passive"/>
       <node ref="R13" pin="1" pintype="passive"/>
-      <node ref="R21" pin="2" pintype="passive"/>
       <node ref="R24" pin="2" pintype="passive"/>
       <node ref="RN1" pin="1" pinfunction="R1.1" pintype="passive"/>
       <node ref="RN1" pin="2" pinfunction="R2.1" pintype="passive"/>
@@ -2786,13 +2947,16 @@
       <node ref="SW1" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="SW1" pin="SH1" pinfunction="SH1" pintype="passive"/>
       <node ref="SW1" pin="SH2" pinfunction="SH2" pintype="passive"/>
+      <node ref="SW2" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="SW2" pin="SH1" pinfunction="SH1" pintype="passive"/>
       <node ref="SW2" pin="SH2" pinfunction="SH2" pintype="passive"/>
       <node ref="U1" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="U1" pin="5" pinfunction="GND" pintype="passive"/>
       <node ref="U2" pin="4" pinfunction="GND" pintype="power_in"/>
       <node ref="U3" pin="19" pinfunction="TESTEN" pintype="passive"/>
       <node ref="U3" pin="57" pinfunction="GND" pintype="power_in"/>
       <node ref="U4" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="U4" pin="5" pinfunction="GND" pintype="passive"/>
       <node ref="U5" pin="4" pinfunction="GND" pintype="power_in"/>
       <node ref="U6" pin="49" pinfunction="GND" pintype="power_in"/>
       <node ref="U8" pin="4" pinfunction="GND" pintype="power_in"/>
@@ -2804,62 +2968,62 @@
       <node ref="R1" pin="2" pintype="passive"/>
       <node ref="Y1" pin="1" pinfunction="1" pintype="passive"/>
     </net>
-    <net code="81" name="Net-(C31-Pad1)">
+    <net code="81" name="Net-(D1-K)">
       <node ref="C31" pin="1" pintype="passive"/>
       <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="U6" pin="24" pinfunction="VPP_2V5" pintype="power_in"/>
     </net>
-    <net code="82" name="Net-(C32-Pad1)">
+    <net code="82" name="Net-(D2-A)">
       <node ref="C32" pin="1" pintype="passive"/>
       <node ref="D2" pin="1" pinfunction="A" pintype="passive"/>
       <node ref="SJ1" pin="1" pintype="passive"/>
     </net>
-    <net code="83" name="Net-(C36-Pad1)">
+    <net code="83" name="Net-(D2-BK)">
+      <node ref="D2" pin="4" pinfunction="BK" pintype="passive"/>
+      <node ref="R19" pin="2" pintype="passive"/>
+    </net>
+    <net code="84" name="Net-(D2-GK)">
+      <node ref="D2" pin="3" pinfunction="GK" pintype="passive"/>
+      <node ref="R18" pin="2" pintype="passive"/>
+    </net>
+    <net code="85" name="Net-(D2-RK)">
+      <node ref="D2" pin="2" pinfunction="RK" pintype="passive"/>
+      <node ref="R17" pin="2" pintype="passive"/>
+    </net>
+    <net code="86" name="Net-(D5-K)">
+      <node ref="D5" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="PTC1" pin="2" pintype="passive"/>
+    </net>
+    <net code="87" name="Net-(D6-A)">
       <node ref="C36" pin="1" pintype="passive"/>
       <node ref="D6" pin="2" pinfunction="A" pintype="passive"/>
       <node ref="R6" pin="2" pintype="passive"/>
       <node ref="U4" pin="3" pinfunction="EN" pintype="input"/>
     </net>
-    <net code="84" name="Net-(D2-Pad2)">
-      <node ref="D2" pin="2" pinfunction="RK" pintype="passive"/>
-      <node ref="R17" pin="2" pintype="passive"/>
-    </net>
-    <net code="85" name="Net-(D2-Pad3)">
-      <node ref="D2" pin="3" pinfunction="GK" pintype="passive"/>
-      <node ref="R18" pin="2" pintype="passive"/>
-    </net>
-    <net code="86" name="Net-(D2-Pad4)">
-      <node ref="D2" pin="4" pinfunction="BK" pintype="passive"/>
-      <node ref="R19" pin="2" pintype="passive"/>
-    </net>
-    <net code="87" name="Net-(D5-Pad1)">
-      <node ref="D5" pin="1" pinfunction="K" pintype="passive"/>
-      <node ref="PTC1" pin="2" pintype="passive"/>
-    </net>
-    <net code="88" name="Net-(J1-PadA5)">
+    <net code="88" name="Net-(J1-CC1)">
       <node ref="J1" pin="A5" pinfunction="CC1" pintype="bidirectional"/>
       <node ref="R10" pin="1" pintype="passive"/>
       <node ref="R22" pin="2" pintype="passive"/>
     </net>
-    <net code="89" name="Net-(J1-PadB5)">
+    <net code="89" name="Net-(J1-CC2)">
       <node ref="J1" pin="B5" pinfunction="CC2" pintype="bidirectional"/>
       <node ref="R20" pin="2" pintype="passive"/>
       <node ref="R24" pin="1" pintype="passive"/>
     </net>
-    <net code="90" name="Net-(J4-Pad2)">
+    <net code="90" name="Net-(J4-Pin_2)">
       <node ref="J4" pin="2" pinfunction="Pin_2" pintype="passive"/>
       <node ref="SW1" pin="2" pinfunction="2" pintype="passive"/>
     </net>
-    <net code="91" name="Net-(Q1-Pad3)">
+    <net code="91" name="Net-(Q1-D)">
       <node ref="Q1" pin="3" pinfunction="D" pintype="passive"/>
       <node ref="R15" pin="2" pintype="passive"/>
       <node ref="U5" pin="1" pinfunction="~{CS}" pintype="input"/>
     </net>
-    <net code="92" name="Net-(R9-Pad2)">
+    <net code="92" name="Net-(U3-GPIO10)">
       <node ref="R9" pin="2" pintype="passive"/>
       <node ref="U3" pin="13" pinfunction="GPIO10" pintype="bidirectional"/>
     </net>
-    <net code="93" name="Net-(R23-Pad2)">
+    <net code="93" name="Net-(U3-GPIO25)">
       <node ref="R23" pin="2" pintype="passive"/>
       <node ref="U3" pin="37" pinfunction="GPIO25" pintype="bidirectional"/>
     </net>
@@ -2871,8 +3035,8 @@
       <node ref="J3" pin="39" pinfunction="Pin_39" pintype="passive"/>
       <node ref="PTC1" pin="1" pintype="passive"/>
       <node ref="SJ2" pin="1" pintype="passive"/>
-      <node ref="U1" pin="1" pinfunction="VIN" pintype="power_in"/>
-      <node ref="U4" pin="1" pinfunction="VIN" pintype="power_in"/>
+      <node ref="U1" pin="4" pinfunction="IN" pintype="power_in"/>
+      <node ref="U4" pin="4" pinfunction="IN" pintype="power_in"/>
     </net>
     <net code="95" name="VDC">
       <node ref="D5" pin="2" pinfunction="A" pintype="passive"/>
@@ -2884,17 +3048,11 @@
       <node ref="R20" pin="1" pintype="passive"/>
       <node ref="R22" pin="1" pintype="passive"/>
     </net>
-    <net code="96" name="unconnected-(J1-PadA8)">
+    <net code="96" name="unconnected-(J1-SBU1-PadA8)">
       <node ref="J1" pin="A8" pinfunction="SBU1" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="97" name="unconnected-(J1-PadB8)">
+    <net code="97" name="unconnected-(J1-SBU2-PadB8)">
       <node ref="J1" pin="B8" pinfunction="SBU2" pintype="bidirectional+no_connect"/>
-    </net>
-    <net code="98" name="unconnected-(U1-Pad4)">
-      <node ref="U1" pin="4" pinfunction="NC" pintype="no_connect"/>
-    </net>
-    <net code="99" name="unconnected-(U4-Pad4)">
-      <node ref="U4" pin="4" pinfunction="NC" pintype="no_connect"/>
     </net>
   </nets>
 </export>
