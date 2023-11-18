@@ -11,9 +11,9 @@ To upload a new firmware image on the PR2040 (the "pico" part of "pico-ice"), yo
 
 You can do that by connecting a jumper between the `BT` pin a `Gnd` pin, then press the `RESET` button:
 
-1. Connect the `USB_BOOT` pin to ground. For instance with a pair of tweezers, a jumper, or an uncoated paper clip:
+1. Connect the `USB_BOOT` pin to ground. For instance with a pair of tweezers, a jumper, or an uncoated paper clip.
 
-2. Press and release the "RESET" button.
+2. Press and release the "RESET" button. The RP2040 now bypasses its firmware, and runs the RP2040 factory bootloader (from internal ROM) instead.
 
 3. Disconnect the `USB_BOOT` pin from ground.
 
