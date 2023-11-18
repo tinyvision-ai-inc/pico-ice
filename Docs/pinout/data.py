@@ -164,13 +164,13 @@ right_header = [
         "3V3","pwr", "3V3","pwr"
     ),
     row_1_1_1_1(
-        "RP26 ~0","pin_rpi", "CDONE","pin_ice", "RP5 ~B","pin_rpi", "RGB1","pin_ice"
+        "RP26 ~0","pin_rpi", "CDONE","pin_ice", "RP15 ~B","pin_rpi", "RGB1","pin_ice"
     ),
     row_1_1_1_1(
-        "RP28 ~2","pin_rpi", "","pin_ice", "RP3 ~R","pin_rpi", "RGB2","pin_ice"
+        "RP28 ~2","pin_rpi", "","pin_ice", "RP13 ~R","pin_rpi", "RGB2","pin_ice"
     ),
     row_1_1_1_1(
-        "RP29 ~3","pin_rpi", "","pin_ice", "RP2 ~G","pin_rpi", "RGB0","pin_ice"
+        "RP29 ~3","pin_rpi", "","pin_ice", "RP12 ~G","pin_rpi", "RGB0","pin_ice"
     ),
     row_1_1_1_1_pmod("4",
         "RP17","pin_rpi", "","pin_ice", "RP21","pin_rpi", "","pin_ice"
