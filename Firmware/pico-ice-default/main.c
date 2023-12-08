@@ -125,6 +125,10 @@ int main(void) {
     // Prevent the LEDs from glowing slightly
     ice_led_init();
 
+    // Ensure that enumeration completes before main loop.
+    while (!tud_ready())
+        tud_task();
+
     while (true) {
         tud_task();
 
