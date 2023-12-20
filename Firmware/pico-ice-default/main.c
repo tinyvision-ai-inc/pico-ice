@@ -46,7 +46,8 @@
 int repl_last_char;
 bool repl_last_held;
 
-static int repl_getchar(void) {
+static int repl_getchar(void)
+{
     int c;
 
     if (repl_last_held) {
@@ -56,8 +57,10 @@ static int repl_getchar(void) {
 
     // busy-wait with a slow delay: this is for interactive I/O, no need to be fast
     while ((c = getchar_timeout_us(10000)) == PICO_ERROR_TIMEOUT) {
-        // call tud_task() since we are blocking, similar to preemptive multitasking
+        // call tud_task() since we are blocking
+        ice_led_blue(1);
         tud_task();
+        ice_led_blue(0);
     }
 
     if (c == '\r' || c == '\n') {
@@ -99,14 +102,16 @@ static bool repl_parse_newline(void)
     }
 }
 
-static void repl_command_version(void) {
+static void repl_command_version(void)
+{
     if (!repl_parse_newline()) {
         return;
     }
     printf("pico-ice-sdk %s\r\n", VERSION);
 }
 
-int main(void) {
+int main(void)
+{
     // Enable USB-CDC #0 (serial console)
     stdio_init_all();
 
@@ -126,7 +131,9 @@ int main(void) {
     ice_led_init();
 
     while (true) {
+        ice_led_green(1);
         tud_task();
+        ice_led_green(0);
 
         printf("\x1b[1mpico-ice>\x1b[m ");
 
