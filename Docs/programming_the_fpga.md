@@ -1,4 +1,4 @@
-# Programming the iCE40 FPGA
+# Programming the iCE40
 
 The FPGA normally boots from a dedicated serial NOR flash.
 This flash can be programmed by the Pico processor which exposes the flash to the host OS as either a removable drive or a DFU endpoint.

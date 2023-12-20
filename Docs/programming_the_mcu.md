@@ -1,4 +1,4 @@
-# Programming the RP2040 MCU
+# Programming the RP2040
 
 To upload a new firmware image on the PR2040 (the "pico" part of "pico-ice"), you need to switch to that RP2040 UF2 bootloader mode instead of the FPGA UF2 mode.
 
