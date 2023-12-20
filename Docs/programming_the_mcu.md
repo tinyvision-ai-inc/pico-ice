@@ -1,10 +1,3 @@
----
-title: Programming the MCU
-layout: default
-nav_order: 2
-parent: pico-ice
----
-
 # Programming the RP2040 MCU
 
 To upload a new firmware image on the PR2040 (the "pico" part of "pico-ice"), you need to switch to that RP2040 UF2 bootloader mode instead of the FPGA UF2 mode.
@@ -31,7 +24,7 @@ You can do that by connecting a jumper between the `BT` pin a `Gnd` pin, then pr
 ## Troubleshooting
 
 
-### `RPI-RP2` is still visible after step 6
+### RPI-RP2 is still visible after step 6
 
 This means the device remained in "bootloader" mode.
 One thing to check is that the `USB_BOOT` pin (marked `BT` on the board) is not connected to anything anymore,

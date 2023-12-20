@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doxygenlayout version="1.0">
+  <navindex>
+    <tab type="mainpage" title="Home"/>
+    <tab type="pages" title="Wiki"/>
+    <tab type="topics" title="SDK API"/>
+    <tab type="user" title="Examples" url="https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples"/>
+  </navindex>
+</doxygenlayout>

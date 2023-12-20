@@ -1,15 +1,9 @@
----
-title: Pinout
-layout: default
-parent: pico-ice
----
+# Pinout Diagram
 
-# Pinout
+![pinout diagram](pinout.svg)
 
-![pinout diagram](/pinout/pinout.svg)
-
-[SVG](/pinout/pinout.svg)
-| [PNG](/pinout/pinout.png)
+[SVG](pinout.svg)
+| [PNG](pinout.png)
 | [RP2040](https://www.raspberrypi.com/documentation/pico-sdk/hardware.html#autotoc_md0)
 | [ICE40](https://www.latticesemi.com/view_document?document_id=51971)
 

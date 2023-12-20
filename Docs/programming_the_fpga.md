@@ -1,10 +1,3 @@
----
-title: Programming the FPGA
-layout: default
-nav_order: 2
-parent: pico-ice
----
-
 # Programming the iCE40 FPGA
 
 The FPGA normally boots from a dedicated serial NOR flash.
@@ -12,7 +5,8 @@ This flash can be programmed by the Pico processor which exposes the flash to th
 
 On Windows, while the RaspberryPi guide mentions using Visual Studio Code with a plugin a an IDE, better results were obtained by using the [WSL2 environment](https://learn.microsoft.com/en-us/windows/wsl/install).
 
-## Using a Drag-Drop or file copy scheme
+
+## Using a drag and drop file copy
 
 You would need a compiler toolchain installed for building the [UF2 Utils](https://github.com/tinyvision-ai-inc/uf2-utils) on your system.
 On Windows, you can use <https://github.com/microsoft/uf2> instead,
@@ -21,8 +15,8 @@ which contains [uf2conv.py](https://github.com/microsoft/uf2/blob/master/utils/u
 Out of the box, the [default firmware](https://github.com/tinyvision-ai-inc/pico-ice/releases/) should already be present on your board.
 You can skip step 1 if this is the case.
 
-1.  If you changed the default firwmare, [program](programming_the_mcu.html) it again onto the RP2040.
-    You can also integrate the FPGA programming code in your own firmware with [ice_usb.h](/ice_usb.html).
+1.  If you changed the default firwmare, [program](md_programming__the__mcu.html) it again onto the RP2040.
+    You can also integrate the FPGA programming code in your own firmware with [ice_usb](group__ice__usb.html).
 
 2.  Install or build the [UF2 Utils](https://github.com/tinyvision-ai-inc/uf2-utils),
     and a [blinky example](https://github.com/tinyvision-ai-inc/UPduino-v3.0/blob/master/RTL/blink_led/rgb_blink.bin) for any iCE40 board.
@@ -38,10 +32,11 @@ You can skip step 1 if this is the case.
 5.  You can copy the `rgb_blink.uf2` file to that drive you just attached.
     As soon as you copy the file over,t he pico-ice will reboot and allow the FPGA to come up depending on the code running in the Pico processor.
 
+
 ## Using the DFU mode
 
-1.  If you changed the default firwmare, [program](programming_the_mcu.html) it again onto the RP2040.
-    You can also integrate the FPGA programming code in your own firmware with [ice_usb.h](/ice_usb.html).
+1.  If you changed the default firwmare, [program](md_programming__the__mcu.html) it again onto the RP2040.
+    You can also integrate the FPGA programming code in your own firmware with [ice_usb](group__ice__usb.html).
 
 2.  Install the DFU utilities.
 
@@ -65,6 +60,75 @@ You can skip step 1 if this is the case.
     $ dfu-util -a 1 -D rgb_blink.bin
     ```
 
+## Using APIO
+
+The [APIO](https://github.com/FPGAwars/apio) project is a command line tool to fetch and use
+the [oss-cad-suite](https://github.com/YosysHQ/oss-cad-suite-build) FPGA toolchain based
+on [Yosys](https://github.com/YosysHQ/).
+
+It will bring an up-to-date build environment running quickly.
+
+On Windows, you will first need to setup the `libusbK` driver for `pico-ice DFU (CRAM)`
+[with Zadig](https://zadig.akeo.ie/) or [with UsbDriverTool](https://visualgdb.com/UsbDriverTool/)
+([doc](https://github.com/FPGAwars/apio/wiki/Quick-start)).
+
+```
+# Download the latest APIO dev version (with pico-ice support):
+pip3 install git+https://github.com/FPGAwars/apio
+
+# Download and install oss-cad-suite
+apio install -a
+
+# Build a new directory with a "blinky" example project inside
+mkdir pico-ice-blinky; cd pico-ice-blinky
+apio examples -f iCE40-UP5K/blink
+
+# Set the board to "pico-ice"
+apio init --sayyes --board pico-ice
+
+# Build the project using yosys/nextpnr
+apio build
+
+# Plug your pico-ice board and upload the blinky project to it
+apio upload
+```
+
+If `apio upload` fails, it is also possible to convert the `.bin` file to `.uf2`
+with [uf2-utils](https://github.com/tinyvision-ai-inc/uf2-utils/)
+or [uf2conv.py](https://github.com/microsoft/uf2/blob/master/utils/uf2conv.md):
+[doc](md_programming__the__fpga.html#autotoc_md28).
+
+
+## Using OSS CAD Suite
+
+The [OSS CAD Suite](https://github.com/YosysHQ/oss-cad-suite-build) project is a pre-compiled package of several tools.
+It provides a complete solution for building, debugging, simulating, uploading Hardware Description Language (HDL).
+It is based on [Yosys](https://github.com/YosysHQ/).
+
+As explained on the [installation](https://github.com/YosysHQ/oss-cad-suite-build#installation) instructions,
+you can download it and extract it to a directory of your choice.
+
+Several pico-ice-sdk [examples](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples) rely on a
+`$OSS_CAD_SUITE` variable set to the full path where you extracted these files.
+
+On Windows, you can run these examples from the cygwin environment,
+under which you can navigate to the example repositories and try them.
+
+If you used `apio` to install OSS CAD Suite,
+then you can use the APIO install directory as well:
+`export OSS_CAD_SUITE="$HOME/.apio/packages/tools-oss-cad-suite/"`.
+
+
+## F.A.Q.
+
+### Q: Why is specifying the OSS_CAD_SUITE directory needed?
+
+APIO installs OSS-CAD-Suite, but it is not possible to directly call the commands from the shell environment
+so it is needed to provide the full path to the binaries to execute them.
+
+With OSS-CAD-Suite, there is a script to source in the current shell environment to avoid this, but if the user forgets, then nothing works.
+
+
 ## Troubleshooting
 
 ### Checking the CDONE pin
@@ -80,7 +144,7 @@ the DFU utility will throw an error indicating that this did not succeed.
 
 The user writing a custom firmware with the pico-ice-sdk should take care of starting the FPGA from the MCU.
 Review the [pico_fpga](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_fpga) example
-for how this can be done, as well as the [`ice_fpga.h`](ice_fpga.html) library documentation.
+for how this can be done, as well as the [ice_fpga](group__ice__fpga.html) library documentation.
 
 The USB DFU provided as part of the pico-ice-sdk must also be enabled for the DFU interface to show-up.
 The [pico_usb_uart example](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_usb_uart) project have it enabled by default.

@@ -1,0 +1,15 @@
+PROJECT_NAME           = "pico-ice"
+PROJECT_BRIEF          = RaspberryPi Pico with an iCE40 FPGA
+OPTIMIZE_OUTPUT_FOR_C  = YES
+SHOW_FILES             = NO
+SHOW_NAMESPACES        = NO
+INPUT                  = ../ ../doc/ ../include
+EXCLUDE                = ../CONTRIBUTING.md ../LICENSE.md ../CHANGELOG.md ../README.md
+IMAGE_PATH             = images pinout
+USE_MDFILE_AS_MAINPAGE = index.md
+HTML_FOOTER            = footer.html
+HTML_EXTRA_STYLESHEET  = doxygen-awesome-css/doxygen-awesome.css
+HTML_COLORSTYLE        = LIGHT
+DISABLE_INDEX          = NO
+GENERATE_TREEVIEW      = YES
+FULL_SIDEBAR           = YES

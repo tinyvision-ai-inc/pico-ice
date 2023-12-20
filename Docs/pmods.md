@@ -1,10 +1,4 @@
----
-title: pmod
-layout: default
-nav_order: 3
----
-
-# Pmod
+# Using Pmods
 
 The Pmod Connection system is using a grid of 2 rows and 6 columns of pins.
 
@@ -18,7 +12,7 @@ This standard is documented [here](https://reference.digilentinc.com/_media/refe
 
 ## Pmod in the pico-ice
 
-Here is an [example of how to solder](/getting_started.html#soldering-the-pmods) the Pmod connectors.
+Here is an [example of how to solder](md_getting__started.html#autotoc_md2) the Pmod connectors.
 
 There are 4 Pmod connectors in the pico-ice, numbered clockwise from 1 to 4 starting from the USB connector.
 

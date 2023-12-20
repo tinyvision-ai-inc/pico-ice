@@ -1,9 +1,3 @@
----
-title: learn
-layout: default
-nav_order: 4
----
-
 # Learning FPGA Design
 
 A large number of resources exists for learning FPGA design.

@@ -1,15 +1,3 @@
----
-title: pico-ice
-layout: home
-nav_order: 1
-has_children: true
----
-
-![](images/pico_ice_front.jpg)
-![](images/pico_ice_back.jpg)
-
-# pico-ice
-
 [Doc](http://pico-ice.tinyvision.ai/)
 | [Hardware](https://github.com/tinyvision-ai-inc/pico-ice)
 | [Software](https://github.com/tinyvision-ai-inc/pico-ice-sdk)
@@ -23,8 +11,10 @@ has_children: true
 
 The pico-ice is a small, low cost board with the Raspberry Pi Pico processor ([RP2040](https://www.raspberrypi.com/documentation/microcontrollers/rp2040.html)) and a Lattice Semiconductor [iCE40UP5K](https://www.latticesemi.com/en/Products/FPGAandCPLD/iCE40UltraPlus) FPGA. The board features independent flash for the FPGA and RP2040, low power SSRAM, a couple of pushbuttons and a 3 color LED with _all_ FPGA and RP2040 pins brought out to easy to use 0.1" header pins (arranged as Pmod's) for fast prototyping.
 
-The tinyVision.ai pico-ice Board Features:
-![](images/pico_ice_blocks.png)
+![](images/pico_ice_front.jpg)
+![](images/pico_ice_back.jpg)
+
+Board Hardware Features:
 
 * Raspberry Pi RP2040 processor
 * Lattice UltraPlus ICE40UP5K FPGA with 5.3k LUTs, 1Mb SPRAM, 120Kb DPRAM, 8 Multipliers
@@ -37,11 +27,13 @@ The tinyVision.ai pico-ice Board Features:
 * Open source schematic and layout using KiCAD design tools
 * 4 layer board with a solid ground plane for good signal integrity
 
-Board and Firmware features:
+Board Firmware features:
 
 * FPGA clock supplied by the RP2040, easy to program FPGA clock under SW control
-* RP2040 can program the FPGA and also provides a pass through UART function
-* Examples for communicating to the FPGA over SPI
+* RP2040 can program the FPGA in various ways
+* Examples for communicating to the FPGA from USB to UART or SPI
 * Support for ultra low power sleeep mode: can shut down the RP2040 and FPGA while keeping the SRAM powered
+
+![](images/pico_ice_blocks.png)
 
 [OSHW US002140](https://certification.oshwa.org/us002140.html) | Certified open source hardware | oshwa.org/cert

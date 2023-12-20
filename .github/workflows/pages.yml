@@ -1,5 +1,5 @@
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll site to Pages
+# Sample workflow for building and deploying a Doxygen site to GitHub Pages
+name: Deploy Doxygen site to Pages
 
 on:
   push:
@@ -18,17 +18,13 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      BUNDLE_GEMFILE: ${{ github.workspace }}/Docs/Gemfile
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.0'   # Not needed with a .ruby-version file
-          bundler-cache: true   # runs 'bundle install' and caches installed gems automatically
-          cache-version: 0      # Increment this number if you need to re-download cached gems
+      - name: Setup Doxygen
+        run: |
+          sudo apt update
+          sudo apt install doxygen
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v2
@@ -36,13 +32,12 @@ jobs:
         # Outputs to the './_site' directory by default
         run: |
           cd Docs
-          bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-        env:
-          JEKYLL_ENV: production
+          git submodule update --init
+          doxygen
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: "Docs/_site"
+          path: "Docs/html"
 
   deploy:
     environment:

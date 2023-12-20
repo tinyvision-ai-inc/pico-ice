@@ -119,15 +119,11 @@ int main(void) {
     ice_fpga_init(12);
     ice_fpga_start();
 
-    // Configure the piping as defined in <tusb_config.h>
+    // Configure USB as defined in tusb_config.h
     ice_usb_init();
 
     // Prevent the LEDs from glowing slightly
     ice_led_init();
-
-    // Ensure that enumeration completes before main loop.
-    while (!tud_ready())
-        tud_task();
 
     while (true) {
         tud_task();
