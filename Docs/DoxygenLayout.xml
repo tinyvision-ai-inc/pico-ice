@@ -5,5 +5,6 @@
     <tab type="pages" title="Wiki"/>
     <tab type="topics" title="SDK API"/>
     <tab type="user" title="Examples" url="https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples"/>
+    <tab type="user" title="Git" url="https://github.com/tinyvision-ai-inc/pico-ice"/>
   </navindex>
 </doxygenlayout>
