@@ -32,7 +32,6 @@ jobs:
         run: |
           cd Docs
           git submodule update --init
-          ls ../Firmware/pico-ice-sdk/include/
           doxygen
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
