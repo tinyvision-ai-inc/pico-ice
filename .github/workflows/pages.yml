@@ -28,11 +28,11 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v2
-      - name: Build with Jekyll
-        # Outputs to the './_site' directory by default
+      - name: Build with Doxygen
         run: |
           cd Docs
           git submodule update --init
+          ls ../Firmware/pico-ice-sdk/include/
           doxygen
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
