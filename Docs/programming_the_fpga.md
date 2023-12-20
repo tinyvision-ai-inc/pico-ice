@@ -49,15 +49,15 @@ You can skip step 1 if this is the case.
     This should list the pico-ice as a DFU device:
 
     ```
-    Found DFU: [1209:b1c0] ver=0100, devnum=105, cfg=1, intf=0, path="1-4.4", alt=1, name="iCE40 DFU (flash)", serial="DE62A435436F5939"
-    Found DFU: [1209:b1c0] ver=0100, devnum=105, cfg=1, intf=0, path="1-4.4", alt=0, name="iCE40 DFU (CRAM)", serial="DE62A435436F5939"
+    Found DFU: [1209:b1c0] ver=0100, devnum=105, cfg=1, intf=0, path="1-4.4", alt=0, name="iCE40 DFU (flash)", serial="DE62A435436F5939"
+    Found DFU: [1209:b1c0] ver=0100, devnum=105, cfg=1, intf=0, path="1-4.4", alt=1, name="iCE40 DFU (CRAM)", serial="DE62A435436F5939"
     ```
 
 4.  Download the FPGA bin file to the pico-ice.
     The Pico can be rebooted as soon as the download succeeds with the `-R` flag.
 
     ```
-    $ dfu-util -a 1 -D rgb_blink.bin
+    $ dfu-util -R -a 0 -D rgb_blink.bin
     ```
 
 ## Using APIO

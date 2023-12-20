@@ -58,9 +58,7 @@ static int repl_getchar(void)
     // busy-wait with a slow delay: this is for interactive I/O, no need to be fast
     while ((c = getchar_timeout_us(10000)) == PICO_ERROR_TIMEOUT) {
         // call tud_task() since we are blocking
-        ice_led_blue(1);
         tud_task();
-        ice_led_blue(0);
     }
 
     if (c == '\r' || c == '\n') {
@@ -131,9 +129,7 @@ int main(void)
     ice_led_init();
 
     while (true) {
-        ice_led_green(1);
         tud_task();
-        ice_led_green(0);
 
         printf("\x1b[1mpico-ice>\x1b[m ");
 

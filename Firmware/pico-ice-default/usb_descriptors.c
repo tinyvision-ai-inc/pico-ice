@@ -53,6 +53,6 @@ char const *tud_string_desc[STRID_NUM_TOTAL] = {
     [STRID_CDC+1]           = "iCE40 UART",
     [STRID_CDC+2]           = "SPI",
     [STRID_MSC+0]           = "iCE40 MSC (Flash)",
-    [STRID_DFU+0]           = "iCE40 DFU (CRAM)",
-    [STRID_DFU+1]           = "iCE40 DFU (Flash)",
+    [STRID_DFU+0]           = "iCE40 DFU (Flash)",
+    [STRID_DFU+1]           = "iCE40 DFU (CRAM)",
 };
