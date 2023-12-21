@@ -6,9 +6,9 @@ SHOW_NAMESPACES        = NO
 INPUT                  = ../Firmware/pico-ice-sdk/include/ ./
 IMAGE_PATH             = images pinout
 USE_MDFILE_AS_MAINPAGE = index.md
-HTML_FOOTER            = footer.html
-HTML_EXTRA_STYLESHEET  = doxygen-awesome-css/doxygen-awesome.css
+HTML_EXTRA_STYLESHEET  = doxygen-awesome-css/doxygen-awesome.css \
+                         doxygen-awesome-css/doxygen-awesome-sidebar-only.css
 HTML_COLORSTYLE        = LIGHT
-DISABLE_INDEX          = NO
 GENERATE_TREEVIEW      = YES
-FULL_SIDEBAR           = YES
+DISABLE_INDEX          = NO
+FULL_SIDEBAR           = NO
