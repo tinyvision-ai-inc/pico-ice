@@ -37,7 +37,7 @@
 #define UART_RX_PIN 1
 
 #define DOC_FORWARD_SPI \
-"https://pico-ice.tinyvision.ai/ice_usb.html#usb-spi-fpgasramflash-forwarding"
+"https://pico-ice.tinyvision.ai/group__ice__usb.html#autotoc_md2"
 
 #define DOC_DEFAULT_FIRMWARE \
 "https://github.com/tinyvision-ai-inc/pico-ice/tree/main/Firmware/pico-ice-default"
