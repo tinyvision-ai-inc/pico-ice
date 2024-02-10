@@ -239,6 +239,10 @@ An online class was held by tinyVision.ai, and is available freely:
 - [MIT 6.205 Course](https://fpga.mit.edu/6205/F22)
   Requires log-in to access the whole content, but good introductory text.
 
+- [ECE 5760 Course](https://people.ece.cornell.edu/land/courses/ece5760/)
+  A class that widely publishes their teaching material, allowing 3rd-party
+  students to attempt it on their own.
+
 ## Other lists
 
 - [F4PGA Link list](https://github.com/f4pga/ideas/issues/52)

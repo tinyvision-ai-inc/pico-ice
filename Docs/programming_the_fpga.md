@@ -114,19 +114,17 @@ Several pico-ice-sdk [examples](https://github.com/tinyvision-ai-inc/pico-ice-sd
 On Windows, you can run these examples from the cygwin environment,
 under which you can navigate to the example repositories and try them.
 
-If you used `apio` to install OSS CAD Suite,
-then you can use the APIO install directory as well:
-`export OSS_CAD_SUITE="$HOME/.apio/packages/tools-oss-cad-suite/"`.
 
 
-## F.A.Q.
+You can access the utilities directly from a shell environment after adding the
+`$OSS_CAD_SUITE` to the `$PATH`.
 
-### Q: Why is specifying the OSS_CAD_SUITE directory needed?
+If you used `apio` to install OSS CAD Suite:
 
-APIO installs OSS-CAD-Suite, but it is not possible to directly call the commands from the shell environment
-so it is needed to provide the full path to the binaries to execute them.
-
-With OSS-CAD-Suite, there is a script to source in the current shell environment to avoid this, but if the user forgets, then nothing works.
+```
+export OSS_CAD_SUITE="$HOME/.apio/packages/tools-oss-cad-suite"
+export PATH="$PATH:$OSS_CAD_SUITE/bin"
+```
 
 
 ## Troubleshooting
@@ -158,6 +156,33 @@ This error might occur when a communication error occurs.
 
 - On Linux operating system, it might need to be allowed with an udev rule,
   or `dfu-util` might need to be run as super user.
+
+To create an udev rule, add a file named `/etc/udev/rules.d/99-pico-ice.rules` with this content:
+
+```
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="b1c0", MODE="0666"
+```
+
+Then reboot or run the following commands:
+
+```
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+```
+
+### dfu-util has multiple devices
+
+For devices with multiple DFU devices connected, the `--device 1209:b1c0` flag is needed:
+
+```
+dfu-util --reset --alt 0 --download rgb_blink.bin --device 1209:b1c0
+```
+
+Alternatively, the `dfu-util --list` result will allow selecting a device per number:
+
+```
+dfu-util --reset --alt 0 --download rgb_blink.bin --devnum 0
+```
 
 ### dfu-util is stuck while uploading before anything could be sent
 
