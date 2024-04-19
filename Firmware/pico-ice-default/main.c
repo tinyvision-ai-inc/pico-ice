@@ -55,11 +55,9 @@ static int repl_getchar(void)
         return repl_last_char;
     }
 
-    // busy-wait with a slow delay: this is for interactive I/O, no need to be fast
-    while ((c = getchar_timeout_us(10000)) == PICO_ERROR_TIMEOUT) {
-        // call tud_task() since we are blocking
-        tud_task();
-    }
+    c = getchar_timeout_us(0);
+    if (c == PICO_ERROR_TIMEOUT)
+        return c;
 
     if (c == '\r' || c == '\n') {
         printf("\r\n");
@@ -108,6 +106,11 @@ static void repl_command_version(void)
     printf("pico-ice-sdk %s\r\n", VERSION);
 }
 
+static void repl_prompt(void)
+{
+    printf("\x1b[1mpico-ice>\x1b[m ");
+}
+
 int main(void)
 {
     // Enable USB-CDC #0 (serial console)
@@ -128,12 +131,19 @@ int main(void)
     // Prevent the LEDs from glowing slightly
     ice_led_init();
 
+    // Print repl prompt
+    repl_prompt();
+
     while (true) {
         tud_task();
 
-        printf("\x1b[1mpico-ice>\x1b[m ");
+        int chr = repl_getchar();
+        if (chr == PICO_ERROR_TIMEOUT)
+            continue;
 
-        switch (repl_getchar()) {
+        // not timeout, something received
+
+        switch (chr) {
         case 'v':
             repl_command_version();
             break;
@@ -154,6 +164,9 @@ int main(void)
             printf("\r\n");
             break;
         }
+
+        // reprint prompt
+        repl_prompt();
     }
 
     return 0;
