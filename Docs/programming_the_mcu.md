@@ -21,6 +21,22 @@ You can do that by connecting a jumper between the `BT` pin a `Gnd` pin, then pr
 ![photo of which pins to short](images/pico_ice_reset_button.jpg)
 
 
+Since version [`v1.6.1`](https://github.com/tinyvision-ai-inc/pico-ice/releases),
+it is possible to reboot the pico-ice into bootloader "BOOTSEL" mode without jumpers:
+
+    picocom --baud 1200 /dev/ttyACM0
+
+This uses the [convention established by Arduino boards](https://arduino.github.io/arduino-cli/dev/platform-specification/#1200-bps-bootloader-reset)
+which reset into bootloader mode when connecting with baud 1200.
+
+After this, it becomes possible to use the [picotool](https://github.com/raspberrypi/picotool) to control the firmware (upload, check version, reboot):
+
+    $ sudo picotool info
+    Program Information
+     name:      pico_ice_default
+     features:  USB stdin / stdout
+
+
 ## Troubleshooting
 
 
