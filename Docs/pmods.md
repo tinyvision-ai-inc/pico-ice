@@ -32,36 +32,34 @@ For the RP2040, the pin numbers are available from
 You can then use any of the pinout declaration described
 [here](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/include/pmod.h).
 
-```
-// Use the pins from their GPIO names
-gpio_init(ice_pmod_3.gpio.io1);
-gpio_init(ice_pmod_3.gpio.io2);
-gpio_init(ice_pmod_3.gpio.io3);
-gpio_init(ice_pmod_3.gpio.io4);
-gpio_init(ice_pmod_3.gpio.io7);
-gpio_init(ice_pmod_3.gpio.io8);
-gpio_init(ice_pmod_3.gpio.io9);
-gpio_init(ice_pmod_3.gpio.io10);
+    // Use the pins from their GPIO names
+    gpio_init(ice_pmod_3.gpio.io1);
+    gpio_init(ice_pmod_3.gpio.io2);
+    gpio_init(ice_pmod_3.gpio.io3);
+    gpio_init(ice_pmod_3.gpio.io4);
+    gpio_init(ice_pmod_3.gpio.io7);
+    gpio_init(ice_pmod_3.gpio.io8);
+    gpio_init(ice_pmod_3.gpio.io9);
+    gpio_init(ice_pmod_3.gpio.io10);
 
-// Use the pins from their I²C names
-gpio_init(ice_pmod_3.i2c.sda);
-gpio_init(ice_pmod_3.i2c.scl);
+    // Use the pins from their I²C names
+    gpio_init(ice_pmod_3.i2c.sda);
+    gpio_init(ice_pmod_3.i2c.scl);
 
-// Use the pins from their UART names
-gpio_init(ice_pmod_3.i2c.tx);
-gpio_init(ice_pmod_3.i2c.rx);
+    // Use the pins from their UART names
+    gpio_init(ice_pmod_3.i2c.tx);
+    gpio_init(ice_pmod_3.i2c.rx);
 
-// Use the pins from their SPI names
-gpio_set_function(ice_pmod_3.spi.copi, FUNC_SPI);
-gpio_set_function(ice_pmod_3.spi.cipo, FUNC_SPI);
-gpio_set_function(ice_pmod_3.spi.clk, FUNC_SPI);
+    // Use the pins from their SPI names
+    gpio_set_function(ice_pmod_3.spi.copi, FUNC_SPI);
+    gpio_set_function(ice_pmod_3.spi.cipo, FUNC_SPI);
+    gpio_set_function(ice_pmod_3.spi.clk, FUNC_SPI);
 
-// Access the top or bottom row individually
-gpio_set_function(ice_pmod_3.row.top.spi.copi, FUNC_SPI);
-gpio_set_function(ice_pmod_3.row.bottom.spi.copi, FUNC_SPI);
+    // Access the top or bottom row individually
+    gpio_set_function(ice_pmod_3.row.top.spi.copi, FUNC_SPI);
+    gpio_set_function(ice_pmod_3.row.bottom.spi.copi, FUNC_SPI);
 
-[...]
-```
+    [...]
 
 
 ## Pmod Modules

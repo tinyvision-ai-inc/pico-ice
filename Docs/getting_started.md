@@ -69,28 +69,26 @@ The [examples](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/examp
 
 Here is how to turn an example into a new project:
 
-```bash
-# copy the whole example directory
-cp -r pico-ice-sdk/examples/pico_usb_uart my-new-pico-ice-firmware
-cd my-new-pico-ice-firmware
+    # copy the whole example directory
+    cp -r pico-ice-sdk/examples/pico_usb_uart my-new-pico-ice-firmware
+    cd my-new-pico-ice-firmware
 
-# turn it into a git repository
-git init
-git remote add origin git@github.com:your-username/my-new-pico-ice-firmware
+    # turn it into a git repository
+    git init
+    git remote add origin git@github.com:your-username/my-new-pico-ice-firmware
 
-# replace the two symlinks by git submodules
-rm pico-sdk pico-ice-sdk
-git submodule add https://github.com/raspberrypi/pico-sdk
-git submodule add https://github.com/tinyvision-ai-inc/pico-ice-sdk
+    # replace the two symlinks by git submodules
+    rm pico-sdk pico-ice-sdk
+    git submodule add https://github.com/raspberrypi/pico-sdk
+    git submodule add https://github.com/tinyvision-ai-inc/pico-ice-sdk
 
-# fetch the submodules (using --recursive is very slow)
-git -C pico-ice-sdk submodule update --init
-git -C pico-sdk submodule update --init lib/tinyusb
+    # fetch the submodules (using --recursive is very slow)
+    git -C pico-ice-sdk submodule update --init
+    git -C pico-sdk submodule update --init lib/tinyusb
 
-# you can now build it as a CMake project
-mkdir build && cd build
-cmake .. && make
-```
+    # you can now build it as a CMake project
+    mkdir build && cd build
+    cmake .. && make
 
 You can now edit the name of the project in the CMakeLists.txt, add new sources, and change the code.
 
@@ -117,9 +115,7 @@ Even if this binary is present in your system, it might not be a full C++ instal
 If you do not need C++ and want to work around this bug, you can disable the C++ support
 in the pico-sdk. From your project repo:
 
-```shell
-$ cd build
-$ cmake .. # download the SDK if not yet done
-$ sed -i '/new_delete.cpp/ d' _deps/pico-sdk-src/src/rp2_common/pico_standard_link/CMakeLists.txt
-$ cmake .. # rebuild the Makefile with the fix
-```
+    $ cd build
+    $ cmake .. # download the SDK if not yet done
+    $ sed -i '/new_delete.cpp/ d' _deps/pico-sdk-src/src/rp2_common/pico_standard_link/CMakeLists.txt
+    $ cmake .. # rebuild the Makefile with the fix

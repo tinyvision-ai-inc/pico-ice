@@ -23,9 +23,7 @@ You can skip step 1 if this is the case.
 
 3.  Convert the binary bitstream `rgb_blink.bin` into an UF2 `rgb_blink.uf2` with the UF2 Utils:
 
-     ```shell
-     $ bin2uf2 -o rgb_blink.uf2 rgb_blink.bin
-     ```
+        $ bin2uf2 -o rgb_blink.uf2 rgb_blink.bin
 
 4.  Connect the pico-ice via USB and lookup the USB drive named `pico-ice`. Open it.
 
@@ -48,17 +46,15 @@ You can skip step 1 if this is the case.
 3.  Check whether the Pico is recognized as a DFU device: `dfu-util -l`.
     This should list the pico-ice as a DFU device:
 
-    ```
-    Found DFU: [1209:b1c0] ver=0100, devnum=105, cfg=1, intf=0, path="1-4.4", alt=0, name="iCE40 DFU (flash)", serial="DE62A435436F5939"
-    Found DFU: [1209:b1c0] ver=0100, devnum=105, cfg=1, intf=0, path="1-4.4", alt=1, name="iCE40 DFU (CRAM)", serial="DE62A435436F5939"
-    ```
+        Found DFU: [1209:b1c0] ver=0100, devnum=105, cfg=1, intf=0, path="1-4.4", alt=0, name="iCE40 DFU (flash)", serial="DE62A435436F5939"
+        Found DFU: [1209:b1c0] ver=0100, devnum=105, cfg=1, intf=0, path="1-4.4", alt=1, name="iCE40 DFU (CRAM)", serial="DE62A435436F5939"
 
 4.  Download the FPGA bin file to the pico-ice.
     The Pico can be rebooted as soon as the download succeeds with the `-R` flag.
 
-    ```
-    $ dfu-util -R -a 0 -D rgb_blink.bin
-    ```
+        $ dfu-util --alt 0 --download rgb_blink.bin --reset  # to flash
+        $ dfu-util --alt 1 --download rgb_blink.bin          # to volatile memory
+
 
 ## Using APIO
 
@@ -72,26 +68,24 @@ On Windows, you will first need to setup the `libusbK` driver for `pico-ice DFU 
 [with Zadig](https://zadig.akeo.ie/) or [with UsbDriverTool](https://visualgdb.com/UsbDriverTool/)
 ([doc](https://github.com/FPGAwars/apio/wiki/Quick-start)).
 
-```
-# Download the latest APIO dev version (with pico-ice support):
-pip3 install git+https://github.com/FPGAwars/apio
+    # Download the latest APIO dev version (with pico-ice support):
+    pip3 install git+https://github.com/FPGAwars/apio
 
-# Download and install oss-cad-suite
-apio install -a
+    # Download and install oss-cad-suite
+    apio install -a
+    
+    # Build a new directory with a "blinky" example project inside
+    mkdir pico-ice-blinky; cd pico-ice-blinky
+    apio examples -f iCE40-UP5K/blink
 
-# Build a new directory with a "blinky" example project inside
-mkdir pico-ice-blinky; cd pico-ice-blinky
-apio examples -f iCE40-UP5K/blink
+    # Set the board to "pico-ice"
+    apio init --sayyes --board pico-ice
 
-# Set the board to "pico-ice"
-apio init --sayyes --board pico-ice
+    # Build the project using yosys/nextpnr
+    apio build
 
-# Build the project using yosys/nextpnr
-apio build
-
-# Plug your pico-ice board and upload the blinky project to it
-apio upload
-```
+    # Plug your pico-ice board and upload the blinky project to it
+    apio upload
 
 If `apio upload` fails, it is also possible to convert the `.bin` file to `.uf2`
 with [uf2-utils](https://github.com/tinyvision-ai-inc/uf2-utils/)
@@ -114,38 +108,35 @@ Several pico-ice-sdk [examples](https://github.com/tinyvision-ai-inc/pico-ice-sd
 On Windows, you can run these examples from the cygwin environment,
 under which you can navigate to the example repositories and try them.
 
-
-
 You can access the utilities directly from a shell environment after adding the
 `$OSS_CAD_SUITE` to the `$PATH`.
 
 If you used `apio` to install OSS CAD Suite:
 
-```
-export OSS_CAD_SUITE="$HOME/.apio/packages/tools-oss-cad-suite"
-export PATH="$PATH:$OSS_CAD_SUITE/bin"
-```
+    export OSS_CAD_SUITE="$HOME/.apio/packages/tools-oss-cad-suite"
+    export PATH="$PATH:$OSS_CAD_SUITE/bin"
 
 
 ## Troubleshooting
+
 
 ### Checking the CDONE pin
 
 Once the FPGA bitfile transfers over using the DFU protocol,
 the Pico will check for whether the DONE pin goes high indicating a successful boot.
 This would make the CDONE green LED bright.
-
 If this doesnt happen for whatever reason,
 the DFU utility will throw an error indicating that this did not succeed.
+
 
 ### Booting the FPGA with custom firmware
 
 The user writing a custom firmware with the pico-ice-sdk should take care of starting the FPGA from the MCU.
 Review the [pico_fpga](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_fpga) example
 for how this can be done, as well as the [ice_fpga](group__ice__fpga.html) library documentation.
-
 The USB DFU provided as part of the pico-ice-sdk must also be enabled for the DFU interface to show-up.
 The [pico_usb_uart example](https://github.com/tinyvision-ai-inc/pico-ice-sdk/tree/main/examples/pico_usb_uart) project have it enabled by default.
+
 
 ### Cannot open DFU device 1209:b1c0 found on devnum 61 (LIBUSB_ERROR_NOT_FOUND)
 
@@ -159,36 +150,30 @@ This error might occur when a communication error occurs.
 
 To create an udev rule, add a file named `/etc/udev/rules.d/99-pico-ice.rules` with this content:
 
-```
-SUBSYSTEM=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="b1c0", MODE="0666"
-```
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="b1c0", MODE="0666"
 
 Then reboot or run the following commands:
 
-```
-sudo udevadm control --reload-rules
-sudo udevadm trigger
-```
+    sudo udevadm control --reload-rules
+    sudo udevadm trigger
+
 
 ### dfu-util has multiple devices
 
 For devices with multiple DFU devices connected, the `--device 1209:b1c0` flag is needed:
 
-```
-dfu-util --reset --alt 0 --download rgb_blink.bin --device 1209:b1c0
-```
+    dfu-util --alt 0 --download rgb_blink.bin --reset --device 1209:b1c0
 
 Alternatively, the `dfu-util --list` result will allow selecting a device per number:
 
-```
-dfu-util --reset --alt 0 --download rgb_blink.bin --devnum 0
-```
+    dfu-util --alt 0 --download rgb_blink.bin --reset --devnum 0
+
 
 ### dfu-util is stuck while uploading before anything could be sent
 
 This could be due that there was no response from the flash chip, and the RP2040 is endlessy waiting the write confirmation.
-
 If you had an earlier board, it could be due to the fact the TX and RX pins were swapped, and do not work for the old board anymore.
+
 
 ### Flashing an UF2 file does not change the memory neither restart the board
 
@@ -198,6 +183,7 @@ it is possible that that the addresses were outside the valid range of the flash
 Try to copy the CURRENT.UF2 to NEW.UF2 upon that same directory, and unmount the device.
 This should trigger a restart of the device.
 This restart device should appear from the debug UART: `board_dfu_complete: rebooting`.
+
 
 ### Device's firmware is corrupt. It cannot return to run-time (non-DFU) operations.
 
