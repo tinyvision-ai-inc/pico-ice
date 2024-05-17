@@ -7,7 +7,7 @@
 | [Assembly](https://htmlpreview.github.io/?https://github.com/tinyvision-ai-inc/pico-ice/blob/main/Board/Rev3/bom/ibom.html)
 | [Discord](https://discord.gg/t2CzbAYeD2)
 
-[![Elecrow](https://media-cdn.elecrow.com/media/webp_image/logo/stores/1/ELECROW_LOGO.webp)](https://www.elecrow.com/pico-ice-rp2040-plus-lattice-ice40up5k-fpga.html)
+[![Elecrow](https://www.elecrow.com/media/logo/stores/1/ELECROW_LOGO.png)](https://www.elecrow.com/pico-ice-rp2040-plus-lattice-ice40up5k-fpga.html)
 [![LectronZ](https://lectronz.com/static/badges/buy-it-on-lectronz-medium.png)](https://lectronz.com/stores/tinyvision-ai-store)
 [![Tindie](https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-smalls.png)](https://www.tindie.com/stores/tinyvision_ai/?ref=offsite_badges&utm_source=sellers_vr2045&utm_medium=badges&utm_campaign=badge_small%22%3E)
 
