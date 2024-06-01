@@ -30,8 +30,8 @@ The PMOD pins can also be accessed from
 
 ## SPI Pinouts 
 
-For debugging the FPGA <-> SPI <-> Flash/RAM interface it is very helpful to use one of the 
-pmods to watch the signals.   This diagram may help. 
+For debugging the FPGA <-> SPI <-> Flash/RAM interface it is very helpful to use the 4 through holes on the upper right of the fpga, and to connect a logic analyzer to the upper right pmod.  This diagram may help.  Remember that the boot process leaves the Flash switched off.  With the Yosys icepack command, the "-s" option boots the Flash in the on state. 
 
-![SPI Debugging](../Docs/images/pico_ice_spi_debug.png)
+![SPI Debugging](pinout/debug_spi_black.png)
+![SPI Debugging](pinout/debug_spi_white.png)
 
