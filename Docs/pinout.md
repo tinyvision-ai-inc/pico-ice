@@ -1,6 +1,6 @@
 # Pinout Diagram
 
-This diagram shows the ICE40 and rp2040 names for the through holes on the pico-ice board. 
+This diagram shows the ICE40 and RP2040 names for the through holes on the pico-ice board. 
 
 
 ![pinout diagram](pinout/pinout.svg)
@@ -13,7 +13,7 @@ This diagram shows the ICE40 and rp2040 names for the through holes on the pico-
 
 ## With RTL on the iCE40
 
-To program the FPGA, one needs to tell the synthesis tools which pins to connect to the signals in your RTL.  There are two different ways to name the pins.   The wafer names are words like `IOB_6a`, and `IOT_8b`, and the pin numbers have names like `ICE_2`, `ICE_3`, and `ICE_4`.
+To program the FPGA, one needs to tell the synthesis tools which pins to connect to the signals in your RTL.  There are two different ways to name the pins.   The wafer names are words like `IOB_6a` and `IOT_8b`, and the pin numbers have names like `ICE_2`, `ICE_3`, and `ICE_4`.
 Both sets of names can be found in this [PCF file](https://github.com/tinyvision-ai-inc/pico-ice-sdk/blob/main/rtl/pico_ice.pcf).
 
 For Amaranth, until this gets upstreamed, the various board resources including its pins are defined on
