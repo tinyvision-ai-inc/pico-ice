@@ -30,6 +30,7 @@ The PMOD pins can also be accessed from
 
 ## SPI Pinouts 
 
+
 For debugging the FPGA <-> SPI <-> Flash/RAM interface it is very
 helpful to use the 4 through holes on the upper right of the FPGA, and
 to connect a logic analyzer to the upper right PMOD.  These two
@@ -41,4 +42,5 @@ The diagrams below refer to the labelling on the [Pico-Ice Schematic](https://ra
 
 ![SPI Debugging](pinout/spi_bus_black.png)
 ![SPI Debugging](pinout/spi_bus_white.png)
+
 
