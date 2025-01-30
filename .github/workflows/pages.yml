@@ -21,10 +21,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup Doxygen
+      - name: Setup Doxygen and Graphviz
         run: |
           sudo apt update
-          sudo apt install doxygen
+          sudo apt install doxygen graphviz
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v2
