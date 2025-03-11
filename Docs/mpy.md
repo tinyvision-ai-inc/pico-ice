@@ -43,3 +43,33 @@ file = open("bitstream.bin", "br")
 fpga.start()
 fpga.cram(file)
 ```
+
+## How to program a bistream to the FPGA Flash (persistent bitstream)
+
+### On pico-ice:
+
+```python
+from machine import Pin
+import ice
+file = open("bitstream.bin", "br")
+flash = ice.flash(miso=Pin(8), mosi=Pin(11), sck=Pin(10), cs=Pin(9))
+flash.erase(4096) # Optional
+flash.write(file)
+# Optional
+fpga = ice.fpga(cdone=Pin(26), clock=Pin(24), creset=Pin(27), cram_cs=Pin(9), cram_mosi=Pin(8), cram_sck=Pin(10), frequency=48)
+fpga.start()
+```
+
+### On pico2-ice:
+
+```python
+from machine import Pin
+import ice
+file = open("bitstream.bin", "br")
+flash = ice.flash(miso=Pin(4), mosi=Pin(7), sck=Pin(6), cs=Pin(5))
+flash.erase(4096) # Optional
+flash.write(file)
+# Optional
+fpga = ice.fpga(cdone=Pin(40), clock=Pin(21), creset=Pin(31), cram_cs=Pin(5), cram_mosi=Pin(4), cram_sck=Pin(6), frequency=48)
+fpga.start()
+```
