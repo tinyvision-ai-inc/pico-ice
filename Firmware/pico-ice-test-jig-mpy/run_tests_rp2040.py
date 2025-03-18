@@ -61,7 +61,7 @@ class TestPin:
 				time.sleep_ms(1)
 				if self.pin.value() != 0:
 					success = False
-		self.pin.init(machine.Pin.IN)
+			self.pin.init(machine.Pin.IN)
 		return success
 
 	def check_connected(self, pin: TestPin):
@@ -189,7 +189,6 @@ except Exception as err:
 	print("\x1b[31mTest Failed, Pico-ice may be in test jig")
 	blink_error(BLUE_LED)
 	raise err
-
 
 print("Please Insert in test rig")
 while True:
