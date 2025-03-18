@@ -18,6 +18,7 @@ SYSTEM_PINS = [ FPGA_BUTTON_PIN, FPGA_CDONE, FPGA_HIGH_Z_PIN ]
 PULLED_PINS = [ 8, 9, 10, 11, 14, RED_LED, BLUE_LED, GREEN_LED ]
 PIN_CONNECTIONS = { (28, 13), (29, 12), (16, 20), (17, 21), (18, 22), (19, 23), (1, 5), (3, 7)}
 PIN_CHAIN = (CHAIN_IN_PIN, CHAIN_OUT_PIN)
+RIG_DETECT = { (9, 11), (8, 10) }
 
 class TestPin:
 	def __init__(self, pin_nb: int, driveable: bool, pulled_externally: bool):
@@ -68,12 +69,10 @@ class TestPin:
 		self.set_0()
 		time.sleep_ms(5)
 		if pin.get():
-			print("Pin not 0")
 			success = False
 		self.set_1()
 		time.sleep_ms(5)
 		if not pin.get():
-			print("Pin not 1")
 			success = False
 
 		self.get()
@@ -114,7 +113,7 @@ def setup_fpga():
 	if not fpga.start():
 		raise Exception("There was an error setting up fpga")
 	file = open("test.bit", "br")
-	will throw error if failed
+	#will throw error if failed
 	fpga.cram(file)
 	del file
 	return fpga
@@ -149,12 +148,19 @@ def test_in_jig(pins):
 	pins[FPGA_HIGH_Z_PIN].set_1()
 	print("\x1b[32mIn-Jig self-test passed")
 
-
+def in_jig(pins):
+	global RIG_DETECT
+	success = True
+	for a, b in RIG_DETECT:
+		if not pins[a].check_connected(pins[b]):
+			success = False
+	return success
 
 #setup fpga with test bitstream
-fgpa = setup_fpga()
+fpga = setup_fpga()
 
-time.sleep(0.5)
+
+time.sleep(0.1)
 
 #initialize pins
 TEST_PINS = {}
@@ -175,14 +181,26 @@ for i in range(FIRST_GPIO_PIN, LAST_GPIO_PIN + 1):
 TEST_PINS[FPGA_HIGH_Z_PIN].set_1()
 TEST_PINS[FPGA_HIGH_Z_PIN].set_1()
 
-time.sleep(1)
+time.sleep(0.1)
 
 try:
 	test_out_jig(TEST_PINS)
 except Exception as err:
-	print("\x1b[31mTest Failed")
+	print("\x1b[31mTest Failed, Pico-ice may be in test jig")
 	blink_error(BLUE_LED)
 	raise err
+
+
+print("Please Insert in test rig")
+while True:
+	time.sleep_ms(100)
+	if in_jig(TEST_PINS):
+		time.sleep_ms(250)
+		if in_jig(TEST_PINS):
+			break
+		else:
+			print("Detected temporary rig presence, please ensure proper connection")
+
 
 try:
 	test_in_jig(TEST_PINS)
