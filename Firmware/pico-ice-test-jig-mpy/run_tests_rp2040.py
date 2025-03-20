@@ -20,6 +20,8 @@ PIN_CONNECTIONS = { (28, 13), (29, 12), (16, 20), (17, 21), (18, 22), (19, 23), 
 PIN_CHAIN = (CHAIN_IN_PIN, CHAIN_OUT_PIN)
 RIG_DETECT = { (9, 11), (8, 10) }
 
+X_CHECKS = 5
+
 class TestPin:
 	def __init__(self, pin_nb: int, driveable: bool, pulled_externally: bool):
 		self.pin = machine.Pin(pin_nb, machine.Pin.IN)
@@ -42,42 +44,69 @@ class TestPin:
 	def check_consistency(self):
 		success = True
 		if self.driveable:
-			if self.pulled_externally:
-				self.pin.init(machine.Pin.OUT)
-				self.pin.on()
-				time.sleep_ms(1)
-				if self.pin.value() != 1:
-					success = False
-				self.pin.off()
-				time.sleep_ms(1)
-				if self.pin.value() != 0:
-					success = False
-			else:
-				self.pin.init(machine.Pin.IN, machine.Pin.PULL_UP)
-				time.sleep_ms(1)
-				if self.pin.value() != 1:
-					success = False
-				self.pin.init(machine.Pin.IN, machine.Pin.PULL_DOWN)
-				time.sleep_ms(1)
-				if self.pin.value() != 0:
-					success = False
+			print("Checking pin consistency for " + str(self.pin_nb))
+			for i in range(0, X_CHECKS):
+				if self.pulled_externally:
+					self.pin.init(machine.Pin.OUT)
+					self.pin.on()
+					time.sleep_ms(1)
+					if self.pin.value() != 1:
+						success = False
+					self.pin.off()
+					time.sleep_ms(1)
+					if self.pin.value() != 0:
+						success = False
+				else:
+					self.pin.init(machine.Pin.IN, machine.Pin.PULL_UP)
+					time.sleep_ms(1)
+					if self.pin.value() != 1:
+						success = False
+					self.pin.init(machine.Pin.IN, machine.Pin.PULL_DOWN)
+					time.sleep_ms(1)
+					if self.pin.value() != 0:
+						success = False
 			self.pin.init(machine.Pin.IN)
 		return success
 
-	def check_connected(self, pin: TestPin):
+	def check_connected(self, pin: TestPin, log: bool = True):
 		success = True
-		self.set_0()
-		time.sleep_ms(5)
-		if pin.get():
-			success = False
-		self.set_1()
-		time.sleep_ms(5)
-		if not pin.get():
-			success = False
+		if log:
+			print("Checking connection between " + str(self.pin_nb) + " and " + str(pin.pin_nb))
+		for i in range(0, X_CHECKS):
+			self.set_0()
+			time.sleep_ms(1)
+			if pin.get():
+				success = False
+			self.set_1()
+			time.sleep_ms(1)
+			if not pin.get():
+				success = False
 
 		self.get()
 
 		return success
+
+	def check_not_connected(self, pin: TestPin):
+		success = True
+		if self.driveable and not pin.pulled_externally:
+			print("Checking pin shorting for " + str(self.pin_nb) + " with " + str(pin.pin_nb))
+			for i in range(0, X_CHECKS):
+				pin.pin.init(machine.Pin.IN, machine.Pin.PULL_UP)
+				self.set_0()
+				time.sleep_ms(1)
+				if not pin.get():
+					success = False
+				pin.pin.init(machine.Pin.IN, machine.Pin.PULL_DOWN)
+				self.set_1()
+				time.sleep_ms(1)
+				if pin.get():
+					success = False
+
+			self.get()
+			pin.get()
+
+		return success
+
 
 	def __repr__(self):
 		return "TestPin(" + str(self.pin_nb) + ", " + str(self.driveable) + ", " + str(self.pulled_externally) + ")"
@@ -111,7 +140,7 @@ def setup_fpga():
 	fpga = ice.fpga(cdone=machine.Pin(26), clock=machine.Pin(24), creset=machine.Pin(27), cram_cs=machine.Pin(9), cram_mosi=machine.Pin(8), cram_sck=machine.Pin(10), frequency=48)
 	fpga.stop()
 	if not fpga.start():
-		raise Exception("There was an error setting up fpga")
+		raise Exception("\x1b[31mThere was an error setting up fpga" + "\x1b[37m")
 	file = open("test.bit", "br")
 	#will throw error if failed
 	fpga.cram(file)
@@ -123,7 +152,15 @@ def test_out_jig(pins):
 	print("\x1b[37mRP2 pin self-test")
 	for i, pin in pins.items():
 		if not pin.check_consistency():
-			raise Exception("Consistency Check Failed on pin: " + str(pin.pin_nb))
+			raise Exception("\x1b[31mConsistency Check Failed on pin: " + str(pin.pin_nb) + "\x1b[37m")
+	print("\x1b[37mRP2 pin shorting test")
+	for i, pin in pins.items():
+		test_pin = pins.get(i + 1)
+		if test_pin is not None:
+			if not pin.check_not_connected(test_pin):
+				raise Exception("\x1b[31mShorting Check Failed on pin: " + str(pin.pin_nb) + " with " + str(test_pin.pin_nb) + "\x1b[37m")
+			if not test_pin.check_not_connected(pin):
+				raise Exception("\x1b[31mShorting Check Failed on pin: " + str(test_pin.pin_nb) + " with " + str(pin.pin_nb) + "\x1b[37m")
 	print("\x1b[32mRP2 pin self-test passed")
 
 def test_in_jig(pins):
@@ -132,9 +169,8 @@ def test_in_jig(pins):
 	print("\x1b[37mStarting IN-Jig test")
 	print("\x1b[37mPin pairs test")
 	for a, b in PIN_CONNECTIONS:
-		print("Checking connection between " + str(a) + " and " + str(b))
 		if not pins[a].check_connected(pins[b]):
-			raise Exception("Pin pairs Check Failed on pins: " + str(pins[a].pin_nb) + " to " + str(pins[b].pin_nb))
+			raise Exception("\x1b[31mPin pairs Check Failed on pins: " + str(pins[a].pin_nb) + " to " + str(pins[b].pin_nb) + "\x1b[37m")
 	print("\x1b[37mPin chain test")
 	pins[FPGA_HIGH_Z_PIN].set_0()
 	pins[FPGA_HIGH_Z_PIN].set_0()
@@ -142,7 +178,7 @@ def test_in_jig(pins):
 	time.sleep_ms(5)
 
 	if not pins[PIN_CHAIN[0]].check_connected(pins[PIN_CHAIN[1]]):
-			raise Exception("Pin chain Check Failed between " + str(PIN_CHAIN[0]) + " and " + str(PIN_CHAIN[1]))
+			raise Exception("\x1b[31mPin chain Check Failed between " + str(PIN_CHAIN[0]) + " and " + str(PIN_CHAIN[1]) + "\x1b[37m")
 
 	pins[FPGA_HIGH_Z_PIN].set_1()
 	pins[FPGA_HIGH_Z_PIN].set_1()
@@ -152,7 +188,7 @@ def in_jig(pins):
 	global RIG_DETECT
 	success = True
 	for a, b in RIG_DETECT:
-		if not pins[a].check_connected(pins[b]):
+		if not pins[a].check_connected(pins[b], False):
 			success = False
 	return success
 
@@ -186,7 +222,7 @@ time.sleep(0.1)
 try:
 	test_out_jig(TEST_PINS)
 except Exception as err:
-	print("\x1b[31mTest Failed, Pico-ice may be in test jig")
+	print("\x1b[31mTest Failed\x1b[37m")
 	blink_error(BLUE_LED)
 	raise err
 
@@ -204,7 +240,7 @@ while True:
 try:
 	test_in_jig(TEST_PINS)
 except Exception as err:
-	print("\x1b[31mTest Failed")
+	print("\x1b[31mTest Failed\x1b[37m")
 	blink_error(GREEN_LED)
 	raise err
 
