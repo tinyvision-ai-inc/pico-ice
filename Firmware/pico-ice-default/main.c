@@ -24,6 +24,7 @@
 
 // pico-sdk
 #include "pico/stdio.h"
+#include "pico/stdio_usb.h"
 #include "hardware/irq.h"
 #include "hardware/gpio.h"
 #include "hardware/uart.h"
@@ -33,8 +34,15 @@
 #include "ice_fpga.h"
 #include "ice_led.h"
 
-#define UART_TX_PIN 0
-#define UART_RX_PIN 1
+// GP0  UART0Tx  ICE27
+// GP1  UART0Rx  ICE25
+#define UART0_TX_PIN 0
+#define UART0_RX_PIN 1
+
+// GP4  UART1Tx  ICE26
+// GP5  UART1Rx  ICE23
+#define UART1_TX_PIN 4
+#define UART1_RX_PIN 5
 
 #define DOC_FORWARD_SPI \
 "https://pico-ice.tinyvision.ai/group__ice__usb.html#autotoc_md2"
@@ -113,13 +121,20 @@ static void repl_prompt(void)
 
 int main(void)
 {
-    // Enable USB-CDC #0 (serial console)
-    stdio_init_all();
 
+#if ICE_USB_UART0_CDC
     // Enable the physical UART
     uart_init(uart0, 115200);
-    gpio_set_function(UART_TX_PIN, GPIO_FUNC_UART);
-    gpio_set_function(UART_RX_PIN, GPIO_FUNC_UART);
+    gpio_set_function(UART0_TX_PIN, GPIO_FUNC_UART);
+    gpio_set_function(UART0_RX_PIN, GPIO_FUNC_UART);
+#endif
+
+#if ICE_USB_UART1_CDC
+    // Enable the physical UART
+    uart_init(uart1, 115200);
+    gpio_set_function(UART1_TX_PIN, GPIO_FUNC_UART);
+    gpio_set_function(UART1_RX_PIN, GPIO_FUNC_UART);
+#endif
 
     // Let the FPGA start
     ice_fpga_init(12);
@@ -127,6 +142,9 @@ int main(void)
 
     // Configure USB as defined in tusb_config.h
     ice_usb_init();
+
+    // Enable USB-CDC #0 (serial console)
+    stdio_usb_init();
 
     // Prevent the LEDs from glowing slightly
     ice_led_init();
