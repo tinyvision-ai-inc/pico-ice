@@ -21,9 +21,10 @@ mpremote run run_tests_rp2040.py
 if($?) {
 	echo "Tests Successful... Deleting files and flashing factory FPGA firmware"
 	mpremote rm :test.bit
-	#mpremote cp final.bit :
-	#mpremote run flash_fpga_rp2040.py
-	#mpremote rm :final.bit
+	mpremote cp final.bit :
+	mpremote run flash_final_rp2040.py
+	mpremote rm :final.bit
+	mpremote cp main_rp2040.py :main.py
 }
 else
 {
