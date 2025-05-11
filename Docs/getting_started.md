@@ -31,7 +31,7 @@ It provides:
 - An USB MSC interface allows programming the board by copying a file to an USB device
   ([doc](https://pico-ice.tinyvision.ai/programming_the_fpga.html#using-a-drag-drop-or-file-copy-scheme)).
 
-See [Programming the RP2040](md_programming_the_mcu.html) for how to load this firmware file.
+See [Programming the RP2040](md_programming__the__mcu.html) for how to load this firmware file.
 
 
 ## Soldering the Pmods
