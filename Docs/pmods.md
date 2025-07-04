@@ -16,7 +16,7 @@ Here is an [example of how to solder](md_getting__started.html#autotoc_md2) the 
 
 There are 4 Pmod connectors in the pico-ice, numbered clockwise from 1 to 4 starting from the USB connector.
 
-- 2 connected ot the iCE40
+- 2 connected to the iCE40
 - 1 connected to both the RP2040 and iCE40
 - 1 connected to the RP2040
 
